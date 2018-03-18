@@ -20,13 +20,13 @@ public class RecetteTest {
         // TODO code application logic here
       System.out.print("hello test");
       /******* add user *********/
-     /* User u2 = new User("M", "M.M@esprit.tn", "55676850","a:0:{}");
-       UserService userService = new UserService();
-       // IUser userService = new UserService();
+     // User u2 = new User("M", "M.M@esprit.tn", "55676850","Client");
+     //  UserService userService = new UserService(); cette ligne ou ligne eli ta7tha as i like 
+     //   IUser userService = new UserService();
        
-        userService.add(u2); */
+     //   userService.add(u2); 
        /******* update user *********/
-   /*  User u3= new User();
+  /* User u3= new User();
      u3.setId(13);
      u3.setUsername("hello");
      u3.setUsername_canonical("hello");
@@ -35,13 +35,31 @@ public class RecetteTest {
      u3.setEnabled(1);
      u3.setPassword("123");
      u3.setRoles("a:0:{}"); 
-       UserService userService = new UserService(); 
+        UserService userService = new UserService(); 
          
         userService.update(u3); */
    /******* user all list *********/
-   UserService userService = new UserService(); 
-   userService.getAll();
-   System.out.println(userService.getAll()); 
+ //  UserService userService = new UserService(); 
+ //  userService.getAll();
+  //System.out.println(userService.getAll()); 
+   /******* user remove **************/
+  // userService.remove(13);
+  
+  /*************  user find by id **********************/
+ // System.out.println(userService.findById(12)); 
+ 
+  /************* find by login(if user exist or no) return true /false **********************/
+ // System.out.println(userService.findByLogin("marwa")); 
+  
+  /************* find by login return user  **********************/
+ // System.out.println(userService.UserByLogin("marwa")); 
+  
+  /************* find by password(if password exist or no) return true /false **********************/
+  //System.out.println(userService.findByPassword("5567685")); 
+  
+  /************* get role  **********************/
+ // System.out.println(userService.Getrole("marwa"));  
+   
        
     }
 }

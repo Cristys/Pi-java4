@@ -19,14 +19,14 @@ import utils.DataSource;
  *
  * @author Siala
  */
-public class UserService  {
+public class UserService implements IUser  {
     Connection connection;
 
     public UserService() {
         connection = DataSource.getInsatance().getConnection();
     }
 
-   
+    @Override
     public void add(User u) {
         try {
             System.out.println(u.toString());
@@ -51,7 +51,7 @@ public class UserService  {
          //  throw new RuntimeException(ex); 
         }
     } 
-    
+     @Override
     public void update(User u) {
         try {
             System.out.println(u.toString());
@@ -76,8 +76,8 @@ public class UserService  {
            //  throw new RuntimeException(ex); 
         }
     }
-    
-      public List<User> getAll() {
+     @Override
+    public List<User> getAll() {
         List<User> user = new ArrayList<>();
         String req = "select * from fos_user";
         PreparedStatement preparedStatement;
@@ -101,6 +101,130 @@ public class UserService  {
            // ex.printStackTrace();
         }
         return user;
-      }
+    }
+     @Override
+    public void remove(Integer r) {
+        try {
+            String requete = "delete from fos_user where id=?";
+            PreparedStatement ps = connection.prepareStatement(requete);
+
+            ps.setInt(1, r);
+
+            ps.executeUpdate();
+            System.out.println("remove sucess");
+        } catch (SQLException ex) {
+           // ex.printStackTrace();
+        }
+        
+    }
+     @Override    
+    public User findById(Integer r) {
+        User user = null;
+        String req = "select * from fos_user where id =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1, r);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user = new User(resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("Email"),
+                        resultSet.getString("password"),
+                        resultSet.getString("roles")
+                );
+            }
+        } catch (SQLException ex) {
+       
+           // ex.printStackTrace();
+        }
+        return user;
+    }
+     @Override
+    public boolean findByLogin(String s) {
+        User user = null;
+        String req = "select * from fos_user where username =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, s);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user = new User(resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("Email"),
+                        resultSet.getString("password"),
+                        resultSet.getString("roles"));
+            }
+        } catch (SQLException ex) {
+         //   ex.printStackTrace();
+        }
+        return user != null;
+    }
+     @Override        
+    public User UserByLogin(String s) {
+        User user = null;
+        String req = "select * from fos_user where username =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, s);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user = new User(resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("Email"),
+                        resultSet.getString("password"),
+                        resultSet.getString("roles"));
+            }
+        } catch (SQLException ex) {
+          //  ex.printStackTrace();
+        }
+
+        return user;
+    }
+     @Override
+    public boolean findByPassword(String s) {
+        User user = null;
+        String req = "select * from fos_user where password =?";
+
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, s);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user = new User(resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("Email"),
+                        resultSet.getString("password"),
+                        resultSet.getString("roles"));
+            }
+        } catch (SQLException ex) {
+           // ex.printStackTrace();
+        }
+        return user != null;
+    }
+    
+
+
+    @Override
+    public String Getrole(String s) {
+        String s1 = "";
+        String req = "select roles from fos_user where username =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, s);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                s1 = resultSet.getString("roles");
+            }
+        } catch (SQLException ex) {
+          //  ex.printStackTrace();
+        }
+        return s1;
+    }
+            
    
 }

@@ -15,9 +15,9 @@ public interface IUser extends IService <User, Integer> {
 
    
     public boolean findByLogin (String s);
-    public User findByLogin1 (String s);
+    public User UserByLogin (String s);
     public boolean findByPassword (String s);
-    public String Gettype(String s);
+    public String Getrole(String s);
     
   
    
