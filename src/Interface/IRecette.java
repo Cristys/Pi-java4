@@ -9,6 +9,6 @@ package Interface;
  *
  * @author Siala
  */
-public interface IRecette {
+public class IRecette {
     
 }

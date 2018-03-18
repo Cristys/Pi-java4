@@ -9,6 +9,6 @@ package Interface;
  *
  * @author Siala
  */
-public class IUser {
+public class IService {
     
 }

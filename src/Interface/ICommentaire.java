@@ -9,6 +9,6 @@ package Interface;
  *
  * @author Siala
  */
-public interface ICommentaire {
+public class ICommentaire {
     
 }
