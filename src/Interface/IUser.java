@@ -4,11 +4,22 @@
  * and open the template in the editor.
  */
 package Interface;
+import java.util.List;
+import entities.User;
 
 /**
  *
  * @author Siala
  */
-public class IUser {
+public interface IUser extends IService <User, Integer> {
+
+   
+    public boolean findByLogin (String s);
+    public User findByLogin1 (String s);
+    public boolean findByPassword (String s);
+    public String Gettype(String s);
+    
+  
+   
     
 }

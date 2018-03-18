@@ -4,11 +4,24 @@
  * and open the template in the editor.
  */
 package Interface;
-
+import java.util.List;
 /**
  *
  * @author Siala
+ * @param <T>
+ * @param <R>
  */
-public class IService {
+public interface IService<T, R> {
+
+    void add(T t);
+
+    void update(T t);
+
+    void remove(R r);
+
+    T findById(R r);
+
+    List<T> getAll();
     
+   
 }

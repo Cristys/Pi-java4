@@ -25,8 +25,8 @@ public class User {
     public User() {
     }
 
-    public User(int id, String username, String username_canonical, String email, String email_canonical, int enabled, String password, String roles) {
-        this.id = id;
+    public User(String username, String username_canonical, String email, String email_canonical, int enabled, String password, String roles) {
+      
         this.username = username;
         this.username_canonical = username_canonical;
         this.email = email;
@@ -35,6 +35,28 @@ public class User {
         this.password = password;
         this.roles = roles;
     }
+
+    public User(String username, String email, String password, String roles) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public User(int id, String username, String email, String password, String roles) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public User(int id) {
+        this.id = id;
+    }
+
+   
+ 
     
     
   
