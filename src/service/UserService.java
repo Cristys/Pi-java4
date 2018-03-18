@@ -225,6 +225,28 @@ public class UserService implements IUser  {
         }
         return s1;
     }
+    
+     @Override
+    public User findByLogin1(String s) {
+        User user = null;
+        String req = "select * from fos_user where username =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, s);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user = new User(resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("Email"),
+                        resultSet.getString("password"),
+                        resultSet.getString("roles"));
+            }
+        } catch (SQLException ex) {
+           // ex.printStackTrace();
+        }
+        return user;
+    }
             
    
 }
