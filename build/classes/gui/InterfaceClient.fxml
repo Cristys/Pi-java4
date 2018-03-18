@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="anco" prefHeight="900.0" prefWidth="1353.0" style="-fx-text-fill: white; -fx-font-size: 1.2em; -fx-font-weight: bold;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceClientController">
+   <children>
+      <SplitPane dividerPositions="0.08463251670378619" orientation="VERTICAL" prefHeight="900.0" prefWidth="1353.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="76.0" prefWidth="805.0" style="-fx-background-color: #feceab;">
+               <children>
+                  <ImageView fx:id="home" fitHeight="61.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mshome.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="recette" layoutX="133.0" mnemonicParsing="false" onMouseClicked="#goToRecettes" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-font-size: 1em; -fx-text-fill: #2a363b;" text="Recettes" />
+                  <Button fx:id="patisserie" layoutX="283.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-font-size: 1em; -fx-text-fill: #2a363b;" text="Patisseries" />
+                  <Button fx:id="shop" layoutX="431.0" layoutY="7.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-font-size: 1em; -fx-text-fill: #2a363b;" text="Shop" />
+                  <Button fx:id="promo" layoutX="589.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-font-size: 1em; -fx-text-fill: #2a363b;" text="Promo" />
+                  <Button fx:id="eval" layoutX="976.0" layoutY="7.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-font-size: 1em; -fx-text-fill: #2a363b;" text="Evaluation" />
+                  <Button fx:id="reclamation" layoutX="782.0" layoutY="1.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0" style="-fx-background-color: transparent; -fx-font-size: 1em; -fx-text-fill: #2a363b;" text="Reclamation" />
+                  <ImageView fx:id="panier" fitHeight="61.0" fitWidth="64.0" layoutX="1167.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/msPanier.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="439.0" prefWidth="798.0">
+               <children>
+                  <SplitPane dividerPositions="0.04938271604938271" prefHeight="818.0" prefWidth="1351.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="56.0" style="-fx-background-color: #99b898;">
+                           <children>
+                              <VBox prefHeight="529.0" prefWidth="61.0">
+                                 <children>
+                                    <HBox prefHeight="29.0" prefWidth="61.0" />
+                                    <HBox prefHeight="64.0" prefWidth="46.0">
+                                       <children>
+                                          <ImageView fx:id="profil" fitHeight="64.0" fitWidth="57.0" onMouseClicked="#goToClientProfil" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/msuser1.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="355.0" prefWidth="61.0" />
+                                    <HBox prefHeight="61.0" prefWidth="61.0">
+                                       <children>
+                                          <ImageView fx:id="logout" fitHeight="61.0" fitWidth="57.0" onMouseClicked="#logoutClient" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/mslogout.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="816.0" prefWidth="1277.0" />
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

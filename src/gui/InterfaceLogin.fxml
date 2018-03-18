@@ -11,17 +11,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="ancor" prefHeight="487.0" prefWidth="748.0" style="-fx-background-color: #1a1a1a;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceLoginController">
+<AnchorPane id="AnchorPane" fx:id="ancor" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: #1a1a1a;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceLoginController">
     <stylesheets>
         <URL value="@MarwaStyle.css" />
     </stylesheets>
    <children>
-      <ImageView fx:id="Background" fitHeight="506.0" fitWidth="801.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Background" fitHeight="900.0" fitWidth="1353.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icons/msbackground1.jpg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="loginPannel" layoutX="23.0" layoutY="36.0" opacity="0.73" prefHeight="443.0" prefWidth="378.0" style="-fx-background-color: #262626;" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="36.0">
+      <AnchorPane fx:id="loginPannel" layoutX="119.0" layoutY="249.0" opacity="0.73" prefHeight="459.0" prefWidth="427.0" style="-fx-background-color: #262626;" AnchorPane.bottomAnchor="192.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="804.0" AnchorPane.topAnchor="249.0">
          <effect>
             <DropShadow />
          </effect>
@@ -34,7 +34,7 @@
             <Button fx:id="BtnLogin" layoutX="99.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#authentifier" prefHeight="37.0" prefWidth="181.0" style="-fx-border-radius: 100; -fx-border-color: salmon; -fx-border-width: 0.2em; -fx-background-color: white; -fx-background-color: transparent; -fx-text-fill: salmon; -fx-font-size: 1em; -fx-font-weight: bold;" text="Login" />
             <Text layoutX="116.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Ariel; -fx-fill: darkgrey; -fx-font-size: 1em;" text="Je n'ai pas de compte " />
             <Hyperlink fx:id="linkToCreateProfil" layoutX="110.0" layoutY="382.0" style="-fx-font-size: 1em;" text="Je crée un compte" />
-            <ImageView fx:id="logo" fitHeight="111.0" fitWidth="93.0" layoutX="132.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logo" fitHeight="111.0" fitWidth="93.0" layoutX="158.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/mslogo.png" />
                </image>
