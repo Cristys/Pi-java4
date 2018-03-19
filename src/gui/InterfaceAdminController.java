@@ -9,37 +9,37 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import utils.Session;
-
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
  *
  * @author Siala
  */
-public class InterfaceClientController implements Initializable {
+public class InterfaceAdminController implements Initializable {
 
     @FXML
     private AnchorPane anco;
     @FXML
     private VBox ChangeItGirls;
     @FXML
-    private ImageView CHome;
+    private SplitPane Panel;
     @FXML
-    private ImageView CclientIcon;
+    private ImageView CHomePage;
     @FXML
-    private ImageView CrecetteIcon;
+    private VBox CAdminpannelHome;
     @FXML
-    private ImageView CLogoutIcon;
+    private VBox CBoxClients;
     @FXML
-    private VBox CBoxClient;
+    private Text Cclients;
     @FXML
-    private VBox CBoxRecette;
+    private VBox CBoxRecettes;
+    @FXML
+    private Text Crecettes;
 
     /**
      * Initializes the controller class.
@@ -47,8 +47,6 @@ public class InterfaceClientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-          
     }    
-
     
 }

@@ -11,9 +11,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="anco" prefHeight="900.0" prefWidth="1353.0" style="-fx-text-fill: white; -fx-font-size: 1.2em; -fx-font-weight: bold; -fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceClientController">
+<AnchorPane id="AnchorPane" fx:id="anco" prefHeight="900.0" prefWidth="1353.0" style="-fx-text-fill: white; -fx-font-size: 1.2em; -fx-font-weight: bold; -fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceResponsableController">
    <children>
-      <SplitPane prefHeight="930.0" prefWidth="72.0" style="-fx-background-color: #0d0d0d;">
+      <SplitPane fx:id="SideMenuIcons" prefHeight="930.0" prefWidth="72.0" style="-fx-background-color: #0d0d0d;">
          <effect>
             <DropShadow radius="4.75" width="0.0" />
          </effect>
@@ -22,7 +22,7 @@
                <children>
                   <VBox prefHeight="163.0" prefWidth="70.0">
                      <children>
-                        <ImageView fx:id="CHome" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CHomeIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -34,7 +34,7 @@
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="70.0">
                      <children>
-                        <ImageView fx:id="CclientIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="UserProfilimg" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -46,7 +46,7 @@
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: ;">
                      <children>
-                        <ImageView fx:id="CrecetteIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CRecetteIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -144,11 +144,11 @@
             </VBox>
          </items>
       </SplitPane>
-      <SplitPane layoutX="72.0" prefHeight="930.0" prefWidth="325.0" style="-fx-background-color: #262626;">
+      <SplitPane fx:id="SideMenuTexts" layoutX="72.0" prefHeight="930.0" prefWidth="325.0" style="-fx-background-color: #262626;">
          <items>
             <VBox prefHeight="524.0" prefWidth="323.0" style="-fx-background-color: #262626;">
                <children>
-                  <VBox prefHeight="160.0" prefWidth="323.0" style="-fx-background-color: #660033;">
+                  <VBox fx:id="CBoxHome" prefHeight="160.0" prefWidth="323.0" style="-fx-background-color: #660033;">
                      <children>
                         <ImageView fitHeight="135.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
@@ -168,9 +168,9 @@
                         <InnerShadow />
                      </effect>
                   </VBox>
-                  <VBox fx:id="CBoxClient" prefHeight="50.0" prefWidth="323.0" style="-fx-background-color: #262626;">
+                  <VBox prefHeight="50.0" prefWidth="323.0" style="-fx-background-color: #262626;">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em;" text="Profile Client">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em;" text="Profile Responsable">
                            <VBox.margin>
                               <Insets left="120.0" />
                            </VBox.margin>
@@ -180,7 +180,7 @@
                         <Insets />
                      </VBox.margin>
                   </VBox>
-                  <VBox fx:id="CBoxRecette" prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBOxRecettes" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Recettes">
                            <VBox.margin>
