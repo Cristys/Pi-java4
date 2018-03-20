@@ -24,7 +24,7 @@ import javafx.scene.text.Text;
  *
  * @author Siala
  */
-public class InterfaceResponsableController implements Initializable {
+public class InterfaceClientProfileController implements Initializable {
 
     @FXML
     private AnchorPane anco;
@@ -85,11 +85,10 @@ public class InterfaceResponsableController implements Initializable {
         // TODO
     }    
 
-  
     @FXML
     private void GoToHome(MouseEvent event) throws SQLException, IOException{
          
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceResponsable.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClient.fxml"));
                 
                 Parent root = loader.load();
                 
@@ -98,7 +97,7 @@ public class InterfaceResponsableController implements Initializable {
 
     @FXML
     private void GoToClientProfile(MouseEvent event) throws SQLException, IOException{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceResponsableProfile.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClientProfile.fxml"));
                 
                 Parent root = loader.load();
                 
@@ -176,4 +175,13 @@ public class InterfaceResponsableController implements Initializable {
                 
                 anco.getScene().setRoot(root);
     }
+
+
+
+
+  
+
+
+
+    
 }

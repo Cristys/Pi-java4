@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="anco" prefHeight="900.0" prefWidth="1353.0" style="-fx-text-fill: white; -fx-font-size: 1.2em; -fx-font-weight: bold; -fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceResponsableController">
    <children>
-      <SplitPane fx:id="SideMenuIcons" prefHeight="930.0" prefWidth="72.0" style="-fx-background-color: #0d0d0d;">
+      <SplitPane prefHeight="930.0" prefWidth="72.0" style="-fx-background-color: #0d0d0d;">
          <effect>
             <DropShadow radius="4.75" width="0.0" />
          </effect>
@@ -22,7 +22,7 @@
                <children>
                   <VBox prefHeight="163.0" prefWidth="70.0">
                      <children>
-                        <ImageView fx:id="CHomeIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CHome" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToHome" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -34,7 +34,7 @@
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="70.0">
                      <children>
-                        <ImageView fx:id="UserProfilimg" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CclientIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToClientProfile" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -44,9 +44,9 @@
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: ;">
+                  <VBox prefHeight="50.0" prefWidth="70.0" style="">
                      <children>
-                        <ImageView fx:id="CRecetteIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CrecetteIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToRecettes" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -58,7 +58,7 @@
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="70.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CPatisserieIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToPatisseries" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -70,7 +70,7 @@
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="50.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CShopIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToShop" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -82,7 +82,7 @@
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="50.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CPromoIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToPromo" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -94,7 +94,7 @@
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="50.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CReclamationIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToReclamation" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -106,7 +106,7 @@
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="50.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CEvaluationIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToEvaluation" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -118,7 +118,7 @@
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="50.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CPanierIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToPanier" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
@@ -130,7 +130,7 @@
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="0.0">
                      <children>
-                        <ImageView fx:id="CLogoutIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CLogoutIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#LogOut" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/mslogout.png" />
                            </image>
@@ -144,13 +144,13 @@
             </VBox>
          </items>
       </SplitPane>
-      <SplitPane fx:id="SideMenuTexts" layoutX="72.0" prefHeight="930.0" prefWidth="325.0" style="-fx-background-color: #262626;">
+      <SplitPane layoutX="72.0" prefHeight="930.0" prefWidth="325.0" style="-fx-background-color: #262626;">
          <items>
             <VBox prefHeight="524.0" prefWidth="323.0" style="-fx-background-color: #262626;">
                <children>
-                  <VBox fx:id="CBoxHome" prefHeight="160.0" prefWidth="323.0" style="-fx-background-color: #660033;">
+                  <VBox fx:id="CBoxHome" onMouseClicked="#GoToHome" prefHeight="160.0" prefWidth="323.0" style="-fx-background-color: #660033;">
                      <children>
-                        <ImageView fitHeight="135.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CHomeIcon" fitHeight="135.0" fitWidth="143.0" onMouseClicked="#GoToHome" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="90.0" />
                            </VBox.margin>
@@ -158,7 +158,7 @@
                               <Image url="@../icons/mshome.png" />
                            </image>
                         </ImageView>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Acceuil">
+                        <Text fx:id="LabelHome" onMouseClicked="#GoToHome" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Acceuil">
                            <VBox.margin>
                               <Insets bottom="5.0" left="120.0" />
                            </VBox.margin>
@@ -168,9 +168,9 @@
                         <InnerShadow />
                      </effect>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="323.0" style="-fx-background-color: #262626;">
+                  <VBox fx:id="CBoxClient" onMouseClicked="#GoToClientProfile" prefHeight="50.0" prefWidth="323.0" style="-fx-background-color: #262626;">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em;" text="Profile Responsable">
+                        <Text fx:id="LabelClient" fill="WHITE" onMouseClicked="#GoToClientProfile" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em;" text="Profile">
                            <VBox.margin>
                               <Insets left="120.0" />
                            </VBox.margin>
@@ -180,16 +180,16 @@
                         <Insets />
                      </VBox.margin>
                   </VBox>
-                  <VBox fx:id="CBOxRecettes" prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxRecette" onMouseClicked="#GoToRecettes" prefHeight="50.0" prefWidth="100.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Recettes">
+                        <Text fx:id="LabelRecette" onMouseClicked="#GoToRecettes" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Recettes">
                            <VBox.margin>
                               <Insets left="120.0" />
                            </VBox.margin>
                         </Text>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxPatisserie" onMouseClicked="#GoToPatisseries" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Patisseries">
                            <VBox.margin>
@@ -198,7 +198,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxShop" onMouseClicked="#GoToShop" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Shop">
                            <VBox.margin>
@@ -207,7 +207,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxPromo" onMouseClicked="#GoToPromo" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Promotion">
                            <VBox.margin>
@@ -216,7 +216,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxReclamation" onMouseClicked="#GoToReclamation" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Réclamation">
                            <VBox.margin>
@@ -225,7 +225,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxEvaluation" onMouseClicked="#GoToEvaluation" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Evaluation">
                            <VBox.margin>
@@ -234,7 +234,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxPanier" onMouseClicked="#GoToPanier" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Mon Panier">
                            <VBox.margin>

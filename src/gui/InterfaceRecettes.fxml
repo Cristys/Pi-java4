@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="anco" prefHeight="900.0" prefWidth="1353.0" style="-fx-text-fill: white; -fx-font-size: 1.2em; -fx-font-weight: bold; -fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceClientController">
+<AnchorPane id="AnchorPane" fx:id="anco" prefHeight="900.0" prefWidth="1353.0" style="-fx-text-fill: white; -fx-font-size: 1.2em; -fx-font-weight: bold; -fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceRecettesController">
    <children>
       <SplitPane prefHeight="930.0" prefWidth="72.0" style="-fx-background-color: #0d0d0d;">
          <effect>
@@ -251,6 +251,9 @@
          </items>
       </SplitPane>
       <SplitPane layoutX="397.0" layoutY="-3.0" opacity="0.0" prefHeight="930.0" prefWidth="18.0" />
-      <VBox fx:id="ChangeItGirls" layoutX="417.0" prefHeight="930.0" prefWidth="936.0" style="-fx-background-color: white;" />
+      <VBox fx:id="ChangeItGirls" layoutX="417.0" prefHeight="930.0" prefWidth="936.0" style="-fx-background-color: white;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recettes" />
+         </children></VBox>
    </children>
 </AnchorPane>
