@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="anco" prefHeight="900.0" prefWidth="1353.0" style="-fx-text-fill: white; -fx-font-size: 1.2em; -fx-font-weight: bold; -fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceAdminController">
+<AnchorPane id="AnchorPane" fx:id="anco" prefHeight="900.0" prefWidth="1353.0" style="-fx-text-fill: white; -fx-font-size: 1.2em; -fx-font-weight: bold; -fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceAdmin_ClientsController">
    <children>
       <SplitPane fx:id="Panel" prefHeight="930.0" prefWidth="217.0" style="-fx-background-color: #363030;">
          <items>
@@ -151,7 +151,7 @@
       </SplitPane>
       <VBox fx:id="ChangeItGirls" layoutX="246.0" onMouseClicked="#goToHome" prefHeight="930.0" prefWidth="1107.0" style="-fx-background-color: white;">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="admin" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" />
          </children></VBox>
    </children>
 </AnchorPane>

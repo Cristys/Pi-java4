@@ -25,28 +25,26 @@ import javafx.scene.text.Text;
  *
  * @author Siala
  */
-public class InterfaceAdminController implements Initializable {
+public class InterfaceAdmin_RecettesController implements Initializable {
 
     @FXML
     private AnchorPane anco;
-    @FXML
-    private VBox ChangeItGirls;
     @FXML
     private SplitPane Panel;
     @FXML
     private ImageView CHomePage;
     @FXML
+    private VBox CBoxAdminHome;
+    @FXML
     private VBox CBoxClients;
     @FXML
     private Text Cclients;
     @FXML
+    private VBox CBoxProuits;
+    @FXML
     private VBox CBoxRecettes;
     @FXML
     private Text Crecettes;
-    @FXML
-    private VBox CBoxAdminHome;
-    @FXML
-    private VBox CBoxProuits;
     @FXML
     private VBox CBoxPrmotion;
     @FXML
@@ -55,6 +53,8 @@ public class InterfaceAdminController implements Initializable {
     private VBox CBoxEvaluation;
     @FXML
     private VBox CBoxPanier;
+    @FXML
+    private VBox ChangeItGirls;
 
     /**
      * Initializes the controller class.
@@ -63,8 +63,7 @@ public class InterfaceAdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @FXML
+  @FXML
     private void goToHome(MouseEvent event) throws SQLException, IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceAdmin.fxml"));
                 

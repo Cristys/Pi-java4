@@ -19,7 +19,7 @@
                <children>
                   <VBox prefHeight="79.0" prefWidth="308.0" style="-fx-background-color: #363030;">
                      <children>
-                        <ImageView fx:id="CHomePage" fitHeight="65.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CHomePage" fitHeight="65.0" fitWidth="47.0" onMouseClicked="#goToHome" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="30.0" />
                            </VBox.margin>
@@ -29,7 +29,7 @@
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox fx:id="CAdminpannelHome" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #f9d423;">
+                  <VBox fx:id="CBoxAdminHome" onMouseClicked="#goToHome" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #f9d423;">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Courier New; -fx-font-size: 1.5em;" text="Admin Panel">
                            <VBox.margin>
@@ -49,7 +49,7 @@
                         <DropShadow color="#e6f207" height="38.25" radius="26.1675" spread="0.24" width="68.42" />
                      </effect>
                   </VBox>
-                  <VBox fx:id="CBoxClients" prefHeight="50.0" prefWidth="323.0">
+                  <VBox fx:id="CBoxClients" onMouseClicked="#goToClients" prefHeight="50.0" prefWidth="323.0">
                      <children>
                         <Text fx:id="Cclients" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em;" text="Clients">
                            <VBox.margin>
@@ -64,7 +64,7 @@
                         <Insets top="15.0" />
                      </opaqueInsets>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxClients" onMouseClicked="#goToResponsables" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Responsables">
                            <VBox.margin>
@@ -73,7 +73,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxProuits" onMouseClicked="#goToProduits" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Produits">
                            <VBox.margin>
@@ -82,7 +82,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox fx:id="CBoxRecettes" prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxRecettes" onMouseClicked="#goToRecettes" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text fx:id="Crecettes" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Recettes">
                            <VBox.margin>
@@ -91,7 +91,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxPrmotion" onMouseClicked="#goToPromotion" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Promotion">
                            <VBox.margin>
@@ -100,7 +100,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxReclamation" onMouseClicked="#goToReclamation" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Réclamation">
                            <VBox.margin>
@@ -109,7 +109,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxEvaluation" onMouseClicked="#goToEvaluation" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Evaluation">
                            <VBox.margin>
@@ -118,13 +118,25 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxPanier" onMouseClicked="#goToPanier" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Panier">
                            <VBox.margin>
                               <Insets left="20.0" />
                            </VBox.margin>
                         </Text>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="61.0" fitWidth="79.0" onMouseClicked="#LogOut" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/mslogout.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="25.0" top="25.0" />
+                           </VBox.margin>
+                        </ImageView>
                      </children>
                   </VBox>
                </children>
@@ -137,6 +149,9 @@
             <DropShadow color="#e3ee0f" />
          </effect>
       </SplitPane>
-      <VBox fx:id="ChangeItGirls" layoutX="246.0" prefHeight="930.0" prefWidth="1107.0" style="-fx-background-color: white;" />
+      <VBox fx:id="ChangeItGirls" layoutX="246.0" onMouseClicked="#goToHome" prefHeight="930.0" prefWidth="1107.0" style="-fx-background-color: white;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="admin" />
+         </children></VBox>
    </children>
 </AnchorPane>
