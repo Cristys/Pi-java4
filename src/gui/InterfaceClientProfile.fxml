@@ -32,7 +32,7 @@
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: #bf407b;">
+                  <VBox prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: #cc6699;">
                      <children>
                         <ImageView fx:id="CclientIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToClientProfile" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
@@ -44,7 +44,7 @@
                         </ImageView>
                      </children>
                      <effect>
-                        <DropShadow color="#bf407b" />
+                        <DropShadow color="#cc6699" />
                      </effect>
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="70.0" style="">
@@ -149,7 +149,7 @@
       </SplitPane>
       <SplitPane layoutX="72.0" prefHeight="930.0" prefWidth="325.0" style="-fx-background-color: #262626;">
          <items>
-            <VBox prefHeight="524.0" prefWidth="323.0" style="-fx-background-color: #262626;">
+            <VBox prefHeight="524.0" prefWidth="323.0" style="-fx-background-color: #262626; -fx-background-radius: 10px;">
                <children>
                   <VBox fx:id="CBoxHome" onMouseClicked="#GoToHome" prefHeight="160.0" prefWidth="323.0" style="-fx-background-color: #262626;">
                      <children>
@@ -168,7 +168,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <VBox fx:id="CBoxClient" onMouseClicked="#GoToClientProfile" prefHeight="50.0" prefWidth="323.0" style="-fx-background-color: #bf407b;">
+                  <VBox fx:id="CBoxClient" onMouseClicked="#GoToClientProfile" prefHeight="50.0" prefWidth="323.0" style="-fx-background-color: #cc6699;">
                      <children>
                         <Text fx:id="LabelClient" fill="WHITE" onMouseClicked="#GoToClientProfile" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em;" text="Profile">
                            <VBox.margin>
@@ -180,7 +180,7 @@
                         <Insets />
                      </VBox.margin>
                      <effect>
-                        <DropShadow color="#bf407b" />
+                        <DropShadow color="#cc6699" />
                      </effect>
                   </VBox>
                   <VBox fx:id="CBoxRecette" onMouseClicked="#GoToRecettes" prefHeight="50.0" prefWidth="100.0">
@@ -254,39 +254,79 @@
          </items>
       </SplitPane>
       <SplitPane layoutX="397.0" layoutY="-3.0" opacity="0.0" prefHeight="930.0" prefWidth="18.0" />
-      <VBox fx:id="ChangeItGirls" layoutX="417.0" prefHeight="930.0" prefWidth="939.0" style="-fx-background-color: #ecc6d8;">
+      <VBox fx:id="ChangeItGirls" layoutX="417.0" prefHeight="930.0" prefWidth="939.0" style="-fx-background-color: transparent;">
          <children>
-            <HBox prefHeight="930.0" prefWidth="939.0">
+            <Pane prefHeight="164.0" prefWidth="489.0" style="-fx-background-color: #cc6699;">
+               <VBox.margin>
+                  <Insets right="450.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="50.0" />
+               </padding>
                <children>
-                  <Pane prefHeight="829.0" prefWidth="419.0" style="-fx-background-color: black; -fx-border-color: #bf407b; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-radius: 10px; -fx-background-color: white;">
-                     <HBox.margin>
-                        <Insets bottom="80.0" left="80.0" right="80.0" top="80.0" />
-                     </HBox.margin>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Pane>
-                  <VBox prefHeight="930.0" prefWidth="365.0">
-                     <children>
-                        <Pane prefHeight="209.0" prefWidth="338.0" style="-fx-background-color: black;">
-                           <VBox.margin>
-                              <Insets bottom="60.0" right="25.0" top="80.0" />
-                           </VBox.margin>
-                        </Pane>
-                        <Pane layoutX="10.0" layoutY="90.0" prefHeight="209.0" prefWidth="338.0" style="-fx-background-color: black;">
-                           <VBox.margin>
-                              <Insets bottom="40.0" right="25.0" />
-                           </VBox.margin>
-                        </Pane>
-                        <Pane layoutX="10.0" layoutY="359.0" prefHeight="200.0" prefWidth="50.0" style="-fx-background-radius: 10px; -fx-background-color: black;">
-                           <VBox.margin>
-                              <Insets right="25.0" />
-                           </VBox.margin>
-                        </Pane>
-                     </children>
-                  </VBox>
+                  <Text layoutX="197.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="username" />
+                  <Text layoutX="37.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="Bienvenue- " />
+                  <Text layoutX="97.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" />
+                  <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="432.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/msmodify.png" />
+                     </image>
+                  </ImageView>
                </children>
-            </HBox>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Pane>
+            <Pane prefHeight="414.0" prefWidth="489.0" style="-fx-background-color: #cc6699;">
+               <VBox.margin>
+                  <Insets right="450.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="50.0" />
+               </padding>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Text layoutX="37.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="Ajouter une Nouvelle Recette" />
+                  <ImageView fitHeight="250.0" fitWidth="275.0" layoutX="110.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mscupcake1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="69.0" fitWidth="72.0" layoutX="261.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/msadd1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane prefHeight="369.0" prefWidth="489.0" style="-fx-background-color: #cc6699;">
+               <VBox.margin>
+                  <Insets right="450.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="50.0" />
+               </padding>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <ImageView fitHeight="227.0" fitWidth="306.0" layoutX="131.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mscake1.png" />
+                     </image></ImageView>
+                  <Text layoutX="83.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="Consulter Vos Recettes" />
+                  <ImageView fitHeight="59.0" fitWidth="61.0" layoutX="405.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/msnext2.png" />
+                     </image>
+                     <effect>
+                        <DropShadow color="WHITE" height="10.5" radius="2.125" width="0.0" />
+                     </effect>
+                  </ImageView>
+               </children>
+            </Pane>
          </children></VBox>
    </children>
 </AnchorPane>
