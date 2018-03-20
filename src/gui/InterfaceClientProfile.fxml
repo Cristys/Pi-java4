@@ -32,7 +32,7 @@
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="70.0">
+                  <VBox prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: #bf407b;">
                      <children>
                         <ImageView fx:id="CclientIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToClientProfile" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
@@ -43,6 +43,9 @@
                            </image>
                         </ImageView>
                      </children>
+                     <effect>
+                        <DropShadow color="#bf407b" />
+                     </effect>
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="70.0" style="">
                      <children>
@@ -148,7 +151,7 @@
          <items>
             <VBox prefHeight="524.0" prefWidth="323.0" style="-fx-background-color: #262626;">
                <children>
-                  <VBox fx:id="CBoxHome" onMouseClicked="#GoToHome" prefHeight="160.0" prefWidth="323.0" style="-fx-background-color: #660033;">
+                  <VBox fx:id="CBoxHome" onMouseClicked="#GoToHome" prefHeight="160.0" prefWidth="323.0" style="-fx-background-color: #262626;">
                      <children>
                         <ImageView fx:id="CHomeIcon" fitHeight="135.0" fitWidth="143.0" onMouseClicked="#GoToHome" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
@@ -164,21 +167,21 @@
                            </VBox.margin>
                         </Text>
                      </children>
-                     <effect>
-                        <InnerShadow />
-                     </effect>
                   </VBox>
-                  <VBox fx:id="CBoxClient" onMouseClicked="#GoToClientProfile" prefHeight="50.0" prefWidth="323.0" style="-fx-background-color: #262626;">
+                  <VBox fx:id="CBoxClient" onMouseClicked="#GoToClientProfile" prefHeight="50.0" prefWidth="323.0" style="-fx-background-color: #bf407b;">
                      <children>
                         <Text fx:id="LabelClient" fill="WHITE" onMouseClicked="#GoToClientProfile" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em;" text="Profile">
                            <VBox.margin>
-                              <Insets left="120.0" />
+                              <Insets left="120.0" top="5.0" />
                            </VBox.margin>
                         </Text>
                      </children>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                     <effect>
+                        <DropShadow color="#bf407b" />
+                     </effect>
                   </VBox>
                   <VBox fx:id="CBoxRecette" onMouseClicked="#GoToRecettes" prefHeight="50.0" prefWidth="100.0">
                      <children>
@@ -251,9 +254,39 @@
          </items>
       </SplitPane>
       <SplitPane layoutX="397.0" layoutY="-3.0" opacity="0.0" prefHeight="930.0" prefWidth="18.0" />
-      <VBox fx:id="ChangeItGirls" layoutX="417.0" prefHeight="930.0" prefWidth="936.0" style="-fx-background-color: white;">
+      <VBox fx:id="ChangeItGirls" layoutX="417.0" prefHeight="930.0" prefWidth="939.0" style="-fx-background-color: #ecc6d8;">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Profile" />
+            <HBox prefHeight="930.0" prefWidth="939.0">
+               <children>
+                  <Pane prefHeight="829.0" prefWidth="419.0" style="-fx-background-color: black; -fx-border-color: #bf407b; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-radius: 10px; -fx-background-color: white;">
+                     <HBox.margin>
+                        <Insets bottom="80.0" left="80.0" right="80.0" top="80.0" />
+                     </HBox.margin>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Pane>
+                  <VBox prefHeight="930.0" prefWidth="365.0">
+                     <children>
+                        <Pane prefHeight="209.0" prefWidth="338.0" style="-fx-background-color: black;">
+                           <VBox.margin>
+                              <Insets bottom="60.0" right="25.0" top="80.0" />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="90.0" prefHeight="209.0" prefWidth="338.0" style="-fx-background-color: black;">
+                           <VBox.margin>
+                              <Insets bottom="40.0" right="25.0" />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="359.0" prefHeight="200.0" prefWidth="50.0" style="-fx-background-radius: 10px; -fx-background-color: black;">
+                           <VBox.margin>
+                              <Insets right="25.0" />
+                           </VBox.margin>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
          </children></VBox>
    </children>
 </AnchorPane>
