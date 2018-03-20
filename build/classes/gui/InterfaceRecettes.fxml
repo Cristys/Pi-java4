@@ -44,7 +44,7 @@
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="70.0" style="">
+                  <VBox prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: #fa8072;">
                      <children>
                         <ImageView fx:id="CrecetteIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToRecettes" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
@@ -55,6 +55,9 @@
                            </image>
                         </ImageView>
                      </children>
+                     <effect>
+                        <DropShadow color="SALMON" />
+                     </effect>
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="70.0">
                      <children>
@@ -148,7 +151,7 @@
          <items>
             <VBox prefHeight="524.0" prefWidth="323.0" style="-fx-background-color: #262626;">
                <children>
-                  <VBox fx:id="CBoxHome" onMouseClicked="#GoToHome" prefHeight="160.0" prefWidth="323.0" style="-fx-background-color: #660033;">
+                  <VBox fx:id="CBoxHome" onMouseClicked="#GoToHome" prefHeight="160.0" prefWidth="323.0" style="-fx-background-color: #262626;">
                      <children>
                         <ImageView fx:id="CHomeIcon" fitHeight="135.0" fitWidth="143.0" onMouseClicked="#GoToHome" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
@@ -164,9 +167,6 @@
                            </VBox.margin>
                         </Text>
                      </children>
-                     <effect>
-                        <InnerShadow />
-                     </effect>
                   </VBox>
                   <VBox fx:id="CBoxClient" onMouseClicked="#GoToClientProfile" prefHeight="50.0" prefWidth="323.0" style="-fx-background-color: #262626;">
                      <children>
@@ -180,7 +180,7 @@
                         <Insets />
                      </VBox.margin>
                   </VBox>
-                  <VBox fx:id="CBoxRecette" onMouseClicked="#GoToRecettes" prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxRecette" onMouseClicked="#GoToRecettes" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #fa8072;">
                      <children>
                         <Text fx:id="LabelRecette" onMouseClicked="#GoToRecettes" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Recettes">
                            <VBox.margin>
