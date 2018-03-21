@@ -5,8 +5,13 @@
  */
 package tests;
 import Interface.IUser;
+import entities.Recette;
 import entities.User;
+import java.sql.Time;
+import java.util.Scanner;
+import service.RecetteService;
 import service.UserService;
+
 /**
  *
  * @author Siala
@@ -20,13 +25,14 @@ public class RecetteTest {
         // TODO code application logic here
       System.out.print("hello test");
       /******* add user *********/
-     // User u2 = new User("M", "M.M@esprit.tn", "55676850","Client");
+      User u2 = new User("ABCDEFGH", "M.M@espt.tn", "55","	\n" +
+"a:1:{i:0;s:11:\"ROLE_CLIENT\";}");
      //  UserService userService = new UserService(); cette ligne ou ligne eli ta7tha as i like 
-     //   IUser userService = new UserService();
-       
-     //   userService.add(u2); 
+      IUser userService = new UserService();
+      
+     userService.add(u2); 
        /******* update user *********/
-  /* User u3= new User();
+  /*   User u3= new User();
      u3.setId(13);
      u3.setUsername("hello");
      u3.setUsername_canonical("hello");
@@ -37,7 +43,7 @@ public class RecetteTest {
      u3.setRoles("a:0:{}"); 
         UserService userService = new UserService(); 
          
-        userService.update(u3); */
+      userService.update(u3); */
    /******* user all list *********/
  //  UserService userService = new UserService(); 
  //  userService.getAll();
@@ -59,7 +65,53 @@ public class RecetteTest {
   
   /************* get role  **********************/
  // System.out.println(userService.Getrole("marwa"));  
-   
+ 
+    RecetteService RS = new RecetteService();
+        Recette R1 = new Recette();
+       Scanner scanner = new Scanner( System.in);
+       User X = new User();
+         System.out.println("id user");
+       X.setId(scanner.nextInt());
+        R1.setIduser(X);
+        System.out.println("enter nom");
+        R1.setNom(scanner.next());
+        System.out.println("enter type");
+        R1.setType(scanner.next());
+        System.out.println("enter Description");
+        R1.setDescription(scanner.next());
+        System.out.println("enter nom image");
+        R1.setNom_image(scanner.next());
+        System.out.println("enter cout");
+        R1.setCout(scanner.next());
+      String preparation="";
+        System.out.println("enter temps de preparation ");
+       preparation=scanner.next();
+      R1.setTemps_preparation(Time.valueOf(preparation) );//sous forme 00:00:00
+    
+        String repos="";
+        System.out.println("enter temps de repos ");
+        repos=scanner.next();
+        R1.setTemps_repos(Time.valueOf(repos) );
+        String cuisson="";
+        System.out.println("enter temps de cuisson ");
+        cuisson=scanner.next();
+        R1.setTemps_cuisson(Time.valueOf(cuisson) );
+        
+ 
+        System.out.println("enter difficulte");
+        R1.setDifficulte(scanner.next());     
+        System.out.println("enter nombre de personne");
+        R1.setNb_personne(scanner.nextInt());
+        System.out.println("enter astuces");
+        R1.setAstuces(scanner.next());
+        System.out.println("enter ingrédients");
+        R1.setIngredients(scanner.next());
+        System.out.println("enter etapes");
+        R1.setEtapes(scanner.next());
+        RS.add(R1);
+        
+        
+
        
     }
 }

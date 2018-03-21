@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author Siala
  */
 public class Recette {
-     private int id;
+     private int id=10;
      private User iduser;
      private String nom;
      private String type;

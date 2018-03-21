@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -76,6 +77,22 @@ public class InterfaceClientProfileController implements Initializable {
     private VBox CBoxPanier;
     @FXML
     private VBox ChangeItGirls;
+    @FXML
+    private ImageView CModifyIcon;
+    @FXML
+    private Pane AddRecette;
+    @FXML
+    private Text AjouterRecette;
+    @FXML
+    private ImageView Ccupcake;
+    @FXML
+    private ImageView CAddIcon;
+    @FXML
+    private Pane ConsultRecettes;
+    @FXML
+    private ImageView CakeIcon;
+    @FXML
+    private Text ConsulterVosRecettes;
 
     /**
      * Initializes the controller class.
@@ -174,6 +191,24 @@ public class InterfaceClientProfileController implements Initializable {
                 Parent root = loader.load();
                 
                 anco.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void GoToModifyMyProfile(MouseEvent event) {
+        
+    }
+
+    @FXML
+    private void GoToAddRecette(MouseEvent event) throws SQLException, IOException{
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClientProfile_AjoutRecette.fxml"));
+                
+                Parent root = loader.load();
+                
+                ChangeItGirls.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void goToMesRecettes(MouseEvent event) {
     }
 
 

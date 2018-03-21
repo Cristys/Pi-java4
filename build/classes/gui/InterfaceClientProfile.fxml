@@ -267,7 +267,7 @@
                   <Text layoutX="197.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="username" />
                   <Text layoutX="37.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="Bienvenue- " />
                   <Text layoutX="97.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" />
-                  <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="432.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="CModifyIcon" fitHeight="40.0" fitWidth="35.0" layoutX="432.0" layoutY="96.0" onMouseClicked="#GoToModifyMyProfile" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/msmodify.png" />
                      </image>
@@ -277,7 +277,7 @@
                   <DropShadow />
                </effect>
             </Pane>
-            <Pane prefHeight="414.0" prefWidth="489.0" style="-fx-background-color: #cc6699;">
+            <Pane fx:id="AddRecette" prefHeight="414.0" prefWidth="489.0" style="-fx-background-color: #cc6699;">
                <VBox.margin>
                   <Insets right="450.0" top="10.0" />
                </VBox.margin>
@@ -288,20 +288,20 @@
                   <DropShadow />
                </effect>
                <children>
-                  <Text layoutX="37.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="Ajouter une Nouvelle Recette" />
-                  <ImageView fitHeight="250.0" fitWidth="275.0" layoutX="110.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                  <Text fx:id="AjouterRecette" layoutX="37.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="Ajouter une Nouvelle Recette" />
+                  <ImageView fx:id="Ccupcake" fitHeight="250.0" fitWidth="275.0" layoutX="110.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/mscupcake1.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="69.0" fitWidth="72.0" layoutX="261.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="CAddIcon" fitHeight="69.0" fitWidth="72.0" layoutX="261.0" layoutY="242.0" onMouseClicked="#GoToAddRecette" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/msadd1.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane prefHeight="369.0" prefWidth="489.0" style="-fx-background-color: #cc6699;">
+            <Pane fx:id="ConsultRecettes" prefHeight="369.0" prefWidth="489.0" style="-fx-background-color: #cc6699;">
                <VBox.margin>
                   <Insets right="450.0" top="10.0" />
                </VBox.margin>
@@ -312,12 +312,12 @@
                   <DropShadow />
                </effect>
                <children>
-                  <ImageView fitHeight="227.0" fitWidth="306.0" layoutX="131.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="CakeIcon" fitHeight="227.0" fitWidth="306.0" layoutX="131.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/mscake1.png" />
                      </image></ImageView>
-                  <Text layoutX="83.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="Consulter Vos Recettes" />
-                  <ImageView fitHeight="59.0" fitWidth="61.0" layoutX="405.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+                  <Text fx:id="ConsulterVosRecettes" layoutX="83.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="Consulter Vos Recettes" />
+                  <ImageView fitHeight="59.0" fitWidth="61.0" layoutX="405.0" layoutY="147.0" onMouseClicked="#goToMesRecettes" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/msnext2.png" />
                      </image>
