@@ -59,7 +59,8 @@ public class RecetteService {
 
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
-             throw new RuntimeException(ex); 
+            // throw new RuntimeException(ex); 
+             ex.printStackTrace();
         }
     }
 

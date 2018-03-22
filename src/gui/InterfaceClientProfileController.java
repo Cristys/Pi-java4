@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -93,6 +94,10 @@ public class InterfaceClientProfileController implements Initializable {
     private ImageView CakeIcon;
     @FXML
     private Text ConsulterVosRecettes;
+    @FXML
+    private Text username;
+    @FXML
+    private Text email;
 
     /**
      * Initializes the controller class.
@@ -100,6 +105,8 @@ public class InterfaceClientProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        username.setText(Session.LoggedUser.getUsername());
+        email.setText(Session.LoggedUser.getEmail());
     }    
 
     @FXML
@@ -208,7 +215,12 @@ public class InterfaceClientProfileController implements Initializable {
     }
 
     @FXML
-    private void goToMesRecettes(MouseEvent event) {
+    private void goToMesRecettes(MouseEvent event)  throws SQLException, IOException{
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClientProfile_MesRecette.fxml"));
+                
+                Parent root = loader.load();
+                
+                ChangeItGirls.getScene().setRoot(root);
     }
 
 

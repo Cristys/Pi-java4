@@ -6,6 +6,7 @@
 package entities;
 import java.sql.Time;
 import java.util.Objects;
+import javafx.scene.image.Image;
 
 
 /**
@@ -31,6 +32,23 @@ public class Recette {
 
     public Recette(int id, User iduser, String nom, String type, String description, String nom_image, String cout, Time temps_preparation, Time temps_repos, Time temps_cuisson, int nb_personne, String difficulte, String astuces, String ingredients, String etapes) {
         this.id = id;
+        this.iduser = iduser;
+        this.nom = nom;
+        this.type = type;
+        this.description = description;
+        this.nom_image = nom_image;
+        this.cout = cout;
+        this.temps_preparation = temps_preparation;
+        this.temps_repos = temps_repos;
+        this.temps_cuisson = temps_cuisson;
+        this.nb_personne = nb_personne;
+        this.difficulte = difficulte;
+        this.astuces = astuces;
+        this.ingredients = ingredients;
+        this.etapes = etapes;
+    }
+
+    public Recette(User iduser, String nom, String type, String description, String nom_image, String cout, Time temps_preparation, Time temps_repos, Time temps_cuisson, int nb_personne, String difficulte, String astuces, String ingredients, String etapes) {
         this.iduser = iduser;
         this.nom = nom;
         this.type = type;
@@ -257,6 +275,10 @@ public class Recette {
     }
 
     public String setTemps_cuisson(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setNom_image(Image image) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
      
