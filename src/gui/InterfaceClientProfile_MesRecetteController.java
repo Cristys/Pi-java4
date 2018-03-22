@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.TableColumn;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -82,6 +83,14 @@ public class InterfaceClientProfile_MesRecetteController implements Initializabl
     private VBox ChangeItGirls;
     @FXML
     private Text username;
+    @FXML
+    private TableColumn<?, ?> ColImage;
+    @FXML
+    private TableColumn<?, ?> ColNom;
+    @FXML
+    private TableColumn<?, ?> ColModif;
+    @FXML
+    private TableColumn<?, ?> ColDelete;
     
     
   //   ObservableList<Recette> champs = FXCollections.observableArrayList(Session.iRecetteService.getByUser());

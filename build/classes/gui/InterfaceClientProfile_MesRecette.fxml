@@ -275,6 +275,19 @@
             <Pane prefHeight="868.0" prefWidth="939.0">
                <children>
                   <Text layoutX="280.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 3em;" text="Mes Recettes" />
+                  <Pane layoutX="110.0" layoutY="158.0" prefHeight="570.0" prefWidth="635.0">
+                     <children>
+                        <TableView prefHeight="570.0" prefWidth="635.0" style="-fx-border-color: transparent;">
+                          <columns>
+                            <TableColumn fx:id="ColImage" prefWidth="200.0" text="Image" />
+                            <TableColumn fx:id="ColNom" prefWidth="200.0" text="Nom" />
+                              <TableColumn fx:id="ColModif" prefWidth="75.0" />
+                              <TableColumn fx:id="ColDelete" prefWidth="75.0" />
+                          </columns>
+                        </TableView>
+                        <Pane prefHeight="33.0" prefWidth="635.0" style="-fx-background-color: white;" />
+                     </children>
+                  </Pane>
                </children>
             </Pane>
          </children></VBox>

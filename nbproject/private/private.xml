@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/gui/InterfaceResponsableController.java</file>
-            <file>file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/gui/Cupcakes.java</file>
-            <file>file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/gui/InterfaceLoginController.java</file>
+            <file>file:/C:/Users/crist/Documents/GitHub/Pi-java4/src/utils/Session.java</file>
+            <file>file:/C:/Users/crist/Documents/GitHub/Pi-java4/build.xml</file>
+            <file>file:/C:/Users/crist/Documents/GitHub/Pi-java4/nbproject/project.properties</file>
+            <file>file:/C:/Users/crist/Documents/GitHub/Pi-java4/src/gui/Cupcakes.java</file>
+            <file>file:/C:/Users/crist/Documents/GitHub/Pi-java4/src/service/RecetteService.java</file>
+            <file>file:/C:/Users/crist/Documents/GitHub/Pi-java4/nbproject/project.xml</file>
+            <file>file:/C:/Users/crist/Documents/GitHub/Pi-java4/src/gui/InterfaceClientProfile_MesRecetteController.java</file>
+            <file>file:/C:/Users/crist/Documents/GitHub/Pi-java4/src/gui/InterfaceLoginController.java</file>
+            <file>file:/C:/Users/crist/Documents/GitHub/Pi-java4/src/tests/RecetteTest.java</file>
         </group>
     </open-files>
 </project-private>
