@@ -121,7 +121,7 @@ public class InterfaceClientProfile_AjoutRecetteController implements Initializa
     private TextArea astuces;
     @FXML
     private TextArea etapes;
-    @FXML
+     @FXML
     private Button CAjouterButton;
     @FXML
     private Label LabelAlert;
@@ -141,6 +141,7 @@ public class InterfaceClientProfile_AjoutRecetteController implements Initializa
     private Label LabelAlertTemp;
     @FXML
     private Text username;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -417,7 +418,7 @@ private boolean validePersonne(String a){
                 
                 Parent root = loader.load();
                 
-                ChangeItGirls.getScene().setRoot(root);
+                ChangeItGirls.getScene().setRoot(root); 
         } 
     }
 

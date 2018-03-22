@@ -15,7 +15,7 @@ import javafx.collections.ObservableList;
  * @author Siala
  */
 public interface IRecette extends IService <Recette, Integer>{
-     ObservableList<Recette> getByUser(User user );
+     ObservableList<Recette> getByUser(int Iduser );
       ObservableList<Recette> getByType(String Type);
       ObservableList<Recette> getByNom(String Nom);
       ObservableList<Recette> DisplayAll(String Nom);
