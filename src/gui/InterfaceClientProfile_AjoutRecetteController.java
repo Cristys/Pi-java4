@@ -414,7 +414,7 @@ private boolean validePersonne(String a){
            
             System.out.println("equals");
             Rs.add(R1); 
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClientProfile_MesRecette.fxml"));
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClientProfile_MesRecett.fxml"));
                 
                 Parent root = loader.load();
                 

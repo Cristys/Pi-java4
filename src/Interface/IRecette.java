@@ -16,10 +16,10 @@ import javafx.collections.ObservableList;
  */
 public interface IRecette extends IService <Recette, Integer>{
      ObservableList<Recette> getByUser(int Iduser );
-      ObservableList<Recette> getByType(String Type);
+   /*   ObservableList<Recette> getByType(String Type);
       ObservableList<Recette> getByNom(String Nom);
-      ObservableList<Recette> DisplayAll(String Nom);
+      ObservableList<Recette> DisplayAll(String Nom); 
       
-     public Recette findById( int i);
+     public Recette findById( int i); */
     
 }

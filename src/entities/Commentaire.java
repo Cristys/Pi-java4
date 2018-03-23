@@ -24,6 +24,17 @@ public class Commentaire {
         this.comment = comment;
     }
 
+    public Commentaire(int id, String comment) {
+        this.id = id;
+        this.comment = comment;
+    }
+
+    public Commentaire(User iduser, Recette idrecette, String comment) {
+        this.iduser = iduser;
+        this.idrecette = idrecette;
+        this.comment = comment;
+    }
+
     public Commentaire() {
     }
 

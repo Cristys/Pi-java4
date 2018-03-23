@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="anco" prefHeight="1000.0" prefWidth="930.0" style="-fx-text-fill: white; -fx-font-size: 1.2em; -fx-font-weight: bold; -fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceUneRecetteController">
+   <children>
+      <Pane layoutY="55.0" prefHeight="946.0" prefWidth="930.0">
+         <children>
+            <Text fx:id="nom" layoutX="389.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="username" layoutX="391.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="type" layoutX="391.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="description" layoutX="391.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="97.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="nbPersonne" layoutX="37.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="cout" layoutX="189.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="difficulte" layoutX="289.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="Tpreparation" layoutX="416.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="Trepos" layoutX="556.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="Tcuisson" layoutX="672.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="ingredients" layoutX="72.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="etapes" layoutX="53.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="astuces" layoutX="43.0" layoutY="793.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+         </children>
+      </Pane>
+      <ImageView fx:id="close" fitHeight="61.0" fitWidth="60.0" layoutX="870.0" onMouseClicked="#clickClose" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/msclose.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

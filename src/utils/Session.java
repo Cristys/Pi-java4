@@ -6,6 +6,7 @@
 package utils;
 
 
+import Interface.ICommentaire;
 import Interface.IRecette;
 import Interface.IUser;
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import entities.User;
+import service.CommentaireService;
 import service.RecetteService;
 
 import service.UserService;
@@ -22,7 +24,9 @@ import service.UserService;
  */
 public class Session {
       public static IUser iuserService =new UserService();
-          public static IRecette iRecetteService = (IRecette) new RecetteService();
+      public static IRecette iRecetteService =  new RecetteService();
+      public static ICommentaire iCommentaireService =  new CommentaireService();
+
           //hello
 
     public  static User LoggedUser ;

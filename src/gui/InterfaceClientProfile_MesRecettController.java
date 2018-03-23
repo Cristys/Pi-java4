@@ -9,6 +9,8 @@ import entities.Recette;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import static java.util.Collections.list;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,12 +18,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import service.RecetteService;
 import utils.Session;
 
 /**
@@ -29,7 +41,7 @@ import utils.Session;
  *
  * @author Siala
  */
-public class InterfaceClientProfile_MesRecetteController implements Initializable {
+public class InterfaceClientProfile_MesRecettController implements Initializable {
 
     @FXML
     private AnchorPane anco;
@@ -84,29 +96,44 @@ public class InterfaceClientProfile_MesRecetteController implements Initializabl
     @FXML
     private Text username;
     @FXML
-    private TableColumn<?, ?> ColImage;
+    private TableView<Recette> Table;
+  
     @FXML
-    private TableColumn<?, ?> ColNom;
+    private TableColumn<Recette, String> colNom;
+ 
+     ObservableList<Recette> Liste_MesRecettes = FXCollections.observableArrayList();
     @FXML
-    private TableColumn<?, ?> ColModif;
+    private ImageView image;
     @FXML
-    private TableColumn<?, ?> ColDelete;
-    
-    
-  //   ObservableList<Recette> champs = FXCollections.observableArrayList(Session.iRecetteService.getByUser());
+    private ImageView ConsulterRecette;
+    @FXML
+    private ImageView ModifierRecette;
+    @FXML
+    private ImageView DeleteRecette;
+    @FXML
+    private Text ConsulterLabel;
+    @FXML
+    private Text ModifierLabel;
+    @FXML
+    private Text DeleteLabel;
     /**
      * Initializes the controller class.
      */
-   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-         username.setText(Session.LoggedUser.getUsername());
-          ObservableList<Recette> champs = FXCollections.observableArrayList(Session.iRecetteService.getByUser(Session.LoggedUser.getId()));
+        username.setText(Session.LoggedUser.getUsername());
+          Liste_MesRecettes = FXCollections.observableArrayList(Session.iRecetteService.getByUser(Session.LoggedUser.getId()));
+        Table.setItems(Liste_MesRecettes);
+       
+      
+        colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        colNom.cellFactoryProperty();
+       
+       
     }    
 
-  @FXML
+    @FXML
     private void GoToHome(MouseEvent event) throws SQLException, IOException{
          
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClient.fxml"));
@@ -196,5 +223,139 @@ public class InterfaceClientProfile_MesRecetteController implements Initializabl
                 
                 anco.getScene().setRoot(root);
     }
-    
+
+    @FXML
+    private void OnMouseCliked(MouseEvent event) {
+         
+
+            
+    }
+
+    @FXML
+    private void afficheConsulterLAbel(MouseEvent event) {
+    ConsulterLabel.setText("Consulter");
+    }
+
+    @FXML
+    private void afficheModifierLabel(MouseEvent event) {
+        ModifierLabel.setText("Modifier");
+    }
+
+    @FXML
+    private void afficheDeleteLabel(MouseEvent event) {
+        DeleteLabel.setText("Supprimer");
+    }
+
+    @FXML
+    private Stage ConsulterRecette(MouseEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(
+    getClass().getResource(
+      "InterfaceUneRecette.fxml"
+    )
+  );
+
+  Stage stage = new Stage(StageStyle.TRANSPARENT);
+  // scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+  stage.setScene(
+    new Scene(
+            
+      (Pane) loader.load()
+    )
+          
+  );
+ 
+ Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
+                System.out.println(selectedRecette);
+            
+  InterfaceUneRecetteController controller = 
+    loader.<InterfaceUneRecetteController>getController();
+  controller.initData(Session.iRecetteService.findById(selectedRecette.getId()));
+   
+  
+  stage.show();
+
+  return stage;
+    }
+
+    @FXML
+    private Stage ModifierRecette(MouseEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(
+    getClass().getResource(
+      "InterfaceModiferRecette.fxml"
+    )
+  );
+
+  Stage stage = new Stage(StageStyle.TRANSPARENT);
+  // scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+  stage.setScene(
+    new Scene(
+            
+      (Pane) loader.load()
+    )
+          
+  );
+ 
+ Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
+                System.out.println(selectedRecette);
+            
+  InterfaceUneRecetteController controller = 
+    loader.<InterfaceUneRecetteController>getController();
+  controller.initData(Session.iRecetteService.findById(selectedRecette.getId()));
+   
+  
+  stage.show();
+
+  return stage;
+    }
+
+    @FXML
+    private void SupprimerRecette(MouseEvent event) throws IOException {
+         RecetteService t2 = new RecetteService();
+         if (!Table.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Supprimer Recette");
+            alert.setHeaderText("Etes vous sur de vouloir supprimer la recette numero : " + Table.getSelectionModel().getSelectedItem().getId() + " ?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+           Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
+                System.out.println(selectedRecette);
+              Session.iRecetteService.remove(selectedRecette.getId());
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClientProfile_MesRecett.fxml"));
+                
+                Parent root = loader.load();
+                
+                anco.getScene().setRoot(root);
+           
+        }
+         }
+    }
+
+    @FXML
+    private void showImage(MouseEvent event) {
+     try{ 
+         String imageFile = (Session.iRecetteService.findById(Table.getSelectionModel().getSelectedItem().getId()).getNom_image());
+        System.out.println(imageFile);
+        Image image1 = new Image(imageFile);
+        image.setImage(image1);}
+     catch(Exception e){
+          Image image2 = new Image("@../icons/mscupcake2.jpg");
+        image.setImage(image2);
+     }
+            
+    }
+
+    @FXML
+    private void HideConsulterLabel(MouseEvent event) {
+        ConsulterLabel.setText("");
+    }
+
+    @FXML
+    private void HideModifierLabel(MouseEvent event) {
+        ModifierLabel.setText("");
+    }
+
+    @FXML
+    private void HideDeleteLabel(MouseEvent event) {
+        DeleteLabel.setText("");
+    }
 }

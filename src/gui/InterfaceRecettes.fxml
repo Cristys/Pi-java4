@@ -184,7 +184,7 @@
                      <children>
                         <Text fx:id="LabelRecette" onMouseClicked="#GoToRecettes" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Recettes">
                            <VBox.margin>
-                              <Insets left="120.0" />
+                              <Insets left="120.0" top="5.0" />
                            </VBox.margin>
                         </Text>
                      </children>

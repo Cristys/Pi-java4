@@ -5,10 +5,12 @@
  */
 package Interface;
 
+import entities.Commentaire;
+
 /**
  *
  * @author Siala
  */
-public class ICommentaire {
+public interface ICommentaire extends IService <Commentaire, Integer>{
     
 }
