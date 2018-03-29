@@ -114,31 +114,30 @@ public class RecetteService implements IRecette{
     @Override
     public void update(Recette t) {
             System.out.println(t.toString());
-        String req = "update recette set nom=? ,type=?,description=?,nom_image=?,cout=?,temps_preparation=?,temps_repos=?,temps_cuisson=?,nb_personne=?,difficulte=?,astuces=?,ingredients=?,etapes=? )"
-                + " where id=?";
+        String req = "update recette set id=?,nom=? ,type=?,description=?,nom_image=?,cout=?,temps_preparation=?,temps_repos=?,temps_cuisson=?,nb_personne=?,difficulte=?,astuces=?,ingredients=?,etapes=? where id=?";
         PreparedStatement preparedStatement;
   
 
         try {
             preparedStatement = connection.prepareStatement(req);
-            
-            
-            preparedStatement.setString(1, t.getNom());
-            preparedStatement.setString(2, t.getType());
-            preparedStatement.setString(3, t.getDescription());
-            preparedStatement.setString(4, t.getNom_image());
-            preparedStatement.setString(5, t.getCout());
+             System.out.println(t.getId());
+            preparedStatement.setInt(1, t.getId()); 
+            preparedStatement.setString(2, t.getNom());
+            preparedStatement.setString(3, t.getType());
+            preparedStatement.setString(4, t.getDescription());
+            preparedStatement.setString(5, t.getNom_image());
+            preparedStatement.setString(6, t.getCout());
        
-            preparedStatement.setTime(6, t.getTemps_preparation()); 
-            preparedStatement.setTime(7, t.getTemps_repos()); 
-            preparedStatement.setTime(8, t.getTemps_cuisson()); 
+            preparedStatement.setTime(7, t.getTemps_preparation()); 
+            preparedStatement.setTime(8, t.getTemps_repos()); 
+            preparedStatement.setTime(9, t.getTemps_cuisson()); 
             
-            preparedStatement.setInt(9, t.getNb_personne()); 
-            preparedStatement.setString(10, t.getDifficulte());
-            preparedStatement.setString(11, t.getAstuces());      
-            preparedStatement.setString(12, t.getIngredients());  
-            preparedStatement.setString(13, t.getEtapes()); 
-            preparedStatement.setInt(14, t.getId());           
+            preparedStatement.setInt(10, t.getNb_personne()); 
+            preparedStatement.setString(11, t.getDifficulte());
+            preparedStatement.setString(12, t.getAstuces());      
+            preparedStatement.setString(13, t.getIngredients());  
+            preparedStatement.setString(14, t.getEtapes()); 
+            preparedStatement.setInt(15, t.getId());           
 
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {

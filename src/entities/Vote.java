@@ -22,6 +22,15 @@ public class Vote {
         this.rating = rating;
     }
 
+    public Vote(Recette idrecette, int rating) {
+        this.idrecette = idrecette;
+        this.rating = rating;
+    }
+
+    public Vote(int rating) {
+        this.rating = rating;
+    }
+
     public Vote() {
     }
 

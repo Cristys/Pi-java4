@@ -102,8 +102,7 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
     private TableColumn<Recette, String> colNom;
  
      ObservableList<Recette> Liste_MesRecettes = FXCollections.observableArrayList();
-    @FXML
-    private ImageView image;
+   
     @FXML
     private ImageView ConsulterRecette;
     @FXML
@@ -116,6 +115,8 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
     private Text ModifierLabel;
     @FXML
     private Text DeleteLabel;
+    @FXML
+    private ImageView btnClose;
     /**
      * Initializes the controller class.
      */
@@ -247,65 +248,54 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
     }
 
     @FXML
-    private Stage ConsulterRecette(MouseEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(
-    getClass().getResource(
-      "InterfaceUneRecette.fxml"
-    )
-  );
-
-  Stage stage = new Stage(StageStyle.TRANSPARENT);
-  // scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-  stage.setScene(
-    new Scene(
-            
+   private void ConsulterRecette(MouseEvent event) throws IOException {
+       //  private void ConsulterRecette(MouseEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));
+    //     Stage stage = new Stage(StageStyle.TRANSPARENT);
+         // scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+     /*   stage.setScene(
+        new Scene(
+ 
       (Pane) loader.load()
     )
           
-  );
+  ); */
+         Parent root = loader.load();
+                
+               anco.getScene().setRoot(root);
  
- Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
-                System.out.println(selectedRecette);
+        Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
+        System.out.println(selectedRecette);
             
-  InterfaceUneRecetteController controller = 
-    loader.<InterfaceUneRecetteController>getController();
-  controller.initData(Session.iRecetteService.findById(selectedRecette.getId()));
+       InterfaceRecettes_AfficherUneR_1Controller controller = 
+        loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
+        controller.initData(Session.iRecetteService.findById(selectedRecette.getId()));
    
   
-  stage.show();
+    //    stage.show();
 
-  return stage;
+       // return stage;
     }
 
     @FXML
     private Stage ModifierRecette(MouseEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader(
-    getClass().getResource(
-      "InterfaceModiferRecette.fxml"
-    )
-  );
+          FXMLLoader loader2 = new FXMLLoader(getClass().getResource("InterfaceClientProfile_ModifierRecette.fxml"));
 
-  Stage stage = new Stage(StageStyle.TRANSPARENT);
-  // scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-  stage.setScene(
-    new Scene(
-            
-      (Pane) loader.load()
-    )
-          
-  );
+          Stage stage2 = new Stage(StageStyle.TRANSPARENT);
+          // scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+          stage2.setScene(
+          new Scene((AnchorPane) loader2.load()));
  
- Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
-                System.out.println(selectedRecette);
+          Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
+          System.out.println(selectedRecette);
             
-  InterfaceUneRecetteController controller = 
-    loader.<InterfaceUneRecetteController>getController();
-  controller.initData(Session.iRecetteService.findById(selectedRecette.getId()));
-   
-  
-  stage.show();
+       InterfaceClientProfile_ModifierRecetteController controller = 
+         loader2.<InterfaceClientProfile_ModifierRecetteController>getController();
+         controller.initData(Session.iRecetteService.findById(selectedRecette.getId()));
+ 
+         stage2.show();
 
-  return stage;
+         return stage2;
     }
 
     @FXML
@@ -330,7 +320,7 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
          }
     }
 
-    @FXML
+  /*  @FXML
     private void showImage(MouseEvent event) {
      try{ 
          String imageFile = (Session.iRecetteService.findById(Table.getSelectionModel().getSelectedItem().getId()).getNom_image());
@@ -343,7 +333,7 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
      }
             
     }
-
+*/
     @FXML
     private void HideConsulterLabel(MouseEvent event) {
         ConsulterLabel.setText("");
@@ -357,5 +347,16 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
     @FXML
     private void HideDeleteLabel(MouseEvent event) {
         DeleteLabel.setText("");
+    }
+
+    @FXML
+    private void showImage(MouseEvent event) {
+    }
+
+    @FXML
+    private void onClickClose(MouseEvent event) {
+         Stage stage = (Stage) btnClose.getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
 }

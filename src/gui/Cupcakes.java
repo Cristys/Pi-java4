@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollBar;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 /**
@@ -18,7 +19,7 @@ import javafx.stage.StageStyle;
  * @author Siala
  */
 public class Cupcakes extends Application {
-
+     
     @Override
     public void start(Stage stage) throws Exception {
         
@@ -26,7 +27,9 @@ public class Cupcakes extends Application {
        stage.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(root);
        scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+       
         stage.setScene(scene);
+        
         stage.show();
         
     }

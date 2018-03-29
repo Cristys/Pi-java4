@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import entities.Vote;
+
 /**
  *
  * @author Siala

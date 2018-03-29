@@ -16,8 +16,10 @@ import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -76,6 +78,14 @@ public class InterfaceRecettesController implements Initializable {
     private VBox CBoxPanier;
     @FXML
     private VBox ChangeItGirls;
+    @FXML
+    private ImageView btnClose;
+    @FXML
+    private VBox TopRecettes;
+    @FXML
+    private VBox AllRecettes;
+    @FXML
+    private HBox newsLetter;
 
     /**
      * Initializes the controller class.
@@ -173,6 +183,35 @@ public class InterfaceRecettesController implements Initializable {
                 Parent root = loader.load();
                 
                 anco.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void onMouseClickClose(MouseEvent event) {
+            Stage stage = (Stage) btnClose.getScene().getWindow();
+    // do what you have to do
+    stage.close();
+    }
+
+    @FXML
+    private void mouseClickTopRecettes(MouseEvent event) throws IOException {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_TOP5.fxml"));
+                
+                Parent root = loader.load();
+                
+                anco.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void MouseClickGoToAllRecettes(MouseEvent event) throws IOException {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_ALL.fxml"));
+                
+                Parent root = loader.load();
+                
+                anco.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void MouseClickGoToNewsLetter(MouseEvent event) {
     }
 
 

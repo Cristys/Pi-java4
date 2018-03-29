@@ -44,7 +44,7 @@
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: #fa8072;">
+                  <VBox prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: #ffb48f;">
                      <children>
                         <ImageView fx:id="CrecetteIcon" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#GoToRecettes" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
@@ -56,7 +56,7 @@
                         </ImageView>
                      </children>
                      <effect>
-                        <DropShadow color="SALMON" />
+                        <DropShadow color="#ffb48f" />
                      </effect>
                   </VBox>
                   <VBox prefHeight="50.0" prefWidth="70.0">
@@ -180,7 +180,7 @@
                         <Insets />
                      </VBox.margin>
                   </VBox>
-                  <VBox fx:id="CBoxRecette" onMouseClicked="#GoToRecettes" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #fa8072;">
+                  <VBox fx:id="CBoxRecette" onMouseClicked="#GoToRecettes" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #ffb48f;">
                      <children>
                         <Text fx:id="LabelRecette" onMouseClicked="#GoToRecettes" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Recettes">
                            <VBox.margin>
@@ -188,6 +188,9 @@
                            </VBox.margin>
                         </Text>
                      </children>
+                     <effect>
+                        <DropShadow color="#ffb48f" />
+                     </effect>
                   </VBox>
                   <VBox fx:id="CBoxPatisserie" onMouseClicked="#GoToPatisseries" prefHeight="50.0" prefWidth="100.0">
                      <children>
@@ -253,7 +256,96 @@
       <SplitPane layoutX="397.0" layoutY="-3.0" opacity="0.0" prefHeight="930.0" prefWidth="18.0" />
       <VBox fx:id="ChangeItGirls" layoutX="417.0" prefHeight="930.0" prefWidth="936.0" style="-fx-background-color: white;">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recettes" />
+            <Pane prefHeight="930.0" prefWidth="936.0" style="-fx-background-color: #f5e6cc;">
+               <children>
+                  <Pane prefHeight="103.0" prefWidth="936.0" style="-fx-background-color: #ffb48f;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text fill="#f8f5f5" layoutX="270.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 3em;" text="Coins Des Recettes" />
+                        <ImageView fx:id="btnClose" fitHeight="35.0" fitWidth="33.0" layoutX="889.0" layoutY="14.0" onMouseClicked="#onMouseClickClose" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msclose2.png" />
+                           </image>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <VBox fx:id="TopRecettes" layoutX="47.0" layoutY="149.0" onMouseClicked="#mouseClickTopRecettes" prefHeight="686.0" prefWidth="343.0" style="-fx-background-radius: 10px; -fx-background-color: white; -fx-border-color: white; -fx-border-radius: 10px; -fx-border-width: 3px;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <ImageView fitHeight="503.0" fitWidth="564.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msTop5Recettes.jpg" />
+                           </image>
+                        </ImageView>
+                        <Pane prefHeight="89.0" prefWidth="337.0">
+                           <children>
+                              <Text layoutX="36.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #bf4040; -fx-font-size: 2em;" text="Pour en prendre plein les yeux" textAlignment="CENTER" wrappingWidth="265.3603515625" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="86.0" prefWidth="337.0" style="-fx-background-color: #bf4040; -fx-background-radius: 8px;">
+                           <children>
+                              <Text layoutX="65.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="TOP 5 RECETTES" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="AllRecettes" layoutX="451.0" layoutY="149.0" onMouseClicked="#MouseClickGoToAllRecettes" prefHeight="449.0" prefWidth="460.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 10px;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <ImageView fitHeight="274.0" fitWidth="454.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msToutesRecettes.jpg" />
+                           </image>
+                        </ImageView>
+                        <Pane prefHeight="82.0" prefWidth="454.0">
+                           <children>
+                              <Text layoutX="89.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #c266ff; -fx-font-size: 2em;" text="Pour faire le plein d'idées recettes " textAlignment="CENTER" wrappingWidth="288.3388671875" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="87.0" prefWidth="454.0" style="-fx-background-color: #c266ff; -fx-background-radius: 8px;">
+                           <children>
+                              <Text fill="WHITE" layoutX="69.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em;" text="TOUTES LES RECETTES" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+                  <HBox fx:id="newsLetter" layoutX="451.0" layoutY="656.0" onMouseClicked="#MouseClickGoToNewsLetter" prefHeight="220.0" prefWidth="460.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 10px;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <ImageView fitHeight="213.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msNewsLetter.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox prefHeight="214.0" prefWidth="246.0">
+                           <children>
+                              <Pane prefHeight="123.0" prefWidth="242.0">
+                                 <children>
+                                    <Text layoutX="6.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #e35972;" text="Recevez chaque jour par mail les toutes dernières recettes " textAlignment="CENTER" wrappingWidth="230.7421875" />
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="96.0" prefWidth="242.0" style="-fx-background-color: #e35972; -fx-background-radius: 5px;">
+                                 <children>
+                                    <Text fill="WHITE" layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.5em;" text="Abonnez-vous à notre newsletter!" textAlignment="CENTER" wrappingWidth="200.662109375" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
          </children></VBox>
    </children>
 </AnchorPane>

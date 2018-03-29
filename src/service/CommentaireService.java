@@ -14,7 +14,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.DataSource;
+import static utils.Session.iRecetteService;
 
 /**
  *
@@ -30,7 +35,7 @@ public class CommentaireService implements ICommentaire {
    @Override
     public void add(Commentaire c) {
             System.out.println(c.toString());
-        String req = "insert into commentaire (iduser,idrecette,comment )"
+        String req = "insert into commentaire (idrecette,iduser,comment )"
                 + " values (?,?,?)";
         PreparedStatement preparedStatement;
   
@@ -38,8 +43,9 @@ public class CommentaireService implements ICommentaire {
         try {
             preparedStatement = connection.prepareStatement(req);
             
-            preparedStatement.setInt(1, c.getIduser().getId());
-            preparedStatement.setInt(2, c.getIdrecette().getId());
+            preparedStatement.setInt(1, c.getIdrecette().getId());
+            preparedStatement.setInt(2, c.getIduser().getId());
+            
             preparedStatement.setString(3, c.getComment());
            
                        
@@ -56,7 +62,7 @@ public class CommentaireService implements ICommentaire {
     @Override
     public void update(Commentaire t) {
        System.out.println(t.toString());
-        String req = "update commentaire set comment=? where id=?)"
+        String req = "update commentaire set comment=? where id=?"
                 ;
         PreparedStatement preparedStatement;
   
@@ -100,8 +106,9 @@ public class CommentaireService implements ICommentaire {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                commentaire= new Commentaire(resultSet.getInt(1),
-                       new UserService().findById(resultSet.getInt(2)),
-                       new RecetteService().findById(resultSet.getInt(3)),
+                       new RecetteService().findById(resultSet.getInt(2)),
+                       new UserService().findById(resultSet.getInt(3)),
+                       
                       resultSet.getString(4)
                       ); }
         } catch (SQLException ex) {
@@ -121,8 +128,9 @@ public class CommentaireService implements ICommentaire {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                Commentaire commentaire= new Commentaire(resultSet.getInt(1),
-                      new UserService().findById(resultSet.getInt(2)),
-                       new RecetteService().findById(resultSet.getInt(3)),
+                        new RecetteService().findById(resultSet.getInt(2)),
+                      new UserService().findById(resultSet.getInt(3)),
+                      
                       resultSet.getString(4)
                       
                       
@@ -133,5 +141,42 @@ public class CommentaireService implements ICommentaire {
         }
         return commentaires ;
     
+    }
+
+    @Override
+    public ObservableList<Commentaire> getByRecette(int IdRecette) {
+      ObservableList<Commentaire> listeCommentaires=FXCollections.observableArrayList();
+       String req="select * from commentaire where idrecette=? ";
+       PreparedStatement preparedStatement;
+       try {
+           preparedStatement=connection.prepareStatement(req);
+           preparedStatement.setInt(1,IdRecette);
+           ResultSet resultSet=preparedStatement.executeQuery();
+           while(resultSet.next()){
+              Commentaire r= new Commentaire(
+                      resultSet.getInt(1),
+                        new RecetteService().findById(resultSet.getInt(2)),
+                       new UserService().findById(resultSet.getInt(3)),
+                     
+                      
+                      resultSet.getString(4)
+                      /*resultSet.getInt(1),
+                     new RecetteService().findById(resultSet.getInt(2)),
+                       new UserService().findById(resultSet.getInt(3)),
+                      
+                      resultSet.getString(4)
+                    */  );
+               listeCommentaires.add(r);
+               
+           }
+       }catch (SQLException ex){
+           Logger.getLogger(CommentaireService.class.getName()).log(Level.SEVERE, null , ex);
+           
+       }
+        
+        
+        
+        return listeCommentaires;
+             
     }
 }

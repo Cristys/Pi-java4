@@ -7,10 +7,12 @@ package tests;
 import Interface.IUser;
 import entities.Recette;
 import entities.User;
+import entities.Vote;
 import java.sql.Time;
 import java.util.Scanner;
 import service.RecetteService;
 import service.UserService;
+import service.VoteService;
 
 /**
  *
@@ -66,7 +68,7 @@ public class RecetteTest {
   /************* get role  **********************/
  // System.out.println(userService.Getrole("marwa"));  
  
-    RecetteService RS = new RecetteService();
+  /*  RecetteService RS = new RecetteService();
         Recette R1 = new Recette();
        Scanner scanner = new Scanner( System.in);
        User X = new User();
@@ -108,7 +110,16 @@ public class RecetteTest {
         R1.setIngredients(scanner.next());
         System.out.println("enter etapes");
         R1.setEtapes(scanner.next());
-        RS.add(R1);
+        RS.add(R1); */
+  Vote a = new Vote();
+  VoteService VS = new VoteService();
+  double abc= VS.noteRecette(2);
+  /*int vv= VS.TOP1();
+  int v2= VS.TOP2();
+  int v3= VS.TOP3();
+  int v4= VS.TOP4(); */
+  int v5= VS.TOP5();
+  
         
         
 

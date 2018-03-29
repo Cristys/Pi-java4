@@ -13,14 +13,16 @@ import java.util.Objects;
  */
 public class Commentaire {
     private int id;
-    private User iduser;
     private Recette idrecette;
+    private User iduser;
+    
     private String comment;
 
-    public Commentaire(int id, User iduser, Recette idrecette, String comment) {
+    public Commentaire(int id,Recette idrecette, User iduser,  String comment) {
         this.id = id;
-        this.iduser = iduser;
         this.idrecette = idrecette;
+        this.iduser = iduser;
+        
         this.comment = comment;
     }
 
@@ -29,9 +31,10 @@ public class Commentaire {
         this.comment = comment;
     }
 
-    public Commentaire(User iduser, Recette idrecette, String comment) {
-        this.iduser = iduser;
+    public Commentaire(Recette idrecette,User iduser, String comment) {
         this.idrecette = idrecette;
+        this.iduser = iduser;
+        
         this.comment = comment;
     }
 
@@ -45,7 +48,15 @@ public class Commentaire {
     public void setId(int id) {
         this.id = id;
     }
+    
+        public Recette getIdrecette() {
+        return idrecette;
+    }
 
+    public void setIdrecette(Recette idrecette) {
+        this.idrecette = idrecette;
+    }
+    
     public User getIduser() {
         return iduser;
     }
@@ -54,13 +65,7 @@ public class Commentaire {
         this.iduser = iduser;
     }
 
-    public Recette getIdrecette() {
-        return idrecette;
-    }
 
-    public void setIdrecette(Recette idrecette) {
-        this.idrecette = idrecette;
-    }
 
     public String getComment() {
         return comment;
@@ -74,8 +79,9 @@ public class Commentaire {
     public int hashCode() {
         int hash = 7;
         hash = 71 * hash + this.id;
-        hash = 71 * hash + Objects.hashCode(this.iduser);
         hash = 71 * hash + Objects.hashCode(this.idrecette);
+        hash = 71 * hash + Objects.hashCode(this.iduser);
+        
         hash = 71 * hash + Objects.hashCode(this.comment);
         return hash;
     }
@@ -98,18 +104,19 @@ public class Commentaire {
         if (!Objects.equals(this.comment, other.comment)) {
             return false;
         }
+         if (!Objects.equals(this.idrecette, other.idrecette)) {
+            return false;
+        }
         if (!Objects.equals(this.iduser, other.iduser)) {
             return false;
         }
-        if (!Objects.equals(this.idrecette, other.idrecette)) {
-            return false;
-        }
+       
         return true;
     }
 
     @Override
     public String toString() {
-        return "Commentaire{" + "id=" + id + ", iduser=" + iduser + ", idrecette=" + idrecette + ", comment=" + comment + '}';
+        return "Commentaire{" + "id=" + id + ", idrecette=" + idrecette +", iduser=" + iduser +  ", comment=" + comment + '}';
     }
     
 }

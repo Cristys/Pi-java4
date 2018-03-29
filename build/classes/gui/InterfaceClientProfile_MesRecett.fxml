@@ -255,11 +255,11 @@
          </items>
       </SplitPane>
       <SplitPane layoutX="397.0" layoutY="-3.0" opacity="0.0" prefHeight="930.0" prefWidth="18.0" />
-      <VBox fx:id="ChangeItGirls" layoutX="417.0" prefHeight="930.0" prefWidth="939.0" style="-fx-background-color: white;">
+      <VBox fx:id="ChangeItGirls" layoutX="417.0" prefHeight="930.0" prefWidth="939.0" style="-fx-background-color: transparent;">
          <children>
-            <Pane prefHeight="70.0" prefWidth="930.0" style="-fx-background-color: #cc6699;">
+            <Pane prefHeight="162.0" prefWidth="509.0" style="-fx-background-color: #cc6699;">
                <VBox.margin>
-                  <Insets />
+                  <Insets right="450.0" />
                </VBox.margin>
                <padding>
                   <Insets bottom="50.0" />
@@ -267,49 +267,84 @@
                <children>
                   <Text fx:id="username" layoutX="197.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" />
                   <Text layoutX="37.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="Bienvenue- " />
+                  <Text layoutX="121.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2.5em; -fx-fill: white;" text="Mes Recettes" />
+                  <ImageView fx:id="btnClose" fitHeight="26.0" fitWidth="34.0" layoutX="449.0" layoutY="14.0" onMouseClicked="#onClickClose" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/msclose2.png" />
+                     </image>
+                     <effect>
+                        <DropShadow color="#000000c0" />
+                     </effect>
+                  </ImageView>
                </children>
                <effect>
                   <DropShadow />
                </effect>
             </Pane>
-            <Pane prefHeight="861.0" prefWidth="939.0">
+            <Pane prefHeight="769.0" prefWidth="939.0" style="-fx-background-color: transparent;">
                <children>
-                  <TableView fx:id="Table" layoutX="299.0" layoutY="261.0" onMouseClicked="#OnMouseCliked" onMouseEntered="#showImage" prefHeight="461.0" prefWidth="315.0">
+                  <TableView fx:id="Table" layoutY="194.0" onMouseClicked="#OnMouseCliked" onMouseEntered="#showImage" prefHeight="573.0" prefWidth="489.0" style="-fx-background-radius: 0px;" stylesheets="@MarwaStyle.css">
                     <columns>
-                      <TableColumn fx:id="colNom" prefWidth="314.0" />
+                      <TableColumn fx:id="colNom" prefWidth="489.0" />
                     </columns>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </TableView>
-                  <Text layoutX="299.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 3em;" text="Mes Recettes" />
-                  <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="45.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="ConsulterRecette" fitHeight="70.0" fitWidth="70.0" layoutX="264.0" layoutY="106.0" onMouseClicked="#ConsulterRecette" onMouseEntered="#afficheConsulterLAbel" onMouseExited="#HideConsulterLabel" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/msConsulterR.png" />
-                     </image>
+                  <Pane layoutY="20.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ecc6d9; -fx-background-radius: 10px;">
+                     <children>
+                        <ImageView fx:id="ConsulterRecette" fitHeight="50.0" fitWidth="50.0" layoutX="50.0" layoutY="50.0" onMouseClicked="#ConsulterRecette" onMouseEntered="#afficheConsulterLAbel" onMouseExited="#HideConsulterLabel" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msConsulterR.png" />
+                           </image>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                        <Text fx:id="ConsulterLabel" layoutX="28.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="122.0" />
+                     </children>
                      <effect>
                         <DropShadow />
                      </effect>
-                  </ImageView>
-                  <ImageView fx:id="ModifierRecette" fitHeight="70.0" fitWidth="70.0" layoutX="411.0" layoutY="106.0" onMouseClicked="#ModifierRecette" onMouseEntered="#afficheModifierLabel" onMouseExited="#HideModifierLabel" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/msModifyR.png" />
-                     </image>
+                  </Pane>
+                  <Pane layoutX="170.0" layoutY="20.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ecc6d9; -fx-background-radius: 10px;">
+                     <children>
+                        <ImageView fx:id="ModifierRecette" fitHeight="50.0" fitWidth="50.0" layoutX="50.0" layoutY="50.0" onMouseClicked="#ModifierRecette" onMouseEntered="#afficheModifierLabel" onMouseExited="#HideModifierLabel" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msModifyR.png" />
+                           </image>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                        <Text fx:id="ModifierLabel" layoutX="37.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="105.87890625" />
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect></Pane>
+                  <Pane layoutX="339.0" layoutY="20.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ecc6d9; -fx-background-radius: 10px;">
+                     <children>
+                        <ImageView fx:id="DeleteRecette" fitHeight="50.0" fitWidth="50.0" layoutX="51.0" layoutY="50.0" onMouseClicked="#SupprimerRecette" onMouseEntered="#afficheDeleteLabel" onMouseExited="#HideDeleteLabel" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msDeleteR.png" />
+                           </image>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                        <Text fx:id="DeleteLabel" layoutX="52.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="98.290283203125" />
+                     </children>
                      <effect>
                         <DropShadow />
                      </effect>
-                  </ImageView>
-                  <ImageView fx:id="DeleteRecette" fitHeight="70.0" fitWidth="70.0" layoutX="579.0" layoutY="106.0" onMouseClicked="#SupprimerRecette" onMouseEntered="#afficheDeleteLabel" onMouseExited="#HideDeleteLabel" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/msDeleteR.png" />
-                     </image>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </ImageView>
-                  <Text fx:id="ConsulterLabel" layoutX="283.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                  <Text fx:id="ModifierLabel" layoutX="419.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                  <Text fx:id="DeleteLabel" layoutX="595.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                  <Pane layoutX="89.0" layoutY="251.0" prefHeight="40.0" prefWidth="712.0" style="-fx-background-color: white;" />
+                  </Pane>
                </children>
+               <styleClass>
+                  <String fx:value="table-view" />
+                  <String fx:value="filler" />
+                  <String fx:value="label-bright" />
+                  <String fx:value="table-row-cell" />
+               </styleClass>
             </Pane>
             
          </children></VBox>

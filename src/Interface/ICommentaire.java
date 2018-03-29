@@ -6,11 +6,12 @@
 package Interface;
 
 import entities.Commentaire;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author Siala
  */
 public interface ICommentaire extends IService <Commentaire, Integer>{
-    
+    ObservableList<Commentaire> getByRecette(int IdRecette);
 }
