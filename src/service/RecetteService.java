@@ -78,7 +78,7 @@ public class RecetteService implements IRecette{
            ResultSet resultSet=preparedStatement.executeQuery();
            while(resultSet.next()){
               Recette r= new Recette(resultSet.getInt(1),
-                       new UserService().findById(resultSet.getInt(2)),
+                      new UserService().findById(resultSet.getInt(2)),
                       resultSet.getString(3),
                       resultSet.getString(4),
                       resultSet.getString(5),
@@ -228,7 +228,325 @@ public class RecetteService implements IRecette{
         return recettes ;
     }
 
+      @Override
+    public ObservableList<Recette> DisplayAll(){
+             ObservableList<Recette> listeMesRecettes=FXCollections.observableArrayList();
+       String req="select * from recette ";
+       PreparedStatement preparedStatement;
+       try {
+           preparedStatement=connection.prepareStatement(req);
+           
+           ResultSet resultSet=preparedStatement.executeQuery();
+           while(resultSet.next()){
+              Recette r= new Recette(resultSet.getInt(1),
+                       new UserService().findById(resultSet.getInt(2)),
+                      resultSet.getString(3),
+                      resultSet.getString(4),
+                      resultSet.getString(5),
+                      resultSet.getString(6),
+                      resultSet.getString(7),
+                      resultSet.getTime(8) , 
+                      resultSet.getTime(9) ,
+                      resultSet.getTime(10) ,
+                      resultSet.getInt(11) ,
+                       resultSet.getString(12),
+                      resultSet.getString(13),
+                      resultSet.getString(14),
+                      resultSet.getString(15)
+                    );
+               listeMesRecettes.add(r);     
+           }
+       }catch (SQLException ex){
+           Logger.getLogger(RecetteService.class.getName()).log(Level.SEVERE, null , ex);          
+       }
+        return listeMesRecettes;   
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        @Override
+    public ObservableList<Recette> RechercheFiltrer(String ValueType1,String ValueCout1,String ValueDiff1){
+       ObservableList<Recette> listeMesRecettes=FXCollections.observableArrayList(); 
+       System.out.println("***");     
+       System.out.println(ValueType1);
+       System.out.println(ValueCout1);
+       System.out.println(ValueDiff1);
 
+       
+        if(!"".equals(ValueType1) && !"".equals(ValueCout1) && !"".equals(ValueDiff1)){
+            String req="select * from recette where type=? AND cout=? AND difficulte=?";
+            PreparedStatement preparedStatement;
+            try {
+            preparedStatement=connection.prepareStatement(req);
 
+            preparedStatement.setString(1,ValueType1);
+            preparedStatement.setString(2,ValueCout1);
+           preparedStatement.setString(3,ValueDiff1);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+              Recette r= new Recette(resultSet.getInt(1),
+                      new UserService().findById(resultSet.getInt(2)),
+                      resultSet.getString(3),
+                      resultSet.getString(4),
+                      resultSet.getString(5),
+                      resultSet.getString(6),
+                      resultSet.getString(7),
+                      resultSet.getTime(8) , 
+                      resultSet.getTime(9) ,
+                      resultSet.getTime(10) ,
+                      resultSet.getInt(11) ,
+                       resultSet.getString(12),
+                      resultSet.getString(13),
+                      resultSet.getString(14),
+                      resultSet.getString(15)
+                      );
+               listeMesRecettes.add(r);  
+            }
+            }catch (SQLException ex){
+            Logger.getLogger(RecetteService.class.getName()).log(Level.SEVERE, null , ex);
+           }
+        } else if(!"".equals(ValueType1) && !"".equals(ValueCout1) && "".equals(ValueDiff1)){
+            String req="select * from recette where type=? AND cout=? ";
+            PreparedStatement preparedStatement;
+            try {
+            preparedStatement=connection.prepareStatement(req);
 
+            preparedStatement.setString(1,ValueType1);
+            preparedStatement.setString(2,ValueCout1);
+          // preparedStatement.setString(3,ValueDiff1);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+              Recette r= new Recette(resultSet.getInt(1),
+                      new UserService().findById(resultSet.getInt(2)),
+                      resultSet.getString(3),
+                      resultSet.getString(4),
+                      resultSet.getString(5),
+                      resultSet.getString(6),
+                      resultSet.getString(7),
+                      resultSet.getTime(8) , 
+                      resultSet.getTime(9) ,
+                      resultSet.getTime(10) ,
+                      resultSet.getInt(11) ,
+                       resultSet.getString(12),
+                      resultSet.getString(13),
+                      resultSet.getString(14),
+                      resultSet.getString(15)
+                      );
+               listeMesRecettes.add(r);  
+            }
+            }catch (SQLException ex){
+            Logger.getLogger(RecetteService.class.getName()).log(Level.SEVERE, null , ex);
+           }
+        }else if(!"".equals(ValueType1) && "".equals(ValueCout1) && !"".equals(ValueDiff1)){
+            String req="select * from recette where type=? AND difficulte=? ";
+            PreparedStatement preparedStatement;
+            try {
+            preparedStatement=connection.prepareStatement(req);
+
+            preparedStatement.setString(1,ValueType1);
+           // preparedStatement.setString(2,ValueCout1);
+            preparedStatement.setString(2,ValueDiff1);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+              Recette r= new Recette(resultSet.getInt(1),
+                      new UserService().findById(resultSet.getInt(2)),
+                      resultSet.getString(3),
+                      resultSet.getString(4),
+                      resultSet.getString(5),
+                      resultSet.getString(6),
+                      resultSet.getString(7),
+                      resultSet.getTime(8) , 
+                      resultSet.getTime(9) ,
+                      resultSet.getTime(10) ,
+                      resultSet.getInt(11) ,
+                       resultSet.getString(12),
+                      resultSet.getString(13),
+                      resultSet.getString(14),
+                      resultSet.getString(15)
+                      );
+               listeMesRecettes.add(r);  
+            }
+            }catch (SQLException ex){
+            Logger.getLogger(RecetteService.class.getName()).log(Level.SEVERE, null , ex);
+           }
+        }else if(!"".equals(ValueType1) && "".equals(ValueCout1) && "".equals(ValueDiff1)){
+            String req="select * from recette where type=? ";
+            PreparedStatement preparedStatement;
+            try {
+            preparedStatement=connection.prepareStatement(req);
+
+            preparedStatement.setString(1,ValueType1);
+           // preparedStatement.setString(2,ValueCout1);
+           // preparedStatement.setString(3,ValueDiff1);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+              Recette r= new Recette(resultSet.getInt(1),
+                      new UserService().findById(resultSet.getInt(2)),
+                      resultSet.getString(3),
+                      resultSet.getString(4),
+                      resultSet.getString(5),
+                      resultSet.getString(6),
+                      resultSet.getString(7),
+                      resultSet.getTime(8) , 
+                      resultSet.getTime(9) ,
+                      resultSet.getTime(10) ,
+                      resultSet.getInt(11) ,
+                       resultSet.getString(12),
+                      resultSet.getString(13),
+                      resultSet.getString(14),
+                      resultSet.getString(15)
+                      );
+               listeMesRecettes.add(r);  
+            }
+            }catch (SQLException ex){
+            Logger.getLogger(RecetteService.class.getName()).log(Level.SEVERE, null , ex);
+           }
+        }else if("".equals(ValueType1) && !"".equals(ValueCout1) && "".equals(ValueDiff1)){
+            String req="select * from recette where cout=? ";
+            PreparedStatement preparedStatement;
+            try {
+            preparedStatement=connection.prepareStatement(req);
+
+            //preparedStatement.setString(1,ValueType1);
+            preparedStatement.setString(1,ValueCout1);
+           // preparedStatement.setString(3,ValueDiff1);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+              Recette r= new Recette(resultSet.getInt(1),
+                      new UserService().findById(resultSet.getInt(2)),
+                      resultSet.getString(3),
+                      resultSet.getString(4),
+                      resultSet.getString(5),
+                      resultSet.getString(6),
+                      resultSet.getString(7),
+                      resultSet.getTime(8) , 
+                      resultSet.getTime(9) ,
+                      resultSet.getTime(10) ,
+                      resultSet.getInt(11) ,
+                       resultSet.getString(12),
+                      resultSet.getString(13),
+                      resultSet.getString(14),
+                      resultSet.getString(15)
+                      );
+               listeMesRecettes.add(r);  
+            }
+            }catch (SQLException ex){
+            Logger.getLogger(RecetteService.class.getName()).log(Level.SEVERE, null , ex);
+           }
+        }else if("".equals(ValueType1) && "".equals(ValueCout1) && !"".equals(ValueDiff1)){
+            String req="select * from recette where difficulte=? ";
+            PreparedStatement preparedStatement;
+            try {
+            preparedStatement=connection.prepareStatement(req);
+
+            //preparedStatement.setString(1,ValueType1);
+            //preparedStatement.setString(1,ValueCout1);
+            preparedStatement.setString(1,ValueDiff1);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+              Recette r= new Recette(resultSet.getInt(1),
+                      new UserService().findById(resultSet.getInt(2)),
+                      resultSet.getString(3),
+                      resultSet.getString(4),
+                      resultSet.getString(5),
+                      resultSet.getString(6),
+                      resultSet.getString(7),
+                      resultSet.getTime(8) , 
+                      resultSet.getTime(9) ,
+                      resultSet.getTime(10) ,
+                      resultSet.getInt(11) ,
+                       resultSet.getString(12),
+                      resultSet.getString(13),
+                      resultSet.getString(14),
+                      resultSet.getString(15)
+                      );
+               listeMesRecettes.add(r);  
+            }
+            }catch (SQLException ex){
+            Logger.getLogger(RecetteService.class.getName()).log(Level.SEVERE, null , ex);
+           }
+        }else if("".equals(ValueType1) && !"".equals(ValueCout1) && !"".equals(ValueDiff1)){
+            String req="select * from recette where cout=? AND difficulte=? ";
+            PreparedStatement preparedStatement;
+            try {
+            preparedStatement=connection.prepareStatement(req);
+
+            //preparedStatement.setString(1,ValueType1);
+            preparedStatement.setString(1,ValueCout1);
+            preparedStatement.setString(2,ValueDiff1);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+              Recette r= new Recette(resultSet.getInt(1),
+                      new UserService().findById(resultSet.getInt(2)),
+                      resultSet.getString(3),
+                      resultSet.getString(4),
+                      resultSet.getString(5),
+                      resultSet.getString(6),
+                      resultSet.getString(7),
+                      resultSet.getTime(8) , 
+                      resultSet.getTime(9) ,
+                      resultSet.getTime(10) ,
+                      resultSet.getInt(11) ,
+                       resultSet.getString(12),
+                      resultSet.getString(13),
+                      resultSet.getString(14),
+                      resultSet.getString(15)
+                      );
+               listeMesRecettes.add(r);  
+            }
+            }catch (SQLException ex){
+            Logger.getLogger(RecetteService.class.getName()).log(Level.SEVERE, null , ex);
+           }
+        }
+     
+        return listeMesRecettes;   
+    }
+
+     @Override
+   public ObservableList<Recette> findByNom(String nom ){
+            ObservableList<Recette> listeMesRecettes=FXCollections.observableArrayList();
+       String req="select * from recette where nom=? ";
+       PreparedStatement preparedStatement;
+       try {
+           preparedStatement=connection.prepareStatement(req);
+           preparedStatement.setString(1,nom);
+           ResultSet resultSet=preparedStatement.executeQuery();
+           while(resultSet.next()){
+              Recette r= new Recette(resultSet.getInt(1),
+                      new UserService().findById(resultSet.getInt(2)),
+                      resultSet.getString(3),
+                      resultSet.getString(4),
+                      resultSet.getString(5),
+                      resultSet.getString(6),
+                      resultSet.getString(7),
+                      resultSet.getTime(8) , 
+                      resultSet.getTime(9) ,
+                      resultSet.getTime(10) ,
+                      resultSet.getInt(11) ,
+                       resultSet.getString(12),
+                      resultSet.getString(13),
+                      resultSet.getString(14),
+                      resultSet.getString(15)
+                      
+                      
+                      );
+               listeMesRecettes.add(r);
+               
+           }
+       }catch (SQLException ex){
+           Logger.getLogger(RecetteService.class.getName()).log(Level.SEVERE, null , ex);
+           
+       }
+        
+        
+        
+        return listeMesRecettes;
+             
+         } 
 }

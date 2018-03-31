@@ -332,7 +332,9 @@
                            <children>
                               <Pane prefHeight="123.0" prefWidth="242.0">
                                  <children>
-                                    <Text layoutX="6.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #e35972;" text="Recevez chaque jour par mail les toutes dernières recettes " textAlignment="CENTER" wrappingWidth="230.7421875" />
+                                    <Text layoutX="6.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #e35972;" text="
+En manque d'idées ?
+Recevez la recette du jour" textAlignment="CENTER" wrappingWidth="230.7421875" />
                                  </children>
                               </Pane>
                               <Pane prefHeight="96.0" prefWidth="242.0" style="-fx-background-color: #e35972; -fx-background-radius: 5px;">

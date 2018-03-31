@@ -8,25 +8,18 @@ package gui;
 import entities.Commentaire;
 import entities.Recette;
 import entities.Vote;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -45,9 +38,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
-import javafx.util.Callback;
 import service.CommentaireService;
 import service.RecetteService;
 import service.VoteService;
@@ -322,10 +312,10 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
     private void AddComment(MouseEvent event) throws IOException {
     
       
-         CommentaireService Cm = new CommentaireService();
+        CommentaireService Cm = new CommentaireService();
         Commentaire C1 = new Commentaire();
         C1.setIdrecette(Session.iRecetteService.findById(Integer.valueOf(idrecette.getText())));
-         C1.setIduser(Session.LoggedUser); 
+        C1.setIduser(Session.LoggedUser); 
      
        if(valide(CommentArea.getText())){
         C1.setComment(CommentArea.getText());
@@ -333,30 +323,26 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
           Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Le commentaire est bien ajoutée ");
             alert.setHeaderText("veuillez rafraichir la page pour voir votre comentaire");
-              Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
         
-               if (result.get() == ButtonType.OK) {
+            if (result.get() == ButtonType.OK) {
               FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));   
-                Parent root = loader.load();
-                
-                anco.getScene().setRoot(root); 
-              
-         
+              Parent root = loader.load();
+              anco.getScene().setRoot(root); 
              InterfaceRecettes_AfficherUneR_1Controller controller = 
-             loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
-             controller.initData(Rs.findById(Integer.valueOf(idrecette.getText())));
-   
+                 loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
+                 controller.initData(Rs.findById(Integer.valueOf(idrecette.getText())));
             }
-        
-         }else{
-              Alert alert = new Alert(Alert.AlertType.WARNING);
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Attention!");
             alert.setHeaderText("Le commentaire ne doit pas etre vide ");
-              Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
+       }
     }
-      
-    }
-     void initData(Recette r) {
+    /************************** void initData ************************************/
+    void initData(Recette r) {
         idrecette.setText(String.valueOf(r.getId()));
         System.out.println(idrecette);
         nom.setText(r.getNom());

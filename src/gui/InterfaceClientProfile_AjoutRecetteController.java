@@ -36,6 +36,7 @@ import utils.Session;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -141,6 +142,10 @@ public class InterfaceClientProfile_AjoutRecetteController implements Initializa
     private Label LabelAlertTemp;
     @FXML
     private Text username;
+    @FXML
+    private Label LabelImg;
+    @FXML
+    private ImageView btnClose;
     
 
     @Override
@@ -150,6 +155,9 @@ public class InterfaceClientProfile_AjoutRecetteController implements Initializa
          cout.setItems(couts);
          difficulte.setItems(difficultes);
          username.setText(Session.LoggedUser.getUsername());
+         LabelAlert.setText("");
+       //  LabelAlertTemp.setText("");
+         LabelImg.setText("test");
     }    
 
   @FXML
@@ -244,7 +252,7 @@ public class InterfaceClientProfile_AjoutRecetteController implements Initializa
     }
 private boolean valide(String s){
     boolean v =true ;
-    if ( s.equals(""))
+    if ( "".equals(s))
         v= false ;
     return v ; 
 }
@@ -281,19 +289,15 @@ private boolean valideTime(String time){
 } 
 private boolean validePersonne(String a){
     boolean v =false ;
-    
-  try {
-    Integer.parseInt(a);
+    try {
+     Integer.parseInt(a);
      if (Integer.parseInt(a) >0){
-    v=true;}
-} catch (NumberFormatException e) {
-   v=false;
-    System.out.println("Wrong number");
-   
-}
-   
-  
-   
+       v=true;
+      }
+    } catch (NumberFormatException e) {
+       v=false;
+       System.out.println("Wrong number");
+    }
     return v ; 
 }
      
@@ -303,150 +307,153 @@ private boolean validePersonne(String a){
        LabelAlertPersonne.setText("");
        LabelAlertTemp.setText("");
        Recette R1 = new Recette();
-      /*  Recette R1 = new Recette(Session.LoggedUser,nom.getText(),type.getValue(),description.getText(),
-         r.getNom_image(),cout.getValue(),Time.valueOf(Tpreparation.getText()),Time.valueOf(Trepos.getText()),
-         Time.valueOf(Tcuisson.getText()),Integer.valueOf(nbPersonne.getText()),difficulte.getValue(),
-         astuces.getText(),ingredients.getText(),etapes.getText()); 
-        if(("".equals(nom.getText()))||("".equals(type.getValue()))||("".equals(description.getText()))||
-                ("".equals(r.getNom_image()))|| ("".equals(cout.getValue()))|| ("".equals(Tpreparation.getText()))||
-                ("".equals(Trepos.getText()))||("".equals(Tcuisson.getText()))||("".equals(nbPersonne.getText()))||
-                ("".equals(difficulte.getValue()))||("".equals(astuces.getText()))||("".equals(ingredients.getText()))||
-                ("".equals(etapes.getText()))){
-            LabelAlert.setText("Veuillez Remplir Tout les champs !");
-        }*/
+       int test=0;
     R1.setIduser(Session.LoggedUser); 
    
        if(valide(nom.getText())){
         R1.setNom(nom.getText());
          }else{
-             
+             test++;
              LabelAlert.setText("Veuillez Remplir Tout les champs !");
          }
                  
-         if(valide(type.getValue())){
+        if(type.getValue()!= null){
         R1.setType(type.getValue());
          }else {
-              
+              test++;
              LabelAlert.setText("Veuillez Remplir Tout les champs !");
          }
          
          if(valide(description.getText())){
         R1.setDescription(description.getText());
         }else {
-              
+             test++;
              LabelAlert.setText("Veuillez Remplir Tout les champs !");
          }
          
          if(validePersonne(nbPersonne.getText())){
         R1.setNb_personne(Integer.valueOf(nbPersonne.getText()));
         }else {
-              
+             test++; 
           LabelAlert.setText("Veuillez Remplir Tout les champs !");
             // LabelAlertPersonne.setText("nombre de personnes doit etre sup à 0");
          }
          
-         if(valide(cout.getValue())){
-        R1.setCout(cout.getValue());
+         if(cout.getValue()!= null){
+         R1.setCout(cout.getValue());
          }else {
-             
+             test++;
              LabelAlert.setText("Veuillez Remplir Tout les champs !");
          } 
          
-          if(valide(difficulte.getValue())){
+          if(difficulte.getValue()!=null){
         R1.setDifficulte(difficulte.getValue());
          }else {
-               
+              test++; 
               LabelAlert.setText("Veuillez Remplir Tout les champs !");
           }
         
             if(valide(Tpreparation.getText())){
         R1.setTemps_preparation(Time.valueOf(Tpreparation.getText()));
         }else {
-                
+                test++;
                 LabelAlert.setText("Veuillez Remplir Tout les champs !");
             }
              
            if(valide(Trepos.getText())){
         R1.setTemps_repos(Time.valueOf(Trepos.getText()));
         }else {
-              
+              test++;
                LabelAlert.setText("Veuillez Remplir Tout les champs !");
             }
            
-          if(valide(Tcuisson.getText())){
-        R1.setTemps_cuisson(Time.valueOf(Tcuisson.getText()));
+        if(valide(Tcuisson.getText())){
+          R1.setTemps_cuisson(Time.valueOf(Tcuisson.getText()));
         }else {
-               
+              test++; 
               LabelAlert.setText("Veuillez Remplir Tout les champs !");
           }
           
            if(valide(ingredients.getText())){
         R1.setIngredients(ingredients.getText());
          }else {
-               
+               test++;
                LabelAlert.setText("Veuillez Remplir Tout les champs !");
            }
            
            if(valide(astuces.getText())){
         R1.setAstuces(astuces.getText());
          }else {
-               
+               test++;
                LabelAlert.setText("Veuillez Remplir Tout les champs !");
            }
            
             if(valide(etapes.getText())){
         R1.setEtapes(etapes.getText());
          }else {
-                
+                test++;
                 LabelAlert.setText("Veuillez Remplir Tout les champs !");
             }
        
           if(valide(r.getNom_image())) {
        R1.setNom_image(r.getNom_image());}
           else {
-               
+               test++;
               LabelAlert.setText("Veuillez Remplir Tout les champs !");
           }
        
-   if(LabelAlert.getText().equals("") && LabelAlertPersonne.getText().equals("") &&LabelAlertTemp.getText().equals("") )
-   
-        { 
-           
-            System.out.println("equals");
-            Rs.add(R1); 
+        if(test==0 && "".equals(LabelAlertPersonne.getText()) && "".equals(LabelAlertTemp.getText()) && "".equals(LabelImg.getText()) )
+        {   Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("");
+            alert.setHeaderText("Confirmer l'ajout de cette Recette! Merci");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) { 
+                System.out.println("equals");
+              Rs.add(R1); 
               FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClientProfile_MesRecett.fxml"));
-                
                 Parent root = loader.load();
-                
                 ChangeItGirls.getScene().setRoot(root); 
-        } 
+            } 
+            
+         } 
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("");
+            alert.setHeaderText("Veuillez Remplir tous les champs afin d'ajouter votre recettte");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) { 
+                System.out.println("ok");
+            }
+       } 
+ 
     }
 
     @FXML
     private void addImage(MouseEvent event) throws MalformedURLException, SQLException {
-             FileChooser fc = new FileChooser();
+        FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
         if (selectedFile != null) {
          
             String imageFile = selectedFile.toURI().toURL().toString();
             System.out.println(imageFile);
             r.setNom_image(imageFile);
-          
+           LabelImg.setText("");
 
         } else {
-           LabelAlert.setText("file doesn't exist");
+           LabelAlert.setText("image n'existe pas");
+           LabelImg.setText("x");
         } 
       
     }
 
     @FXML
     private void ControlNom(MouseEvent event) {
-           if(valide(nom.getText())){
+       /*    if(valide(nom.getText())){
             LabelAlert.setText("");
          }else{
              
              LabelAlert.setText("entrer un nom !");
-         }
+         } */
     }
 
     @FXML
@@ -490,6 +497,13 @@ private boolean validePersonne(String a){
                 
                 LabelAlertTemp.setText("Temps doit etre sous la forme 00:00:00");
             }
+    }
+
+    @FXML
+    private void MouseClickClose(MouseEvent event) {
+          Stage stage = (Stage) btnClose.getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
 
 

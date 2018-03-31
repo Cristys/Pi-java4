@@ -124,6 +124,9 @@ public class VoteService  {
              ex.printStackTrace();
         }
         //////
+         if(v==0 || v1==0){
+           return 0;  
+         }
         double x=(double)v1/(double)v;
        
         if(x>0 && x<=0.5){

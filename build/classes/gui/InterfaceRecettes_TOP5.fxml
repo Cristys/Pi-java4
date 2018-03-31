@@ -289,7 +289,7 @@
                               <Text fx:id="usernameR1" layoutX="277.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                               <Text layoutX="171.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" />
                               <Text fx:id="ScoreR1" layoutX="225.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                              <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="386.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="386.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/msRanke1.png" />
                                  </image>
@@ -310,7 +310,7 @@
                               <Text fx:id="usernameR2" layoutX="279.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                               <Text layoutX="167.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" />
                               <Text fx:id="ScoreR2" layoutX="225.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                              <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="386.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="386.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/msRanke2.png" />
                                  </image>
@@ -331,7 +331,7 @@
                               <Text fx:id="usernameR3" layoutX="279.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                               <Text layoutX="165.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" />
                               <Text fx:id="ScoreR3" layoutX="217.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                              <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="386.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="384.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/msRanke3.png" />
                                  </image>
@@ -352,7 +352,7 @@
                               <Text fx:id="usernameR4" layoutX="278.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                               <Text layoutX="171.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" />
                               <Text fx:id="ScoreR4" layoutX="223.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                              <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="386.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="388.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/msRanke4.png" />
                                  </image>
@@ -374,7 +374,7 @@
                               <Text fx:id="usernameR5" layoutX="280.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                               <Text layoutX="178.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" />
                               <Text fx:id="ScoreR5" layoutX="230.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                              <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="386.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="388.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/msRanke5.png" />
                                  </image>

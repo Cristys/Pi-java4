@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import utils.Session;
 
 /**
@@ -79,8 +80,6 @@ public class InterfaceClientProfileController implements Initializable {
     @FXML
     private VBox ChangeItGirls;
     @FXML
-    private ImageView CModifyIcon;
-    @FXML
     private Pane AddRecette;
     @FXML
     private Text AjouterRecette;
@@ -98,6 +97,8 @@ public class InterfaceClientProfileController implements Initializable {
     private Text username;
     @FXML
     private Text email;
+    @FXML
+    private ImageView btnClose;
 
     /**
      * Initializes the controller class.
@@ -200,10 +201,6 @@ public class InterfaceClientProfileController implements Initializable {
                 anco.getScene().setRoot(root);
     }
 
-    @FXML
-    private void GoToModifyMyProfile(MouseEvent event) {
-        
-    }
 
     @FXML
     private void GoToAddRecette(MouseEvent event) throws SQLException, IOException{
@@ -221,6 +218,13 @@ public class InterfaceClientProfileController implements Initializable {
                 Parent root = loader.load();
                 
                 ChangeItGirls.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void MouseClickClose(MouseEvent event) {
+          Stage stage = (Stage) btnClose.getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
 
 

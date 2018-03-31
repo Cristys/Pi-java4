@@ -267,10 +267,13 @@
                   <Text fx:id="username" layoutX="197.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" />
                   <Text layoutX="37.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 2em;" text="Bienvenue- " />
                   <Text fx:id="email" layoutX="97.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                  <ImageView fx:id="CModifyIcon" fitHeight="40.0" fitWidth="35.0" layoutX="432.0" layoutY="96.0" onMouseClicked="#GoToModifyMyProfile" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnClose" fitHeight="40.0" fitWidth="38.0" layoutX="437.0" layoutY="11.0" onMouseClicked="#MouseClickClose" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icons/msmodify.png" />
+                        <Image url="@../icons/msclose2.png" />
                      </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </ImageView>
                </children>
                <effect>

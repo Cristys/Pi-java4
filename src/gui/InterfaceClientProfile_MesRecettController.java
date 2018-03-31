@@ -249,17 +249,8 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
 
     @FXML
    private void ConsulterRecette(MouseEvent event) throws IOException {
-       //  private void ConsulterRecette(MouseEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));
-    //     Stage stage = new Stage(StageStyle.TRANSPARENT);
-         // scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-     /*   stage.setScene(
-        new Scene(
- 
-      (Pane) loader.load()
-    )
-          
-  ); */
+
          Parent root = loader.load();
                 
                anco.getScene().setRoot(root);
@@ -270,11 +261,7 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
        InterfaceRecettes_AfficherUneR_1Controller controller = 
         loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
         controller.initData(Session.iRecetteService.findById(selectedRecette.getId()));
-   
-  
-    //    stage.show();
 
-       // return stage;
     }
 
     @FXML

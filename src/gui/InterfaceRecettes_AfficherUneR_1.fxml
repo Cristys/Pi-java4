@@ -384,7 +384,7 @@
                               <Pane layoutY="406.0" prefHeight="175.0" prefWidth="323.0" style="-fx-background-color: #eee2dc;">
                                  <children>
                                     <Text layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #2c3531; -fx-font-size: 1.3em;" text="Astuces:" />
-                                    <Text fx:id="astuces" layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #2c3531;" />
+                                    <Text fx:id="astuces" layoutX="6.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #2c3531;" wrappingWidth="294.0" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -559,7 +559,7 @@
                   <ImageView fx:id="image" fitHeight="223.0" fitWidth="265.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
                   <Pane prefHeight="103.0" prefWidth="936.0" style="-fx-background-color: #ffb48f;">
                      <children>
-                        <Text fx:id="nom" layoutX="429.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #2c3531; -fx-font-size: 2.5em;" textAlignment="CENTER" />
+                        <Text fx:id="nom" fill="WHITE" layoutX="429.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #2c3531; -fx-font-size: 2.5em;" textAlignment="CENTER" />
                         <Text fx:id="idrecette" fill="TRANSPARENT" layoutX="38.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                         <ImageView fx:id="close" fitHeight="35.0" fitWidth="33.0" layoutX="889.0" layoutY="14.0" onMouseClicked="#clickClose1" pickOnBounds="true" preserveRatio="true">
                            <image>
