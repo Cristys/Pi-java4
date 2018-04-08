@@ -404,6 +404,23 @@ public class VoteService  {
              ex.printStackTrace();
         } 
         return v1;
-        }
+    }
+    
+    public int NbTotalV(){
+        int v1=0;
+        String req1 = "select count(*) from vote ";
+        PreparedStatement preparedStatement1;
+        try {
+            preparedStatement1 = connection.prepareStatement(req1);
+            
+            ResultSet resultSet1 = preparedStatement1.executeQuery();
+            while (resultSet1.next()) {
+               v1= resultSet1.getInt(1); }
+            System.out.println(v1);
+        } catch (SQLException ex) {
+             ex.printStackTrace();
+        } 
+        return v1;
+    }
 
 }

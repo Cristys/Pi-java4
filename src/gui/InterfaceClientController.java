@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import utils.Session;
 
 
@@ -79,6 +80,8 @@ public class InterfaceClientController implements Initializable {
     private VBox CBoxEvaluation;
     @FXML
     private VBox CBoxPanier;
+    @FXML
+    private ImageView close;
 
     /**
      * Initializes the controller class.
@@ -179,6 +182,13 @@ public class InterfaceClientController implements Initializable {
                 Parent root = loader.load();
                 
                 anco.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void Close(MouseEvent event) {
+          Stage stage = (Stage) close.getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
 
 

@@ -42,5 +42,13 @@
             <Text fx:id="msg" layoutX="9.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #e60000; -fx-font-weight: bold;" wrappingWidth="361.0" />
          </children>
       </AnchorPane>
+      <ImageView fx:id="btnClose" fitHeight="49.0" fitWidth="51.0" layoutX="1273.0" layoutY="33.0" onMouseClicked="#CloseWindow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/msclose3.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
    </children>
 </AnchorPane>

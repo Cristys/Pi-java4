@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
@@ -332,20 +333,40 @@
                            <children>
                               <Pane prefHeight="123.0" prefWidth="242.0">
                                  <children>
-                                    <Text layoutX="6.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #e35972;" text="
-En manque d'idées ?
-Recevez la recette du jour" textAlignment="CENTER" wrappingWidth="230.7421875" />
+                                    <Text layoutX="6.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #e35972;" text=" En manque d'idées ? " textAlignment="CENTER" wrappingWidth="230.7421875" />
                                  </children>
                               </Pane>
                               <Pane prefHeight="96.0" prefWidth="242.0" style="-fx-background-color: #e35972; -fx-background-radius: 5px;">
                                  <children>
-                                    <Text fill="WHITE" layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.5em;" text="Abonnez-vous à notre newsletter!" textAlignment="CENTER" wrappingWidth="200.662109375" />
+                                    <Text fill="WHITE" layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.5em;" text="Recevez un astuce recette au hazard" textAlignment="CENTER" wrappingWidth="200.662109375" />
                                  </children>
                               </Pane>
                            </children>
                         </VBox>
                      </children>
                   </HBox>
+                  <Pane fx:id="PaneSMS" layoutX="451.0" layoutY="541.0" prefHeight="200.0" prefWidth="409.0" style="-fx-background-color: white; -fx-background-radius: 10px;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                             <Text layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1em; -fx-fill:#e35972;" text="Entrer votre numéro de téléphone: " />
+                                
+                        <JFXTextField fx:id="NumberSMS" layoutX="35.0" layoutY="56.0" />
+                        <ImageView fx:id="btnCloseSMS" fitHeight="37.0" fitWidth="33.0" layoutX="362.0" layoutY="13.0" onMouseClicked="#CloseSMS" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msclose3.png" />
+                           </image>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                        <Button fx:id="btnForSMS" layoutX="236.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#sendSMS1" style="-fx-background-color: #e35972; -fx-text-fill: white;" text="Confirmer">
+                           <effect>
+                              <DropShadow />
+                           </effect></Button>
+                     </children>
+                  </Pane>
                </children>
             </Pane>
          </children></VBox>

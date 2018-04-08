@@ -29,7 +29,7 @@
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox fx:id="CBoxAdminHome" onMouseClicked="#goToHome" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #f9d423;">
+                  <VBox fx:id="CBoxAdminHome" onMouseClicked="#goToHome" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #9d4867;">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Courier New; -fx-font-size: 1.5em;" text="Admin Panel">
                            <VBox.margin>
@@ -46,7 +46,7 @@
                         </ImageView>
                      </children>
                      <effect>
-                        <DropShadow color="#e6f207" height="38.25" radius="26.1675" spread="0.24" width="68.42" />
+                        <DropShadow color="#9d4867" height="53.34" radius="29.94" spread="0.24" width="68.42" />
                      </effect>
                   </VBox>
                   <VBox fx:id="CBoxClients" onMouseClicked="#goToClients" prefHeight="50.0" prefWidth="323.0">
@@ -64,7 +64,7 @@
                         <Insets top="15.0" />
                      </opaqueInsets>
                   </VBox>
-                  <VBox fx:id="CBoxClients" onMouseClicked="#goToResponsables" prefHeight="50.0" prefWidth="100.0">
+                  <VBox fx:id="CBoxResponsables" onMouseClicked="#goToResponsables" prefHeight="50.0" prefWidth="100.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.3em; -fx-fill: white;" text="Responsables">
                            <VBox.margin>
@@ -141,17 +141,193 @@
                   </VBox>
                </children>
                <effect>
-                  <DropShadow color="#f4f806" />
+                  <DropShadow color="#111110" />
                </effect>
             </VBox>
          </items>
          <effect>
-            <DropShadow color="#e3ee0f" />
+            <DropShadow color="#9d4867" />
          </effect>
       </SplitPane>
-      <VBox fx:id="ChangeItGirls" layoutX="246.0" onMouseClicked="#goToHome" prefHeight="930.0" prefWidth="1107.0" style="-fx-background-color: white;">
+      <VBox fx:id="ChangeItGirls" layoutX="246.0" onMouseClicked="#goToHome" prefHeight="930.0" prefWidth="1107.0" style="-fx-background-color: transparent;">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="admin" />
+            <Pane prefHeight="934.0" prefWidth="1107.0">
+               <children>
+                  <Pane prefHeight="79.0" prefWidth="1107.0" style="-fx-background-color: #363030;">
+                     <children>
+                        <Text fill="#fcfcfc" layoutX="199.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 3em;" text="Bienvenue dans l'admin panel">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <ImageView fx:id="close" fitHeight="40.0" fitWidth="40.0" layoutX="1053.0" layoutY="14.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/msclose2.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+                  <Pane layoutX="-1.0" layoutY="105.0" prefHeight="242.0" prefWidth="418.0" style="-fx-background-color: #bf4080;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text layoutX="66.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 3em;" text="Produits" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="209.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msAd1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="760.0" layoutY="105.0" prefHeight="368.0" prefWidth="327.0" style="-fx-background-color: #d279d2;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text layoutX="74.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 3em;" text="Panier" />
+                        <ImageView fitHeight="211.0" fitWidth="239.0" layoutX="41.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msAd9.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="359.0" prefHeight="178.0" prefWidth="201.0" style="-fx-background-color: #660066;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text fill="WHITE" layoutX="42.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.6em;" text="Patisseries" />
+                        <ImageView fitHeight="134.0" fitWidth="178.0" layoutX="34.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msAd7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="216.0" layoutY="359.0" prefHeight="178.0" prefWidth="201.0" style="-fx-background-color: #ffcc00;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text layoutX="41.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.6em;" text="Categories" />
+                        <ImageView fitHeight="134.0" fitWidth="172.0" layoutX="34.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msAd8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="1.0" layoutY="556.0" prefHeight="374.0" prefWidth="201.0" style="-fx-background-color: #ff9966;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text layoutX="35.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.6em;" text="Promotions" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="26.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msAd10.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="219.0" layoutY="554.0" prefHeight="184.0" prefWidth="201.0" style="-fx-background-color: #46202e;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text fill="WHITE" layoutX="62.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.6em;" text="Clients" />
+                        <ImageView fitHeight="134.0" fitWidth="178.0" layoutX="27.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msAd3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="220.0" layoutY="748.0" prefHeight="184.0" prefWidth="201.0" style="-fx-background-color: #cc6699;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text fill="WHITE" layoutX="53.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.6em;" text="Recettes" />
+                        <ImageView fitHeight="134.0" fitWidth="188.0" layoutX="34.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msAd6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="442.0" layoutY="489.0" prefHeight="253.0" prefWidth="435.0" style="-fx-background-color: lightgrey;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text layoutX="56.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em;" text="Evaluations" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="231.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msAd11.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="893.0" layoutY="487.0" prefHeight="253.0" prefWidth="194.0" style="-fx-background-color: #ff66ff;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text fill="#fffefe" layoutX="15.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.6em;" text="Commentaires" />
+                        <ImageView fitHeight="141.0" fitWidth="178.0" layoutX="26.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/mscommenter2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="442.0" layoutY="754.0" prefHeight="178.0" prefWidth="245.0" style="-fx-background-color: #9966ff;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text fill="WHITE" layoutX="46.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.6em;" text="Responsables" />
+                        <ImageView fitHeight="125.0" fitWidth="152.0" layoutX="60.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msAd3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="704.0" layoutY="754.0" prefHeight="178.0" prefWidth="385.0" style="-fx-background-color: #9d4867;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text fill="WHITE" layoutX="98.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em;" text="Réclamations" />
+                        <ImageView fitHeight="116.0" fitWidth="161.0" layoutX="125.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msAd12.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="442.0" layoutY="105.0" prefHeight="368.0" prefWidth="299.0" style="-fx-background-color: #ff8880;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Text layoutX="30.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 3em;" text="Utilisateurs" />
+                        <ImageView fitHeight="193.0" fitWidth="224.0" layoutX="50.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msAd3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
          </children></VBox>
    </children>
 </AnchorPane>

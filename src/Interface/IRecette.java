@@ -19,6 +19,11 @@ public interface IRecette extends IService <Recette, Integer>{
       ObservableList<Recette> DisplayAll(); 
       ObservableList<Recette> RechercheFiltrer(String ValueType1,String ValueCout1,String ValueDiff1);
       ObservableList<Recette> findByNom(String nom );
+      public int CountType(String type);
+      public int CountCout(String cout);
+      public int CountDiff(String diff);
+      public int NbTotalR();
+       public int countCommentOf1Recette(int idrecette);
    /*  
      
       

@@ -25,11 +25,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
-import models.BCrypt;
+import entities.BCrypt;
 import entities.User;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import service.UserService;
 import utils.Session;
@@ -61,6 +62,8 @@ public class InterfaceLoginController implements Initializable {
     private Text label;
     @FXML
     private Text msg;
+    @FXML
+    private ImageView btnClose;
     
     
     
@@ -135,6 +138,13 @@ public class InterfaceLoginController implements Initializable {
          else{
         msg.setText("Ce Compte n'existe pas..Vérifier vos données!");
          }
+    }
+
+    @FXML
+    private void CloseWindow(MouseEvent event) {
+         Stage stage = (Stage) btnClose.getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
     
 }

@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -55,6 +56,10 @@ public class InterfaceAdminController implements Initializable {
     private VBox CBoxEvaluation;
     @FXML
     private VBox CBoxPanier;
+    @FXML
+    private VBox CBoxResponsables;
+    @FXML
+    private ImageView close;
 
     /**
      * Initializes the controller class.
@@ -103,7 +108,7 @@ public class InterfaceAdminController implements Initializable {
 
     @FXML
     private void goToRecettes(MouseEvent event)  throws SQLException, IOException {
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceAdmin_Recettes.fxml"));
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceAdmin_Recettes1.fxml"));
                 
                 Parent root = loader.load();
                 
@@ -153,6 +158,13 @@ public class InterfaceAdminController implements Initializable {
                 Parent root = loader.load();
                 
                 anco.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void close(MouseEvent event) {
+    Stage stage = (Stage) close.getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
     
 }

@@ -43,6 +43,30 @@ import service.RecetteService;
 import service.VoteService;
 import utils.Session;
 
+
+//PRINTER DETECTOR
+import java.io.*;
+import javax.print.*;
+import javax.print.attribute.*; 
+import javax.print.attribute.standard.*; 
+  
+
+import java.awt.Desktop;
+import java.io.IOException;
+
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+
+
+import org.apache.poi.xwpf.usermodel.*;
+
 /**
  * FXML Controller class
  *
@@ -200,6 +224,10 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
     private ImageView yS4;
     @FXML
     private ImageView yS5;
+    @FXML
+    private ImageView doc;
+   // private Pane PanePrinter;
+   // private Text PrinterMessage;
    
     /**
      * Initializes the controller class.
@@ -434,7 +462,7 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
             noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar0.png"));
              noteFinale.setEffect(dropShadow);
         }
-     
+    
   }
 
    
@@ -563,8 +591,8 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
 
     @FXML
     private void onMouseClickAddVote(MouseEvent event) throws IOException {
-              System.out.println(Session.LoggedUser.getId());
-    int xx= Session.iRecetteService.findById(Integer.valueOf(idrecette.getText())).getIduser().getId();
+       System.out.println(Session.LoggedUser.getId());
+       int xx= Session.iRecetteService.findById(Integer.valueOf(idrecette.getText())).getIduser().getId();
        System.out.println(Session.iRecetteService.findById(Integer.valueOf(idrecette.getText())).getIduser().getId());
         if(Session.LoggedUser.getId()==xx){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -604,10 +632,10 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
             }
         
          }else{
-              Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Attention!");
             alert.setHeaderText("La Notene doit pas etre vide ");
-              Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
     }
         } 
         
@@ -615,7 +643,7 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
 
     @FXML
     private void clickStar4(MouseEvent event) {
-         StarsBox.setVisible(false);
+        StarsBox.setVisible(false);
         yellowStars.setVisible(true);
         Image grey= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarGrey.png");
         Image yellow= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarYellow.png");
@@ -696,6 +724,94 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
           
         VoteHidden.setText("3");
         UneNote=3; 
+    }
+
+    @FXML
+    private void getinDOC(MouseEvent event) throws FileNotFoundException, IOException {
+         //Path path = Paths.get("C:/Users/crist/Documents/GitHub/Pi-java4/src/icons/some.docx");
+	XWPFDocument document = new XWPFDocument();
+        XWPFParagraph tmpParagraph = document.createParagraph();
+        XWPFRun tmpRun = tmpParagraph.createRun();
+        //////////////
+     
+        String LeText= "         Nom: "+nom.getText()+
+                "\n Proposée par: "+username.getText()+
+                "\n Type: "+type.getText()+
+                "\n Description: "+description.getText()+
+                "\n Nombre de Personne: "+nbPersonne.getText()+
+                "\n Cout: "+ cout.getText()+
+                "\n Difficulté:"+difficulte.getText()+
+                "\n Temps de Préparation: "+Tpreparation.getText()+
+                "\n Temps de Préparation:"+Trepos.getText()+
+                "\n Temps de Cuisson: "+Tcuisson.getText()+
+                "\n Ingrédients: "+ ingredients.getText()+
+                "\n Etapes: "+etapes.getText()+
+                "\n Astuce: "+astuces.getText();
+         for (String str : LeText.split("\n")) {
+            
+        tmpRun.setText(str);
+        tmpRun.addBreak();
+        tmpRun.setColor("9966ff"); 
+        
+        
+    }
+    
+       
+        tmpRun.setFontSize(18);
+        
+        document.write(new FileOutputStream(new File("C:/wamp64/www/java_DOC/ms"+idrecette.getText()+".docx")));
+
+        File fileToPrint = new File("C:/wamp64/www/java_DOC/ms"+idrecette.getText()+".docx");
+		Desktop.getDesktop().print(fileToPrint);
+	
+    
+        // Printer detectos, also say wich cone is your printer / near printers
+        FileInputStream psStream = null;
+         
+        try {
+            psStream = new FileInputStream("C:/wamp64/www/java_DOC/ms"+idrecette.getText()+".docx");
+            } catch (FileNotFoundException ffne) {
+              ffne.printStackTrace();
+            }
+            if (psStream == null) {
+                return;
+            }
+        DocFlavor psInFormat = DocFlavor.INPUT_STREAM.AUTOSENSE;
+        Doc myDoc = new SimpleDoc(psStream, psInFormat, null);  
+        PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
+        PrintService[] services = PrintServiceLookup.lookupPrintServices(psInFormat, aset);
+         
+        // this step is necessary because I have several printers configured
+        PrintService myPrinter = null;
+        for (int i = 0; i < services.length; i++){
+            System.out.println("service found: ");
+            String svcName = services[i].toString();           
+            if (svcName.contains("printer closest to me "+svcName)){
+                
+               
+                myPrinter = services[i];
+                System.out.println("my printer found: "+svcName);
+                break;
+            }
+        }
+         // print action
+        if (myPrinter != null) {            
+            DocPrintJob job = myPrinter.createPrintJob();
+            try {
+            job.print(myDoc, aset);
+             
+            } catch (Exception pe) {pe.printStackTrace();}
+        } else {
+            System.out.println("aucune service imprimente trouvé ");
+        }
+   
+		//Desktop.getDesktop().print(fileToPrint);
+   
+    }
+
+    private void ClosePrinter(MouseEvent event) {
+        // PanePrinter.setVisible(false);
+        //empty
     }
     
 }

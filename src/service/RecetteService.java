@@ -548,5 +548,94 @@ public class RecetteService implements IRecette{
         
         return listeMesRecettes;
              
-         } 
+    } 
+    @Override
+    public int CountType(String type){
+        int v1=0;
+        String req1 = "select count(*) from recette where type =?";
+        PreparedStatement preparedStatement1;
+        try {
+            preparedStatement1 = connection.prepareStatement(req1);
+            preparedStatement1.setString(1, type);
+            ResultSet resultSet1 = preparedStatement1.executeQuery();
+            while (resultSet1.next()) {
+               v1= resultSet1.getInt(1); }
+            System.out.println(v1);
+        } catch (SQLException ex) {
+             ex.printStackTrace();
+        } 
+        return v1;
+    }
+    
+    @Override
+    public int CountCout(String cout){
+        int v1=0;
+        String req1 = "select count(*) from recette where cout =?";
+        PreparedStatement preparedStatement1;
+        try {
+            preparedStatement1 = connection.prepareStatement(req1);
+            preparedStatement1.setString(1, cout);
+            ResultSet resultSet1 = preparedStatement1.executeQuery();
+            while (resultSet1.next()) {
+               v1= resultSet1.getInt(1); }
+            System.out.println(v1);
+        } catch (SQLException ex) {
+             ex.printStackTrace();
+        } 
+        return v1;
+    }
+    
+     @Override
+    public int CountDiff(String diff){
+        int v1=0;
+        String req1 = "select count(*) from recette where difficulte=?";
+        PreparedStatement preparedStatement1;
+        try {
+            preparedStatement1 = connection.prepareStatement(req1);
+            preparedStatement1.setString(1, diff);
+            ResultSet resultSet1 = preparedStatement1.executeQuery();
+            while (resultSet1.next()) {
+               v1= resultSet1.getInt(1); }
+            System.out.println(v1);
+        } catch (SQLException ex) {
+             ex.printStackTrace();
+        } 
+        return v1;
+    }
+    
+    @Override
+    public int NbTotalR(){
+        int v1=0;
+        String req1 = "select count(*) from recette ";
+        PreparedStatement preparedStatement1;
+        try {
+            preparedStatement1 = connection.prepareStatement(req1);
+            
+            ResultSet resultSet1 = preparedStatement1.executeQuery();
+            while (resultSet1.next()) {
+               v1= resultSet1.getInt(1); }
+            System.out.println(v1);
+        } catch (SQLException ex) {
+             ex.printStackTrace();
+        } 
+        return v1;
+    }
+    
+    @Override
+    public int countCommentOf1Recette(int idrecette){
+        int v1=0;
+        String req1 = "select count(*) from commentaire where idrecette=? ";
+        PreparedStatement preparedStatement1;
+        try {
+            preparedStatement1 = connection.prepareStatement(req1);
+            preparedStatement1.setInt(1, idrecette);
+            ResultSet resultSet1 = preparedStatement1.executeQuery();
+            while (resultSet1.next()) {
+               v1= resultSet1.getInt(1); }
+            System.out.println(v1);
+        } catch (SQLException ex) {
+             ex.printStackTrace();
+        } 
+        return v1;
+    }
 }

@@ -155,17 +155,61 @@ public class CommentaireService implements ICommentaire {
            while(resultSet.next()){
               Commentaire r= new Commentaire(
                       resultSet.getInt(1),
-                        new RecetteService().findById(resultSet.getInt(2)),
+                       new RecetteService().findById(resultSet.getInt(2)),
                        new UserService().findById(resultSet.getInt(3)),
                      
                       
                       resultSet.getString(4)
-                      /*resultSet.getInt(1),
-                     new RecetteService().findById(resultSet.getInt(2)),
+                       );
+               listeCommentaires.add(r);
+               
+           }
+       }catch (SQLException ex){
+           Logger.getLogger(CommentaireService.class.getName()).log(Level.SEVERE, null , ex);
+           
+       }
+        
+        
+        
+        return listeCommentaires;
+             
+    }
+           @Override
+    public int NbTotalC(){
+        int v1=0;
+        String req1 = "select count(*) from commentaire ";
+        PreparedStatement preparedStatement1;
+        try {
+            preparedStatement1 = connection.prepareStatement(req1);
+            
+            ResultSet resultSet1 = preparedStatement1.executeQuery();
+            while (resultSet1.next()) {
+               v1= resultSet1.getInt(1); }
+            System.out.println(v1);
+        } catch (SQLException ex) {
+             ex.printStackTrace();
+        } 
+        return v1;
+    }
+    
+        @Override
+    public ObservableList<Commentaire> getByUser(int Iduser) {
+      ObservableList<Commentaire> listeCommentaires=FXCollections.observableArrayList();
+       String req="select * from commentaire where iduser=? ";
+       PreparedStatement preparedStatement;
+       try {
+           preparedStatement=connection.prepareStatement(req);
+           preparedStatement.setInt(1,Iduser);
+           ResultSet resultSet=preparedStatement.executeQuery();
+           while(resultSet.next()){
+              Commentaire r= new Commentaire(
+                      resultSet.getInt(1),
+                       new RecetteService().findById(resultSet.getInt(2)),
                        new UserService().findById(resultSet.getInt(3)),
+                     
                       
                       resultSet.getString(4)
-                    */  );
+                       );
                listeCommentaires.add(r);
                
            }

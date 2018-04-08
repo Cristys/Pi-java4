@@ -98,59 +98,151 @@ public class InterfaceClientProfile_ModifierRecetteController implements Initial
     private Text emptyimageName;
     @FXML
     private Text emptyIdRecette;
+    @FXML
+    private Text LabelAlert;
+    @FXML
+    private Text LabelAlertPersonne;
+    @FXML
+    private Text LabelAlertTemp;
+    @FXML
+    private Text LabelImg;
    
     
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         type.setItems(types);
-         cout.setItems(couts);
-         difficulte.setItems(difficultes);
-         username.setText(Session.LoggedUser.getUsername());
-        
+        type.setItems(types);
+        cout.setItems(couts);
+        difficulte.setItems(difficultes);
+        username.setText(Session.LoggedUser.getUsername());
+        LabelAlert.setText("");
+        LabelAlertPersonne.setText("");
+        LabelAlertTemp.setText("");
+       //  LabelAlertTemp.setText("");
+         LabelImg.setText("");
     }    
-
      
     @FXML
     private void ModifierRecette(MouseEvent event) throws MalformedURLException , SQLException, IOException{
-     //  LabelAlert.setText("");
-     //  LabelAlertPersonne.setText("");
-     //  LabelAlertTemp.setText("");
+        LabelAlert.setText("");
+       LabelAlertPersonne.setText("");
+       LabelAlertTemp.setText("");
+       int test=0;
        RecetteService Rs1 = new RecetteService();
        Recette R1 =  new Recette();
        
-      R1.setIduser(Session.LoggedUser); 
-      R1.setId(Integer.valueOf(emptyIdRecette.getText()));
+       R1.setIduser(Session.LoggedUser); 
+       R1.setId(Integer.valueOf(emptyIdRecette.getText()));
         
-        R1.setNom(nom.getText());
-       
+        if(valide(nom.getText())){
+            R1.setNom(nom.getText());
+            LabelAlert.setText("");
+        }else{
+            test++;
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        }
+                 
+        if(type.getValue()!= null){
         R1.setType(type.getValue());
-       
-        R1.setDescription(description.getText());
-        
-        R1.setNb_personne(Integer.valueOf(nbPersonne.getText()));
-        
-        R1.setCout(cout.getValue());
+        LabelAlert.setText("");
+        }else {
+            test++;
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        }
          
+        if(valide(description.getText())){
+            R1.setDescription(description.getText());
+            LabelAlert.setText("");
+        }else {
+            test++;
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        }
+         
+        if(validePersonne(nbPersonne.getText())){
+            R1.setNb_personne(Integer.valueOf(nbPersonne.getText()));
+            LabelAlert.setText("");
+        }else {
+            test++; 
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+            // LabelAlertPersonne.setText("nombre de personnes doit etre sup à 0");
+        }
+         
+        if(cout.getValue()!= null){
+            R1.setCout(cout.getValue());
+            LabelAlert.setText("");
+        }else {
+            test++;
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        } 
+         
+        if(difficulte.getValue()!=null){
         R1.setDifficulte(difficulte.getValue());
-         
-        R1.setTemps_preparation(Time.valueOf(Tpreparation.getText()));
-      
-        R1.setTemps_repos(Time.valueOf(Trepos.getText()));
-       
-        R1.setTemps_cuisson(Time.valueOf(Tcuisson.getText()));
+        LabelAlert.setText("");
+        }else {
+            test++; 
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        }
         
-        R1.setIngredients(ingredients.getText());
-      
+        if(valide(Tpreparation.getText())){
+            R1.setTemps_preparation(Time.valueOf(Tpreparation.getText()));
+            LabelAlert.setText("");
+        }else {
+            test++;
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        }
+             
+        if(valide(Trepos.getText())){
+            R1.setTemps_repos(Time.valueOf(Trepos.getText()));
+            LabelAlert.setText("");
+        }else {
+            test++;
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        }
+           
+        if(valide(Tcuisson.getText())){
+          R1.setTemps_cuisson(Time.valueOf(Tcuisson.getText()));
+          LabelAlert.setText("");
+        }else {
+            test++; 
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        }
+          
+        if(valide(ingredients.getText())){
+            R1.setIngredients(ingredients.getText());
+            LabelAlert.setText("");
+        }else {
+            test++;
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        }
+           
+        if(valide(astuces.getText())){
         R1.setAstuces(astuces.getText());
-         
+        LabelAlert.setText("");
+        }else {
+            test++;
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        }
+           
+        if(valide(etapes.getText())){
         R1.setEtapes(etapes.getText());
-        
-       R1.setNom_image(emptyimageName.getText());
+        LabelAlert.setText("");
+        }else {
+            test++;
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        }
+       
+        if(valide(r.getNom_image())) {
+           R1.setNom_image(r.getNom_image());
+           LabelAlert.setText("");
+        }
+        else {
+            test++;
+            LabelAlert.setText("Veuillez Remplir Tout les champs !");
+        }
          
             
-            Rs1.update(R1); 
+          /*  Rs1.update(R1); 
             System.out.println("success");
              Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Recette Modifiée ");
@@ -166,7 +258,31 @@ public class InterfaceClientProfile_ModifierRecetteController implements Initial
     // do what you have to do
     stage.close();
            
-        }
+        } */
+           if(test==0 && "".equals(LabelAlertPersonne.getText()) && "".equals(LabelAlertTemp.getText()) && "".equals(LabelImg.getText()) )
+        {   Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("");
+            alert.setHeaderText("confirmer la modification de votre recette");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) { 
+                System.out.println("equals");
+               Rs1.update(R1);
+              Stage stage = (Stage)
+              close.getScene().getWindow();
+            // do what you have to do
+            stage.close();
+            } 
+            
+         } 
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("");
+            alert.setHeaderText("Veuillez Remplir tous les champs afin de modifier votre recettte");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) { 
+
+            }
+       } 
            
       
     }
@@ -181,16 +297,18 @@ public class InterfaceClientProfile_ModifierRecetteController implements Initial
             System.out.println(imageFile);
             
            emptyimageName.setText( imageFile);
-          
+          LabelImg.setText("");
 
         } else {
-             Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("file doesn't exist ");
             alert.setHeaderText(null);
            
       
             Optional<ButtonType> result = alert.showAndWait();
            //LabelAlert.setText("file doesn't exist");
+           emptyimageName.setText( r.getNom_image());
+          LabelImg.setText("");
         } 
       
     }
@@ -206,22 +324,48 @@ public class InterfaceClientProfile_ModifierRecetteController implements Initial
     private void ControlNom(MouseEvent event) {
     }
 
-    @FXML
+      @FXML
     private void ControlNbPersonne(MouseEvent event) {
+          if(validePersonne(nbPersonne.getText())){
+             LabelAlertPersonne.setText("");
+        }else {
+              
+          //  LabelAlert.setText("Veuillez Remplir Tout les champs !");
+             LabelAlertPersonne.setText("Nombre Personne doit etre sup à 0");
+         }
     }
+
+  
 
     @FXML
     private void ControlTimeP(MouseEvent event) {
+             if(valideTime(Tpreparation.getText())){
+                   LabelAlertTemp.setText("");   
+               }else {
+                
+                LabelAlertTemp.setText("Temps doit etre sous la forme 00:00:00");
+            }
     }
 
     @FXML
     private void ControlTimeR(MouseEvent event) {
+         if(valideTime(Trepos.getText())){
+                   LabelAlertTemp.setText("");   
+               }else {
+                
+                LabelAlertTemp.setText("Temps doit etre sous la forme 00:00:00");
+            }
     }
 
     @FXML
     private void ControlTimeC(MouseEvent event) {
+         if(valideTime(Tcuisson.getText())){
+                   LabelAlertTemp.setText("");   
+               }else {
+                
+                LabelAlertTemp.setText("Temps doit etre sous la forme 00:00:00");
+            }
     }
-    
         
      void initData(Recette r) {
               
@@ -244,6 +388,55 @@ public class InterfaceClientProfile_ModifierRecetteController implements Initial
               
                 
      }
-
+    private boolean valide(String s){
+      boolean v =true ;
+      if ( "".equals(s))
+        v= false ;
+      return v ; 
+    }
+    private boolean valideTime(String time){
+      boolean v =false ;
+      if(time.length()==8){
+      if(time.indexOf(':')!=-1){
+           String filename = time;     // full file name
+           String[] parts = filename.split(":");
+           String HH=parts[0];
+           int foo = Integer.parseInt(HH);
+           if(foo>=0 && foo<=60) {
+               String time2=time;
+               time2 = time2.substring(time2.indexOf(":") + 1); 
+                if(time2.indexOf(':')!=-1){
+                    String filename2 = time2;     // full file name
+ 
+                    String[] parts2 = filename2.split(":");
+                    String mm=parts2[0];
+                    int foo2 = Integer.parseInt(mm);
+                    if(foo2>=0 && foo2<=60) {
+                        String time3=time2;
+                        time3 = time3.substring(time3.indexOf(":") + 1); 
+                        int foo3 = Integer.parseInt(time3);
+                        if(foo3>=0 && foo3<=60) {
+                           v=true;
+                        }
+                    }
+                }  
+            }
+        }
+    }
+   return v ; 
+   } 
+    private boolean validePersonne(String a){
+      boolean v =false ;
+      try {
+      Integer.parseInt(a);
+        if (Integer.parseInt(a) >0){
+           v=true;
+        }
+      } catch (NumberFormatException e) {
+        v=false;
+        System.out.println("Wrong number");
+      }
+    return v ; 
+    }
 
 }

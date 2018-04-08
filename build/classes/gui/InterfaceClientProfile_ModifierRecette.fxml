@@ -66,6 +66,7 @@
                                        </children></HBox>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
+                                          <Text fx:id="LabelImg" strokeType="OUTSIDE" strokeWidth="0.0" text=""  style="-fx-text-fill: transparent; -fx-font-size: 0.7em;"/>
                                           <Button fx:id="AddImage" mnemonicParsing="false" onMouseClicked="#addImage" text="Modifier Image">
                                              <HBox.margin>
                                                 <Insets left="114.0" top="20.0" />
@@ -79,7 +80,7 @@
                                     <HBox prefHeight="100.0" prefWidth="200.0" />
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Personne X   ">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Personne   ">
                                              <HBox.margin>
                                                 <Insets left="15.0" />
                                              </HBox.margin>
@@ -213,6 +214,9 @@
                            </children></Pane>
                      </children>
                   </VBox>
+                  <Text fx:id="LabelAlert" layoutX="642.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: red; -fx-font-size: 0.7em;" text="" />
+                  <Text fx:id="LabelAlertPersonne" layoutX="642.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: red; -fx-font-size: 0.7em;" text="" />
+                  <Text fx:id="LabelAlertTemp" layoutX="642.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: red; -fx-font-size: 0.7em;" text="" />
                </children>
             </Pane>
          </children></VBox>

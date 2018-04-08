@@ -6,6 +6,7 @@
 package Interface;
 import java.util.List;
 import entities.User;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -19,8 +20,11 @@ public interface IUser extends IService <User, Integer> {
     public User UserByLogin (String s);
     public boolean findByPassword (String s);
     public String Getrole(String s);
-    
-  
-   
+    public ObservableList<User> DisplayAllClients();
+    public ObservableList<User> findClientsByUserNom(String nom );
+    public int getnombreClients();
+    public double getPourcentageClients();
+    public int Client_NbRecettes(int id);
+    public int Client_NbComment(int id);
     
 }

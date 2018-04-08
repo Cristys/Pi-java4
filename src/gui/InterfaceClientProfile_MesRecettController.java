@@ -124,7 +124,7 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         username.setText(Session.LoggedUser.getUsername());
-          Liste_MesRecettes = FXCollections.observableArrayList(Session.iRecetteService.getByUser(Session.LoggedUser.getId()));
+        Liste_MesRecettes = FXCollections.observableArrayList(Session.iRecetteService.getByUser(Session.LoggedUser.getId()));
         Table.setItems(Liste_MesRecettes);
        
       
@@ -302,7 +302,6 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
                 Parent root = loader.load();
                 
                 anco.getScene().setRoot(root);
-           
         }
          }
     }

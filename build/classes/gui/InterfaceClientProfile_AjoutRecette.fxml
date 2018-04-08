@@ -316,7 +316,7 @@
                                        </children></HBox>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Personne X   ">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre personne   ">
                                              <HBox.margin>
                                                 <Insets left="15.0" />
                                              </HBox.margin>

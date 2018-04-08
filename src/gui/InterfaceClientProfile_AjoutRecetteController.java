@@ -5,8 +5,12 @@
  */
 package gui;
 
+import static com.oracle.jrockit.jfr.Transition.To;
+import entities.MailMarwa;
 import entities.Recette;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -38,6 +42,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 /**
  * FXML Controller class
@@ -410,7 +417,26 @@ private boolean validePersonne(String a){
             if (result.get() == ButtonType.OK) { 
                 System.out.println("equals");
               Rs.add(R1); 
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClientProfile_MesRecett.fxml"));
+         /////////////////////:// mail
+                MailMarwa ma = new MailMarwa();
+               
+              String[] attachFiles = new String[1];
+              attachFiles[0] = getItDOC();
+             
+ 
+              try {
+                ma.sendEmailWithAttachments(Session.LoggedUser.getEmail(),
+                        "marwa.siala2017@gmail.com",
+                        "recette ajoutée",
+                        "Vous trouvez ci joint la recette que vous avez ajouté. \n Merci pour votre contribution!",
+                        attachFiles);
+                System.out.println("Email sent.");
+            } catch (Exception ex) {
+                System.out.println("Could not send email.");
+                ex.printStackTrace();
+            }
+          /////////////////// end mail
+                 FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClientProfile_MesRecett.fxml"));
                 Parent root = loader.load();
                 ChangeItGirls.getScene().setRoot(root); 
             } 
@@ -506,6 +532,39 @@ private boolean validePersonne(String a){
     stage.close();
     }
 
-
+  public String getItDOC() throws FileNotFoundException, IOException{
+        XWPFDocument document = new XWPFDocument();
+        XWPFParagraph tmpParagraph = document.createParagraph();
+        XWPFRun tmpRun = tmpParagraph.createRun();
+        //////////////
+     
+        String LeText= "         Nom: "+nom.getText()+
+                "\n Proposée par: "+username.getText()+
+                "\n Type: "+type.getValue()+
+                "\n Description: "+description.getText()+
+                "\n Nombre de Personne: "+nbPersonne.getText()+
+                "\n Cout: "+ cout.getValue()+
+                "\n Difficulté:"+difficulte.getValue()+
+                "\n Temps de Préparation: "+Tpreparation.getText()+
+                "\n Temps de Préparation:"+Trepos.getText()+
+                "\n Temps de Cuisson: "+Tcuisson.getText()+
+                "\n Ingrédients: "+ ingredients.getText()+
+                "\n Etapes: "+etapes.getText()+
+                "\n Astuce: "+astuces.getText();
+         for (String str : LeText.split("\n")) {
+            
+        tmpRun.setText(str);
+        tmpRun.addBreak();
+        tmpRun.setColor("9966ff"); 
+        
+        
+    }
+    
+       
+        tmpRun.setFontSize(18);
+        
+        document.write(new FileOutputStream(new File("C:/wamp64/www/java_DOC/ms"+String.valueOf(Session.LoggedUser.getId())+"_"+nom.getText()+".docx")));
+   return "C:/wamp64/www/java_DOC/ms"+String.valueOf(Session.LoggedUser.getId())+"_"+nom.getText()+".docx";
+  }
     
 }

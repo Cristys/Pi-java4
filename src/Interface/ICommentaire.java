@@ -14,4 +14,6 @@ import javafx.collections.ObservableList;
  */
 public interface ICommentaire extends IService <Commentaire, Integer>{
     ObservableList<Commentaire> getByRecette(int IdRecette);
+    public int NbTotalC();
+    public ObservableList<Commentaire> getByUser(int Iduser) ;
 }
