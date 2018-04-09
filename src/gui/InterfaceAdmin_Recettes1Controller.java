@@ -527,7 +527,7 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
              try{ 
                  imageDetails.setImage(new Image(Session.iRecetteService.findById(selectedRecette.getId()).getNom_image()));}
              catch(Exception e){
-                 Image image2 = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/mscupcake2.jpg");
+                 Image image2 = new Image("file:/C:/wamp64/www/java_DOC/mscupcake6.jpg");
                  imageDetails.setImage(image2);
                 }
          

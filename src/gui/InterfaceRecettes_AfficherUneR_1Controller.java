@@ -392,7 +392,7 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
             Image image1 = new Image(imageFile);
             image.setImage(image1);}
         catch(Exception e){
-            Image image2 = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/mscupcake2.jpg");
+            Image image2 = new Image("file:/C:/wamp64/www/java_DOC/mscupcake6.jpg");
             image.setImage(image2);
         }
         Liste_Commentaires = FXCollections.observableArrayList(Session.iCommentaireService.getByRecette(Integer.parseInt(idrecette.getText())));
