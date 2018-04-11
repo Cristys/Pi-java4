@@ -520,18 +520,16 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
             }
         }
     }
-
+    // si le commentaire appartient au user connecté: 
     @FXML
     private void tableOnClick(MouseEvent event) {
-         Commentaire selectedComment = TableCommentaire.getSelectionModel().getSelectedItem();
+        Commentaire selectedComment = TableCommentaire.getSelectionModel().getSelectedItem();
         if (event.getClickCount() == 1){
-        
-       if(selectedComment.getIduser().getId()== Session.LoggedUser.getId()){
-             MyComment.setVisible(true);
-         }
-       else if(selectedComment.getIduser().getId()!= Session.LoggedUser.getId()){
-             MyComment.setVisible(false);
-             }
+            if(selectedComment.getIduser().getId()== Session.LoggedUser.getId()){
+               MyComment.setVisible(true);
+            } else if(selectedComment.getIduser().getId()!= Session.LoggedUser.getId()){
+               MyComment.setVisible(false);
+            }
         }
     }
 
@@ -539,58 +537,46 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
     private void closemycommentPalett(MouseEvent event) {
         //not needed for delete 
     }
-
+    //pour ajouter le commentaire dans la base
     @FXML
     private void finalCommentModifyABCD(MouseEvent event) throws IOException {
-           CommentaireService Co1 = new CommentaireService();
-      Commentaire C1 =  new Commentaire();
+        CommentaireService Co1 = new CommentaireService();
+        Commentaire C1 =  new Commentaire();
         Commentaire selectedCommentaire = TableCommentaire.getSelectionModel().getSelectedItem();
         
         C1.setId(selectedCommentaire.getId());
         C1.setIdrecette(Session.iRecetteService.findById(Integer.valueOf(idrecette.getText())));
         C1.setIduser(Session.LoggedUser);
-       if(!"".equals(commentABCD.getText())){
-        C1.setComment(commentABCD.getText());
-   
-         
-            
+        if(!"".equals(commentABCD.getText())){
+            C1.setComment(commentABCD.getText());
             Co1.update(C1); 
             System.out.println("success");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Commentaire Modifiée ");
             alert.setHeaderText(null);
-           
-      
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-           
-              ABCD.setVisible(false);
-           //
+           ABCD.setVisible(false);
+           //mise a jour de l'interface
              FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));   
-                Parent root = loader.load();
-                
-                anco.getScene().setRoot(root); 
-              
-         
+             Parent root = loader.load();
+             anco.getScene().setRoot(root); 
              InterfaceRecettes_AfficherUneR_1Controller controller = 
              loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
              controller.initData(Session.iRecetteService.findById(Integer.valueOf(idrecette.getText())));
-           //
+            }
         }
-       }
     }
 
     @FXML
     private void closeModifyCommentABCD(MouseEvent event) {
-         ABCD.setVisible(false);
+        ABCD.setVisible(false);
         
     }
 
     @FXML
     private void onClickNoter(MouseEvent event) {
-
         PaneNote.setVisible(true);
-
     }
 
     @FXML
@@ -603,53 +589,46 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
        System.out.println(Session.LoggedUser.getId());
        int xx= Session.iRecetteService.findById(Integer.valueOf(idrecette.getText())).getIduser().getId();
        System.out.println(Session.iRecetteService.findById(Integer.valueOf(idrecette.getText())).getIduser().getId());
-        if(Session.LoggedUser.getId()==xx){
+       if(Session.LoggedUser.getId()==xx){
+           // si le user est le propriaitre de la recette il ne peut pas voter
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle(null);
             alert.setHeaderText("Vous n'avez pas droit de noter votre propre Recette!");
-             Optional<ButtonType> result = alert.showAndWait();
-              if (result.get() == ButtonType.OK) {
-                 System.out.println("ok"); 
-              }
-              
-        } else{      
-         VoteService Cm = new VoteService();
-        Vote C1 = new Vote();
-        C1.setIdrecette(Session.iRecetteService.findById(Integer.valueOf(idrecette.getText())));
-         C1.setRating(UneNote); 
-     
-       if(UneNote!=0){
-        
-        Cm.add(C1);
-          Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle(null);
-            alert.setHeaderText("Merci d'avoir Noter cette Recette!");
-              Optional<ButtonType> result = alert.showAndWait();
-        
-               if (result.get() == ButtonType.OK) {
-                   PaneNote.setVisible(false);
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));   
-                Parent root = loader.load();
-                
-                anco.getScene().setRoot(root); 
-              
-         
-             InterfaceRecettes_AfficherUneR_1Controller controller = 
-             loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
-             controller.initData(Rs.findById(Integer.valueOf(idrecette.getText())));
-         
-            }
-        
-         }else{
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Attention!");
-            alert.setHeaderText("La Notene doit pas etre vide ");
             Optional<ButtonType> result = alert.showAndWait();
-    }
-        } 
+            if (result.get() == ButtonType.OK) {
+                System.out.println("ok"); 
+            }
+        } else{      
+            VoteService Cm = new VoteService();
+            Vote C1 = new Vote();
         
+            C1.setIdrecette(Session.iRecetteService.findById(Integer.valueOf(idrecette.getText())));
+            C1.setRating(UneNote); 
+            if(UneNote!=0){
+               Cm.add(C1);
+               Alert alert = new Alert(Alert.AlertType.INFORMATION);
+               alert.setTitle(null);
+               alert.setHeaderText("Merci d'avoir Noter cette Recette!");
+               Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    PaneNote.setVisible(false);
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));   
+                    Parent root = loader.load();
+                    anco.getScene().setRoot(root); 
+                    // mise à jour de la page
+                    InterfaceRecettes_AfficherUneR_1Controller controller = 
+                    loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
+                    controller.initData(Rs.findById(Integer.valueOf(idrecette.getText())));
+                }
+            }else{
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Attention!");
+                alert.setHeaderText("La Notene doit pas etre vide ");
+                Optional<ButtonType> result = alert.showAndWait();
+            }
+        }     
     }
-
+    //*************************** ajouter la vote de user a UneNote ******************************************//
     @FXML
     private void clickStar4(MouseEvent event) {
         StarsBox.setVisible(false);
@@ -662,15 +641,17 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
         yS3.setImage(yellow);
         yS4.setImage(yellow);
         yS5.setImage(grey); 
-         VoteHidden.setText("4");
-          UneNote=4; 
+       
+        VoteHidden.setText("4");
+        
+        UneNote=4; 
         
     }
 
     @FXML
     private void clickStar5(MouseEvent event) {
-         StarsBox.setVisible(false);
- yellowStars.setVisible(true);
+        StarsBox.setVisible(false);
+        yellowStars.setVisible(true);
         Image grey= new Image("file:/C:/wamp64/www/java_DOC/msStarGrey.png");
         Image yellow= new Image("file:/C:/wamp64/www/java_DOC/msStarYellow.png");
        
@@ -679,13 +660,15 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
         yS3.setImage(yellow);
         yS4.setImage(yellow);
         yS5.setImage(yellow); 
-         VoteHidden.setText("5");
-          UneNote=5; 
+       
+        VoteHidden.setText("5");
+      
+        UneNote=5; 
     }
 
     @FXML
     private void clickStar1(MouseEvent event) {
-         StarsBox.setVisible(false);
+        StarsBox.setVisible(false);
         yellowStars.setVisible(true);
         Image grey= new Image("file:/C:/wamp64/www/java_DOC/msStarGrey.png");
         Image yellow= new Image("file:/C:/wamp64/www/java_DOC/msStarYellow.png");
@@ -695,15 +678,15 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
         yS3.setImage(grey);
         yS4.setImage(grey);
         yS5.setImage(grey); 
-          
        
-         VoteHidden.setText("1");
+        VoteHidden.setText("1");
+        
         UneNote=1; 
     }
 
     @FXML
     private void clickStar2(MouseEvent event) {
-         StarsBox.setVisible(false);
+        StarsBox.setVisible(false);
         yellowStars.setVisible(true);
         Image grey= new Image("file:/C:/wamp64/www/java_DOC/msStarGrey.png");
         Image yellow= new Image("file:/C:/wamp64/www/java_DOC/msStarYellow.png");
@@ -714,8 +697,9 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
         yS4.setImage(grey);
         yS5.setImage(grey); 
           
-         VoteHidden.setText("2");
-          UneNote=2; 
+        VoteHidden.setText("2");
+        
+        UneNote=2; 
     }
 
     @FXML
@@ -732,17 +716,21 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
         yS5.setImage(grey); 
           
         VoteHidden.setText("3");
+       
         UneNote=3; 
     }
-
+    //*************************** FIN attribution de vote UneNote ******************************************//
+    
+    
+    
+    // imprimer
     @FXML
     private void getinDOC(MouseEvent event) throws FileNotFoundException, IOException {
-         //Path path = Paths.get("C:/Users/crist/Documents/GitHub/Pi-java4/src/icons/some.docx");
+        //1 init document word
 	XWPFDocument document = new XWPFDocument();
         XWPFParagraph tmpParagraph = document.createParagraph();
         XWPFRun tmpRun = tmpParagraph.createRun();
-        //////////////
-     
+        //2 ajouteer le text
         String LeText= "         Nom: "+nom.getText()+
                 "\n Proposée par: "+username.getText()+
                 "\n Type: "+type.getText()+
@@ -756,65 +744,56 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
                 "\n Ingrédients: "+ ingredients.getText()+
                 "\n Etapes: "+etapes.getText()+
                 "\n Astuce: "+astuces.getText();
-         for (String str : LeText.split("\n")) {
-            
-        tmpRun.setText(str);
-        tmpRun.addBreak();
-        tmpRun.setColor("9966ff"); 
-        
-        
-    }
-    
-       
+       for (String str : LeText.split("\n")) {
+            tmpRun.setText(str);
+            tmpRun.addBreak();
+            tmpRun.setColor("9966ff"); 
+        }
         tmpRun.setFontSize(18);
-        
         document.write(new FileOutputStream(new File("C:/wamp64/www/java_DOC/ms"+idrecette.getText()+".docx")));
-
+        
+        //3 préparer le fichier a etre imrpimé
         File fileToPrint = new File("C:/wamp64/www/java_DOC/ms"+idrecette.getText()+".docx");
-		Desktop.getDesktop().print(fileToPrint);
+	Desktop.getDesktop().print(fileToPrint);
 	
-    
-        // Printer detectos, also say wich cone is your printer / near printers
+        // 4 détecteur d'imprimente affiche votre imprimente et ou les impriments proches de user
         FileInputStream psStream = null;
-         
         try {
-            psStream = new FileInputStream("C:/wamp64/www/java_DOC/ms"+idrecette.getText()+".docx");
+              psStream = new FileInputStream("C:/wamp64/www/java_DOC/ms"+idrecette.getText()+".docx");
             } catch (FileNotFoundException ffne) {
-              ffne.printStackTrace();
+               ffne.printStackTrace();
             }
-            if (psStream == null) {
-                return;
-            }
+        if (psStream == null) {
+            return;
+        }
+        //5 initier le Print service
         DocFlavor psInFormat = DocFlavor.INPUT_STREAM.AUTOSENSE;
         Doc myDoc = new SimpleDoc(psStream, psInFormat, null);  
         PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
-        PrintService[] services = PrintServiceLookup.lookupPrintServices(psInFormat, aset);
+        PrintService[] services = PrintServiceLookup.lookupPrintServices(psInFormat, aset); // document + request to print
          
-        // this step is necessary because I have several printers configured
+       
+        //6 affiche les noms des imprimentes(services) proches trouvé sinon il n'affiche rien
         PrintService myPrinter = null;
         for (int i = 0; i < services.length; i++){
             System.out.println("service found: ");
             String svcName = services[i].toString();           
             if (svcName.contains("printer closest to me "+svcName)){
-                
-               
-                myPrinter = services[i];
+                 myPrinter = services[i];
                 System.out.println("my printer found: "+svcName);
                 break;
             }
         }
-         // print action
+         // 7 action d'impression
         if (myPrinter != null) {            
             DocPrintJob job = myPrinter.createPrintJob();
             try {
-            job.print(myDoc, aset);
-             
+                job.print(myDoc, aset);
             } catch (Exception pe) {pe.printStackTrace();}
         } else {
             System.out.println("aucune service imprimente trouvé ");
         }
-   
-		//Desktop.getDesktop().print(fileToPrint);
+        //Desktop.getDesktop().print(fileToPrint);
    
     }
 

@@ -184,6 +184,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
     String D1_Facile="";
     String D2_Medium="";
     String D3_Difficile="";
+    @FXML
+    private ImageView CloseDetRec1;
     
     
     /**
@@ -912,6 +914,11 @@ public class InterfaceRecettes_ALLController implements Initializable {
     @FXML
     private void MouseEnterAfficherText1(MouseEvent event) {
         RechercheNom.setText("Je Cherche Une Recette...");
+    }
+
+    @FXML
+    private void CloseDetRec1(MouseEvent event) {
+        PaneDetails.setVisible(false);
     }
 
     

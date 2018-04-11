@@ -311,7 +311,7 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
         if (!Table.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Supprimer Recette");
-            alert.setHeaderText("Etes vous sur de vouloir supprimer la recette numero : " + Table.getSelectionModel().getSelectedItem().getId() + " ?");
+            alert.setHeaderText("Etes vous sur de vouloir supprimer cette ?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                Recette selectedRecette = Table.getSelectionModel().getSelectedItem();

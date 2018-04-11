@@ -58,7 +58,7 @@ public class Session {
      */
     public User SetLoggedUser (String login ) throws SQLException{
        Connection connection;
-         connection = DataSource.getInsatance().getConnection();
+       connection = DataSource.getInsatance().getConnection();
                
         String sql = "SELECT * FROM fos_user WHERE login=? " ;
         
@@ -67,7 +67,7 @@ public class Session {
         
         ResultSet resultSet = pst.executeQuery();
         if(resultSet.next()){
-         LoggedUser = new User(); 
+        LoggedUser = new User(); 
         LoggedUser.setId(resultSet.getInt("id") );  
         LoggedUser = iuserService.findById(LoggedUser.getId());
         }

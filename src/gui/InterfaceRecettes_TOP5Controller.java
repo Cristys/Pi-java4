@@ -148,6 +148,7 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
     private Text ScoreR4;
     @FXML
     private Text ScoreR5;
+    
         Vote vot= new Vote();
         VoteService VS = new VoteService();
         Recette recette = new Recette();
@@ -159,78 +160,77 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
-        // TOP1
+        //**************************** TOP1 **********************************//
         idrecette1.setText(String.valueOf(RS.findById(VS.TOP1()).getId()));
         usernameR1.setText(RS.findById(VS.TOP1()).getIduser().getUsername());
         nomR1.setText(RS.findById(VS.TOP1()).getNom());
-        //image1.setImage(new Image(RS.findById(VS.TOP1()).getNom_image()));
         ScoreR1.setText(String.valueOf(VS.getScoreVote(RS.findById(VS.TOP1()).getId())));
-         try{ 
+        try{ 
             String imageFile = (RS.findById(VS.TOP1()).getNom_image());
             System.out.println(imageFile);
             Image imageA = new Image(imageFile);
            image1.setImage(imageA);
-         }
+        }
         catch(Exception e){
             Image imageB = new Image("file:/C:/wamp64/www/java_DOC/mscupcake2.jpg");
             image1.setImage(imageB);
         }
-        //TOP2
+        //**************************** TOP2 **********************************//
         idrecette2.setText(String.valueOf(RS.findById(VS.TOP2()).getId()));
         usernameR2.setText(RS.findById(VS.TOP2()).getIduser().getUsername());
         nomR2.setText(RS.findById(VS.TOP2()).getNom());
         ScoreR2.setText(String.valueOf(VS.getScoreVote(RS.findById(VS.TOP2()).getId())));
-         try{ 
+        try{ 
             String imageFile = (RS.findById(VS.TOP2()).getNom_image());
             System.out.println(imageFile);
             Image imageA = new Image(imageFile);
            image2.setImage(imageA);
-         }
+        }
         catch(Exception e){
             Image imageB = new Image("file:/C:/wamp64/www/java_DOC/mscupcake2.jpg");
             image2.setImage(imageB);
         }
-         //TOP3
+        //**************************** TOP3 **********************************//
         idrecette3.setText(String.valueOf(RS.findById(VS.TOP3()).getId()));
         usernameR3.setText(RS.findById(VS.TOP3()).getIduser().getUsername());
         nomR3.setText(RS.findById(VS.TOP3()).getNom());
         ScoreR3.setText(String.valueOf(VS.getScoreVote(RS.findById(VS.TOP3()).getId())));
-         try{ 
+        try{ 
             String imageFile = (RS.findById(VS.TOP3()).getNom_image());
             System.out.println(imageFile);
             Image imageA = new Image(imageFile);
            image3.setImage(imageA);
-         }
+        }
         catch(Exception e){
             Image imageB = new Image("file:/C:/wamp64/www/java_DOC/mscupcake2.jpg");
             image3.setImage(imageB);
         }
-         //TOP4
+        //**************************** TOP4 **********************************//
         idrecette4.setText(String.valueOf(RS.findById(VS.TOP4()).getId()));
         usernameR4.setText(RS.findById(VS.TOP4()).getIduser().getUsername());
         nomR4.setText(RS.findById(VS.TOP4()).getNom());
         ScoreR4.setText(String.valueOf(VS.getScoreVote(RS.findById(VS.TOP4()).getId())));
-         try{ 
+        try{ 
             String imageFile = (RS.findById(VS.TOP4()).getNom_image());
             System.out.println(imageFile);
             Image imageA = new Image(imageFile);
            image4.setImage(imageA);
-         }
+        }
         catch(Exception e){
             Image imageB = new Image("file:/C:/wamp64/www/java_DOC/mscupcake2.jpg");
             image4.setImage(imageB);
         }
-         //TOP5
+        //**************************** TOP5 **********************************//
         idrecette5.setText(String.valueOf(RS.findById(VS.TOP5()).getId()));
         usernameR5.setText(RS.findById(VS.TOP5()).getIduser().getUsername());
         nomR5.setText(RS.findById(VS.TOP5()).getNom());
         ScoreR5.setText(String.valueOf(VS.getScoreVote(RS.findById(VS.TOP5()).getId())));
-         try{ 
+        try{ 
             String imageFile = (RS.findById(VS.TOP5()).getNom_image());
             System.out.println(imageFile);
             Image imageA = new Image(imageFile);
            image5.setImage(imageA);
-         }
+        }
         catch(Exception e){
             Image imageB = new Image("file:/C:/wamp64/www/java_DOC/mscupcake2.jpg");
             image5.setImage(imageB);
@@ -340,14 +340,14 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
     // do what you have to do
     stage.close();
     }
-
+    //********************* Consulter les top 5 recettes *****************************//
     @FXML
     private void goToR1(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));
 
-         Parent root = loader.load();
+        Parent root = loader.load();
                 
-               anco.getScene().setRoot(root);
+        anco.getScene().setRoot(root);
         InterfaceRecettes_AfficherUneR_1Controller controller = 
         loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
         controller.initData(RS.findById(VS.TOP1()));
@@ -357,10 +357,8 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
     @FXML
     private void goToR2(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));
-
-         Parent root = loader.load();
-                
-               anco.getScene().setRoot(root);
+        Parent root = loader.load();
+        anco.getScene().setRoot(root);
         InterfaceRecettes_AfficherUneR_1Controller controller = 
         loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
         controller.initData(RS.findById(VS.TOP2()));
@@ -369,10 +367,8 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
     @FXML
     private void goToR3(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));
-
-         Parent root = loader.load();
-                
-               anco.getScene().setRoot(root);
+        Parent root = loader.load();
+        anco.getScene().setRoot(root);
         InterfaceRecettes_AfficherUneR_1Controller controller = 
         loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
         controller.initData(RS.findById(VS.TOP3()));
@@ -381,10 +377,8 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
     @FXML
     private void goToR4(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));
-
-         Parent root = loader.load();
-                
-               anco.getScene().setRoot(root);
+        Parent root = loader.load();
+        anco.getScene().setRoot(root);
         InterfaceRecettes_AfficherUneR_1Controller controller = 
         loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
         controller.initData(RS.findById(VS.TOP4()));
@@ -393,10 +387,8 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
     @FXML
     private void goToR5(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));
-
-         Parent root = loader.load();
-                
-               anco.getScene().setRoot(root);
+        Parent root = loader.load();
+        anco.getScene().setRoot(root);
         InterfaceRecettes_AfficherUneR_1Controller controller = 
         loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
         controller.initData(RS.findById(VS.TOP5()));

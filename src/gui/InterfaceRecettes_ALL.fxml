@@ -281,14 +281,14 @@
                         <TableColumn fx:id="username" prefWidth="281.0" text="Proposée par" />
                     </columns>
                   </TableView>
-                  <Pane layoutX="400.0" layoutY="220.0" prefHeight="60.0" prefWidth="462.0" style="-fx-background-color: transparent; -fx-background-radius: 15px;" onMouseEntered="#MouseEnterCacherText1" onMouseExited="#MouseEnterAfficherText1">
+                  <Pane layoutX="400.0" layoutY="220.0" onMouseEntered="#MouseEnterCacherText1" onMouseExited="#MouseEnterAfficherText1" prefHeight="60.0" prefWidth="462.0" style="-fx-background-color: transparent; -fx-background-radius: 15px;">
                      <children>
                         <TextField fx:id="RechercheNom" layoutX="6.0" layoutY="4.0" prefHeight="50.0" prefWidth="331.0" style="-fx-background-radius: 0px;" />
                         <ImageView fx:id="btnRechercheNom" fitHeight="60.0" fitWidth="61.0" layoutX="337.0" layoutY="-1.0" onMouseClicked="#MouseClickButtonRechercheNom" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/msRecherche1.png" />
                            </image></ImageView>
-                          <Text  layoutX="10.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1em; -fx-fill:#cc0000" wrappingWidth="437.0" text="* Taper Toutes pour voir toutes les recettes"/>
+                          <Text layoutX="10.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1em; -fx-fill:#cc0000" text="* Taper Toutes pour voir toutes les recettes" wrappingWidth="437.0" />
                          
                      </children>
                      <effect>
@@ -317,6 +317,14 @@
                               <DropShadow />
                            </effect></ImageView>
                         <Text layoutX="466.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 0.8em;" text="Consulter cette Recette" textAlignment="CENTER" wrappingWidth="83.56640625" />
+                        <ImageView fx:id="CloseDetRec1" fitHeight="33.0" fitWidth="33.0" layoutX="508.0" layoutY="193.0" onMouseClicked="#CloseDetRec1" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/msclose2.png" />
+                           </image>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
                      </children>
                   </Pane>
                   <VBox fx:id="PaneFiltrer" layoutX="9.0" layoutY="161.0" prefHeight="717.0" prefWidth="340.0" style="-fx-background-color: #faeaec;">

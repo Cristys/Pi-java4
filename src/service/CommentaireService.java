@@ -26,7 +26,8 @@ import static utils.Session.iRecetteService;
  * @author Siala
  */
 public class CommentaireService implements ICommentaire {
-      Connection connection;
+   
+    Connection connection;
 
     public CommentaireService() {
         connection = DataSource.getInsatance().getConnection();
@@ -34,22 +35,17 @@ public class CommentaireService implements ICommentaire {
     
    @Override
     public void add(Commentaire c) {
-            System.out.println(c.toString());
+        System.out.println(c.toString());
         String req = "insert into commentaire (idrecette,iduser,comment )"
                 + " values (?,?,?)";
         PreparedStatement preparedStatement;
-  
-
         try {
             preparedStatement = connection.prepareStatement(req);
             
             preparedStatement.setInt(1, c.getIdrecette().getId());
             preparedStatement.setInt(2, c.getIduser().getId());
-            
             preparedStatement.setString(3, c.getComment());
            
-                       
-
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             // throw new RuntimeException(ex); 
@@ -62,19 +58,14 @@ public class CommentaireService implements ICommentaire {
     @Override
     public void update(Commentaire t) {
        System.out.println(t.toString());
-        String req = "update commentaire set comment=? where id=?"
-                ;
+        String req = "update commentaire set comment=? where id=?";
         PreparedStatement preparedStatement;
-  
-
         try {
             preparedStatement = connection.prepareStatement(req);
             
-           
             preparedStatement.setString(1, t.getComment());
             preparedStatement.setInt(2, t.getId());
                        
-
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             // throw new RuntimeException(ex); 
@@ -105,12 +96,12 @@ public class CommentaireService implements ICommentaire {
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-               commentaire= new Commentaire(resultSet.getInt(1),
-                       new RecetteService().findById(resultSet.getInt(2)),
-                       new UserService().findById(resultSet.getInt(3)),
-                       
-                      resultSet.getString(4)
-                      ); }
+                commentaire= new Commentaire(resultSet.getInt(1),
+                new RecetteService().findById(resultSet.getInt(2)),
+                new UserService().findById(resultSet.getInt(3)),
+                resultSet.getString(4)
+                ); 
+            }
         } catch (SQLException ex) {
              ex.printStackTrace();
         }
@@ -127,14 +118,11 @@ public class CommentaireService implements ICommentaire {
             
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-               Commentaire commentaire= new Commentaire(resultSet.getInt(1),
-                        new RecetteService().findById(resultSet.getInt(2)),
-                      new UserService().findById(resultSet.getInt(3)),
-                      
-                      resultSet.getString(4)
-                      
-                      
-                      );
+                Commentaire commentaire= new Commentaire(resultSet.getInt(1),
+                new RecetteService().findById(resultSet.getInt(2)),
+                new UserService().findById(resultSet.getInt(3)),
+                resultSet.getString(4)
+                 );
                 commentaires.add(commentaire); 
             }
         } catch (SQLException ex) {
