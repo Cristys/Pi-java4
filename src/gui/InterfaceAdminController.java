@@ -163,7 +163,6 @@ public class InterfaceAdminController implements Initializable {
     @FXML
     private void close(MouseEvent event) {
     Stage stage = (Stage) close.getScene().getWindow();
-    // do what you have to do
     stage.close();
     }
     

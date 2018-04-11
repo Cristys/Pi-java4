@@ -5,6 +5,7 @@
  */
 package gui;
 
+import entities.AudioPlayerExample1;
 import entities.Commentaire;
 import entities.Recette;
 import entities.Vote;
@@ -154,7 +155,7 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
     private TableColumn<Commentaire, String> comment;
     @FXML
     private Pane btnAddComment;
-     ObservableList<Commentaire> Liste_Commentaires = FXCollections.observableArrayList();
+    ObservableList<Commentaire> Liste_Commentaires = FXCollections.observableArrayList();
     @FXML
     private ImageView close;
     @FXML
@@ -236,6 +237,12 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+      ////////////////////
+        
+	String audioFilePath = "C:/Users/Siala/Music/Beep17.wav";
+        AudioPlayerExample1 player = new AudioPlayerExample1();
+        player.play(audioFilePath);
+        //////////////////////
     }    
 
 
@@ -329,12 +336,13 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
                 
                 anco.getScene().setRoot(root);
     }
-     private boolean valide(String s){  
-    boolean v =true ;
-    if ( s.equals(""))
-        v= false ;
-    return v ; 
-   }
+    // vérifier que le commentaire n'est pas vide
+    private boolean valide(String s){  
+        boolean v =true ;
+        if ( s.equals(""))
+            v= false ;
+        return v ; 
+    }
   
     @FXML
     private void AddComment(MouseEvent event) throws IOException {
@@ -345,18 +353,20 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
         C1.setIdrecette(Session.iRecetteService.findById(Integer.valueOf(idrecette.getText())));
         C1.setIduser(Session.LoggedUser); 
      
-       if(valide(CommentArea.getText())){
-        C1.setComment(CommentArea.getText());
-        Cm.add(C1);
-          Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Le commentaire est bien ajoutée ");
-            alert.setHeaderText("veuillez rafraichir la page pour voir votre comentaire");
+        if(valide(CommentArea.getText())){
+            C1.setComment(CommentArea.getText());
+            Cm.add(C1);
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("");
+            alert.setHeaderText("Le commentaire est bien ajoutée ");
             Optional<ButtonType> result = alert.showAndWait();
         
             if (result.get() == ButtonType.OK) {
               FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));   
               Parent root = loader.load();
               anco.getScene().setRoot(root); 
+              // refrech l'interface: on passe tout les data de la recette au autre controlleur
              InterfaceRecettes_AfficherUneR_1Controller controller = 
                  loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
                  controller.initData(Rs.findById(Integer.valueOf(idrecette.getText())));
@@ -369,8 +379,10 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
             Optional<ButtonType> result = alert.showAndWait();
        }
     }
+    
     /************************** void initData ************************************/
     void initData(Recette r) {
+        //1 initialiser la recette
         idrecette.setText(String.valueOf(r.getId()));
         System.out.println(idrecette);
         nom.setText(r.getNom());
@@ -395,23 +407,25 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
             Image image2 = new Image("file:/C:/wamp64/www/java_DOC/mscupcake6.jpg");
             image.setImage(image2);
         }
+        // initialiser la table des commentaires
         Liste_Commentaires = FXCollections.observableArrayList(Session.iCommentaireService.getByRecette(Integer.parseInt(idrecette.getText())));
         TableCommentaire.setItems(Liste_Commentaires);
-        
-      
         usernameColumn.setCellValueFactory((TableColumn.CellDataFeatures<Commentaire, String> param) -> new SimpleStringProperty(param.getValue().getIduser().getUsername()));
-        
         comment.setCellValueFactory(new PropertyValueFactory<>("comment"));
         comment.cellFactoryProperty();
+        
+        // cacher les button qui appartient au user qui a selectionner son commentaire
         MyComment.setVisible(false);
         ABCD.setVisible(false);
+        //Cacher la pane pour noter la recette 
         PaneNote.setVisible(false);
         DropShadow dropShadow = new DropShadow();
                    dropShadow.setRadius(5.0);
                    dropShadow.setOffsetX(3.0);
                    dropShadow.setOffsetY(3.0);
                    dropShadow.setColor(Color.color(0.4, 0.5, 0.5)); 
-        Image image3= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarGrey.png");
+        Image image3= new Image("file:/C:/wamp64/www/java_DOC/msStarGrey.png");
+        //initialiser les notes a attribuer  a la recette avec des etoiles gris
         S1.setImage(image3);
         S1.setEffect(dropShadow);
         S2.setImage(image3);
@@ -422,44 +436,45 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
         S4.setEffect(dropShadow);
         S5.setImage(image3);
         S5.setEffect(dropShadow);
+        // cacher les etoiles jaunes
         yellowStars.setVisible(false);
+        
+        //afficher en étoiles la moyenne de cette recette
         Vote vot= new Vote();
         VoteService VS = new VoteService();
         double LastVote= VS.noteRecette(r.getId());
         if(LastVote>0 && LastVote<=0.5){
-           
-      
-            noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar0.5.png"));
+            noteFinale.setImage(new Image("file:/C:/wamp64/www/java_DOC/msStar0.5.png"));
             noteFinale.setEffect(dropShadow);
         }else if(LastVote>0.5 && LastVote<=1.0){
-           noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar1.png"));
+           noteFinale.setImage(new Image("file:/C:/wamp64/www/java_DOC/msStar1.png"));
             noteFinale.setEffect(dropShadow);
         }else if(LastVote>1.0 && LastVote<=1.5){
-              noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar1.5.png"));
+              noteFinale.setImage(new Image("file:/C:/wamp64/www/java_DOC/msStar1.5.png"));
           noteFinale.setEffect(dropShadow);
         }else if(LastVote>1.5 && LastVote<=2.0){
-               noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar2.png"));
+               noteFinale.setImage(new Image("file:/C:/wamp64/www/java_DOC/msStar2.png"));
           noteFinale.setEffect(dropShadow);
         }else if(LastVote>2.0 && LastVote<=2.5){
-               noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar2.5.png"));
+               noteFinale.setImage(new Image("file:/C:/wamp64/www/java_DOC/msStar2.5.png"));
          
         } else if(LastVote>2.5 && LastVote<=3.0){
-               noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar3.png"));
+               noteFinale.setImage(new Image("file:/C:/wamp64/www/java_DOC/msStar3.png"));
           noteFinale.setEffect(dropShadow);
         }else if(LastVote>3.0 && LastVote<=3.5){
-               noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar3.5.png"));
+               noteFinale.setImage(new Image("file:/C:/wamp64/www/java_DOC/msStar3.5.png"));
           noteFinale.setEffect(dropShadow);
         }else if(LastVote>3.5 && LastVote<=4.0){
-               noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar4.png"));
+               noteFinale.setImage(new Image("file:/C:/wamp64/www/java_DOC/msStar4.png"));
           noteFinale.setEffect(dropShadow);
         }else if(LastVote>4.0 && LastVote<=4.5){
-               noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar4.5.png"));
+               noteFinale.setImage(new Image("file:/C:/wamp64/www/java_DOC/msStar4.5.png"));
           noteFinale.setEffect(dropShadow);
         }else if (LastVote>4.5 && LastVote<=5.0){
-               noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar5.png"));
+               noteFinale.setImage(new Image("file:/C:/wamp64/www/java_DOC/msStar5.png"));
           noteFinale.setEffect(dropShadow);
         } else{
-            noteFinale.setImage(new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStar0.png"));
+            noteFinale.setImage(new Image("file:/C:/wamp64/www/java_DOC/msStar0.png"));
              noteFinale.setEffect(dropShadow);
         }
     
@@ -476,40 +491,34 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
 
     @FXML
     private void modifyMyComment(MouseEvent event) throws IOException {
-    
+       //initialise le commentaire a modifier
        ABCD.setVisible(true);
-                Commentaire selectedComment = TableCommentaire.getSelectionModel().getSelectedItem();
-
+       Commentaire selectedComment = TableCommentaire.getSelectionModel().getSelectedItem();
        commentABCD.setText(selectedComment.getComment());
     }
 
     @FXML
     private void deleteMyComment(MouseEvent event) throws IOException {
-         CommentaireService t2 = new CommentaireService();
-         if (!TableCommentaire.getSelectionModel().isEmpty()) {
+        CommentaireService t2 = new CommentaireService();
+        if (!TableCommentaire.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Supprimer Commentaire");
             alert.setHeaderText("Etes vous sur de vouloir supprimer le commentaire : " + TableCommentaire.getSelectionModel().getSelectedItem().getComment() + " ?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-          Commentaire selectedCommentaire = TableCommentaire.getSelectionModel().getSelectedItem();
+                Commentaire selectedCommentaire = TableCommentaire.getSelectionModel().getSelectedItem();
                 System.out.println(selectedCommentaire);
-              Session.iCommentaireService.remove(selectedCommentaire.getId());
-             
-              
-              
-               FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));   
+                Session.iCommentaireService.remove(selectedCommentaire.getId());
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));   
                 Parent root = loader.load();
-                
                 anco.getScene().setRoot(root); 
               
-         
+             // reload l'interface avec les nouvelles updates
              InterfaceRecettes_AfficherUneR_1Controller controller = 
              loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
              controller.initData(Rs.findById(Integer.valueOf(idrecette.getText())));
-           
+            }
         }
-         }
     }
 
     @FXML
@@ -645,8 +654,8 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
     private void clickStar4(MouseEvent event) {
         StarsBox.setVisible(false);
         yellowStars.setVisible(true);
-        Image grey= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarGrey.png");
-        Image yellow= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarYellow.png");
+        Image grey= new Image("file:/C:/wamp64/www/java_DOC/msStarGrey.png");
+        Image yellow= new Image("file:/C:/wamp64/www/java_DOC/msStarYellow.png");
        
         yS1.setImage(yellow);
         yS2.setImage(yellow);
@@ -662,8 +671,8 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
     private void clickStar5(MouseEvent event) {
          StarsBox.setVisible(false);
  yellowStars.setVisible(true);
-        Image grey= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarGrey.png");
-        Image yellow= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarYellow.png");
+        Image grey= new Image("file:/C:/wamp64/www/java_DOC/msStarGrey.png");
+        Image yellow= new Image("file:/C:/wamp64/www/java_DOC/msStarYellow.png");
        
         yS1.setImage(yellow);
         yS2.setImage(yellow);
@@ -678,8 +687,8 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
     private void clickStar1(MouseEvent event) {
          StarsBox.setVisible(false);
         yellowStars.setVisible(true);
-        Image grey= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarGrey.png");
-        Image yellow= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarYellow.png");
+        Image grey= new Image("file:/C:/wamp64/www/java_DOC/msStarGrey.png");
+        Image yellow= new Image("file:/C:/wamp64/www/java_DOC/msStarYellow.png");
        
         yS1.setImage(yellow);
         yS2.setImage(grey);
@@ -696,8 +705,8 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
     private void clickStar2(MouseEvent event) {
          StarsBox.setVisible(false);
         yellowStars.setVisible(true);
-        Image grey= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarGrey.png");
-        Image yellow= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarYellow.png");
+        Image grey= new Image("file:/C:/wamp64/www/java_DOC/msStarGrey.png");
+        Image yellow= new Image("file:/C:/wamp64/www/java_DOC/msStarYellow.png");
        
         yS1.setImage(yellow);
         yS2.setImage(yellow);
@@ -713,8 +722,8 @@ public class InterfaceRecettes_AfficherUneR_1Controller implements Initializable
     private void clickStar3(MouseEvent event) {
         StarsBox.setVisible(false);
        yellowStars.setVisible(true);
-        Image grey= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarGrey.png");
-        Image yellow= new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msStarYellow.png");
+        Image grey= new Image("file:/C:/wamp64/www/java_DOC/msStarGrey.png");
+        Image yellow= new Image("file:/C:/wamp64/www/java_DOC/msStarYellow.png");
        
         yS1.setImage(yellow);
         yS2.setImage(yellow);

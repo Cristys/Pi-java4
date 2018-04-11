@@ -5,6 +5,7 @@
  */
 package gui;
 
+import entities.AudioPlayerExample1;
 import entities.Commentaire;
 import entities.Recette;
 import entities.Vote;
@@ -192,17 +193,16 @@ public class InterfaceRecettes_ALLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         RechercheNom.setText("Je cherche une recette...");
+        //init tableau des recettes
         Liste_Recettes = FXCollections.observableArrayList(Session.iRecetteService.DisplayAll());
-        
         TableRecette.setItems(Liste_Recettes);
-       
-
-
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         nom.cellFactoryProperty();
         username.setCellValueFactory((TableColumn.CellDataFeatures<Recette, String> param) -> new SimpleStringProperty(param.getValue().getIduser().getUsername()));
-       PaneDetails.setVisible(false);
-      Image a = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");
+        
+        PaneDetails.setVisible(false);
+        //init image cercle gris pour la recherche avencé
+       Image a = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");
        Type1.setImage(a);
        Type2.setImage(a);
        Type3.setImage(a);
@@ -219,6 +219,12 @@ public class InterfaceRecettes_ALLController implements Initializable {
        Difficulte1.setImage(a);
        Difficulte2.setImage(a);
        Difficulte3.setImage(a);
+        ////////////////////
+        
+	String audioFilePath = "C:/Users/Siala/Music/Beep17.wav";
+        AudioPlayerExample1 player = new AudioPlayerExample1();
+        player.play(audioFilePath);
+        //////////////////////
     }    
 
 
@@ -330,18 +336,20 @@ public class InterfaceRecettes_ALLController implements Initializable {
     private void ConsulterRecette(MouseEvent event) throws IOException {
         if(event.getClickCount()==1){
              PaneDetails.setVisible(true);
+             
              Recette selectedRecette = TableRecette.getSelectionModel().getSelectedItem();
-             //System.out.println(selectedRecette);
              Session.iRecetteService.findById(selectedRecette.getId());
+             
              idRecette.setText(String.valueOf(Session.iRecetteService.findById(selectedRecette.getId()).getId()));
              nomDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getNom());
              typeDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getType());
              coutDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getCout());
              difficulteDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getDifficulte());
+             
              try{ 
                  imageDetails.setImage(new Image(Session.iRecetteService.findById(selectedRecette.getId()).getNom_image()));}
              catch(Exception e){
-                 Image image2 = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/mscupcake2.jpg");
+                 Image image2 = new Image("file:/C:/wamp64/www/java_DOC/mscupcake2.jpg");
                  imageDetails.setImage(image2);
                 }
          
@@ -349,6 +357,7 @@ public class InterfaceRecettes_ALLController implements Initializable {
              VoteService VS = new VoteService();
              double LastVote= VS.noteRecette(Session.iRecetteService.findById(selectedRecette.getId()).getId());
              String lastvote= String.valueOf(LastVote) +"/5";
+             
              noteDetails.setText(lastvote); 
         }
         else if(event.getClickCount()==2){
@@ -361,7 +370,7 @@ public class InterfaceRecettes_ALLController implements Initializable {
     private void MouseClickButtonRechercheNom(MouseEvent event) {
         String x= RechercheNom.getText();
         if("".equals(x)){
-             Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("");
                 alert.setHeaderText("Tapez le nom que vous voulez chercher");
                 Optional<ButtonType> result = alert.showAndWait();
@@ -385,24 +394,24 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void goToRecette(MouseEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));
-
-         Parent root = loader.load();
-                
-               anco.getScene().setRoot(root);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));
+        Parent root = loader.load();
+        anco.getScene().setRoot(root);
  
         Recette selectedRecette = TableRecette.getSelectionModel().getSelectedItem();
         System.out.println(selectedRecette);
-            
-       InterfaceRecettes_AfficherUneR_1Controller controller = 
+         //passer les data de la recette selectionner vers l'autre interface   
+        InterfaceRecettes_AfficherUneR_1Controller controller = 
         loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
         controller.initData(Session.iRecetteService.findById(selectedRecette.getId()));
     }
-
+    //************************************** images rechercher ************************************************************//
+    //1 click=> image valide et on l'ajoute au parametre de la fonction de recherche
+    //2 click=> image en gris
     @FXML
     private void MouseClickType1(MouseEvent event) {
-        Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+        Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(T2_Chocolat) || !"".equals(T3_Gateaux)|| !"".equals(T4_Cremes) ||
                     !"".equals(T5_Tartes) || !"".equals(T6_Tn)|| !"".equals(T7_Traiteurs)||
@@ -428,8 +437,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickType2(MouseEvent event) {
-        Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+        Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(T1_Biscuits) || !"".equals(T3_Gateaux)|| !"".equals(T4_Cremes) ||
                     !"".equals(T5_Tartes) || !"".equals(T6_Tn)|| !"".equals(T7_Traiteurs)||
@@ -454,8 +463,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickType3(MouseEvent event) {
-                Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+                Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(T1_Biscuits) || !"".equals(T2_Chocolat)|| !"".equals(T4_Cremes) ||
                     !"".equals(T5_Tartes) || !"".equals(T6_Tn)|| !"".equals(T7_Traiteurs)||
@@ -481,8 +490,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickType4(MouseEvent event) {
-                Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+                Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(T1_Biscuits) || !"".equals(T2_Chocolat)|| !"".equals(T3_Gateaux) ||
                     !"".equals(T5_Tartes) || !"".equals(T6_Tn)|| !"".equals(T7_Traiteurs)||
@@ -507,8 +516,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickType5(MouseEvent event) {
-                Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+                Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(T1_Biscuits) || !"".equals(T3_Gateaux)|| !"".equals(T4_Cremes) ||
                     !"".equals(T2_Chocolat) || !"".equals(T6_Tn)|| !"".equals(T7_Traiteurs)||
@@ -533,8 +542,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickType6(MouseEvent event) {
-                Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+                Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(T1_Biscuits) || !"".equals(T3_Gateaux)|| !"".equals(T4_Cremes) ||
                     !"".equals(T5_Tartes) || !"".equals(T2_Chocolat)|| !"".equals(T7_Traiteurs)||
@@ -559,8 +568,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickType7(MouseEvent event) {
-                Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+                Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(T1_Biscuits) || !"".equals(T3_Gateaux)|| !"".equals(T4_Cremes) ||
                     !"".equals(T5_Tartes) || !"".equals(T6_Tn)|| !"".equals(T2_Chocolat)||
@@ -585,8 +594,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickType8(MouseEvent event) {
-                Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+                Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(T1_Biscuits) || !"".equals(T3_Gateaux)|| !"".equals(T4_Cremes) ||
                     !"".equals(T5_Tartes) || !"".equals(T6_Tn)|| !"".equals(T7_Traiteurs)||
@@ -611,8 +620,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickType9(MouseEvent event) {
-                Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+                Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(T1_Biscuits) || !"".equals(T3_Gateaux)|| !"".equals(T4_Cremes) ||
                     !"".equals(T5_Tartes) || !"".equals(T6_Tn)|| !"".equals(T7_Traiteurs)||
@@ -637,8 +646,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickType10(MouseEvent event) {
-                Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+                Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(T1_Biscuits) || !"".equals(T3_Gateaux)|| !"".equals(T4_Cremes) ||
                     !"".equals(T5_Tartes) || !"".equals(T6_Tn)|| !"".equals(T7_Traiteurs)||
@@ -663,8 +672,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickCout1(MouseEvent event) {
-        Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+        Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(C2_Adorable) || !"".equals(C3_AssezCher)){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -687,8 +696,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickCout2(MouseEvent event) {
-        Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+        Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(C1_PasCher) || !"".equals(C3_AssezCher)){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -711,8 +720,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickCout3(MouseEvent event) {
-        Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+        Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(C1_PasCher) || !"".equals(C2_Adorable)){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -735,8 +744,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickDifficulte1(MouseEvent event) {
-        Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-        Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+        Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+        Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(D2_Medium) || !"".equals(D3_Difficile)){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -759,8 +768,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickDifficulte2(MouseEvent event) {
-         Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-         Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+         Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+         Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(D1_Facile) || !"".equals(D3_Difficile)){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -784,8 +793,8 @@ public class InterfaceRecettes_ALLController implements Initializable {
 
     @FXML
     private void MouseClickDifficulte3(MouseEvent event) {
-         Image val = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide1.png");
-         Image grey = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/msValide2.png");      
+         Image val = new Image("file:/C:/wamp64/www/java_DOC/msValide1.png");
+         Image grey = new Image("file:/C:/wamp64/www/java_DOC/msValide2.png");      
         if(event.getClickCount()==1){
             if(!"".equals(D1_Facile) || !"".equals(D2_Medium)){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -806,7 +815,7 @@ public class InterfaceRecettes_ALLController implements Initializable {
         }
        
     }
-
+ //**************************************  Fin images rechercher ************************************************************//
     @FXML
     private void MouseClickBtnChercherF(MouseEvent event) {
         String ValueType1="";
@@ -879,6 +888,7 @@ public class InterfaceRecettes_ALLController implements Initializable {
             Bol_D1=false;
             System.out.println("aucune difficulte selectionne");
         }
+         // si aucune terme de recherche n'est selectionner afficher un alert
         if(!Bol_T1 && !Bol_C1  && !Bol_D1  ){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("");
@@ -890,11 +900,7 @@ public class InterfaceRecettes_ALLController implements Initializable {
         } else{
             Liste_Recettes = FXCollections.observableArrayList(Session.iRecetteService.RechercheFiltrer(ValueType1,ValueCout1,ValueDiff1));
             TableRecette.setItems(Liste_Recettes);
-        }
-        
-       
-        
-          
+        }      
     }
 
 

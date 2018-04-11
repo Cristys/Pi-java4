@@ -1,10 +1,11 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package gui;
 
+import entities.AudioPlayerExample1;
 import entities.Recette;
 import java.io.IOException;
 import java.net.URL;
@@ -124,12 +125,18 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         username.setText(Session.LoggedUser.getUsername());
+        // init tableau recette de user
         Liste_MesRecettes = FXCollections.observableArrayList(Session.iRecetteService.getByUser(Session.LoggedUser.getId()));
         Table.setItems(Liste_MesRecettes);
-       
-      
         colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         colNom.cellFactoryProperty();
+        
+        ////////////////////
+        
+	String audioFilePath = "C:/Users/Siala/Music/Beep17.wav";
+        AudioPlayerExample1 player = new AudioPlayerExample1();
+        player.play(audioFilePath);
+        //////////////////////
        
        
     }    
@@ -227,9 +234,7 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
 
     @FXML
     private void OnMouseCliked(MouseEvent event) {
-         
-
-            
+    //vide    
     }
 
     @FXML
@@ -249,16 +254,20 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
 
     @FXML
    private void ConsulterRecette(MouseEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));
-
-         Parent root = loader.load();
-                
-               anco.getScene().setRoot(root);
+        ////////////////////
+        
+	String audioFilePath = "C:/Users/Siala/Music/floop.wav";
+        AudioPlayerExample1 player = new AudioPlayerExample1();
+        player.play(audioFilePath);
+        //////////////////////
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceRecettes_AfficherUneR_1.fxml"));
+        Parent root = loader.load();
+        anco.getScene().setRoot(root);
  
         Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
         System.out.println(selectedRecette);
-            
-       InterfaceRecettes_AfficherUneR_1Controller controller = 
+        // pour passer les infos de la recette sélectionner dans initData vers autre interface    
+        InterfaceRecettes_AfficherUneR_1Controller controller = 
         loader.<InterfaceRecettes_AfficherUneR_1Controller>getController();
         controller.initData(Session.iRecetteService.findById(selectedRecette.getId()));
 
@@ -266,44 +275,54 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
 
     @FXML
     private Stage ModifierRecette(MouseEvent event) throws IOException {
-          FXMLLoader loader2 = new FXMLLoader(getClass().getResource("InterfaceClientProfile_ModifierRecette.fxml"));
-
-          Stage stage2 = new Stage(StageStyle.TRANSPARENT);
-          // scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-          stage2.setScene(
+         ////////////////////
+        
+	String audioFilePath = "C:/Users/Siala/Music/floop.wav";
+        AudioPlayerExample1 player = new AudioPlayerExample1();
+        player.play(audioFilePath);
+        //////////////////////
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("InterfaceClientProfile_ModifierRecette.fxml"));
+        Stage stage2 = new Stage(StageStyle.TRANSPARENT);
+        //pour ouvrir une nouvelle fenetre
+        stage2.setScene(
           new Scene((AnchorPane) loader2.load()));
  
-          Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
-          System.out.println(selectedRecette);
-            
-       InterfaceClientProfile_ModifierRecetteController controller = 
-         loader2.<InterfaceClientProfile_ModifierRecetteController>getController();
-         controller.initData(Session.iRecetteService.findById(selectedRecette.getId()));
+        Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
+        System.out.println(selectedRecette);
+        // pour passer les infos de la recette sélectionner dans initData vers autre interface 
+        InterfaceClientProfile_ModifierRecetteController controller = 
+        loader2.<InterfaceClientProfile_ModifierRecetteController>getController();
+        controller.initData(Session.iRecetteService.findById(selectedRecette.getId()));
  
-         stage2.show();
-
-         return stage2;
+        stage2.show();
+        return stage2;
     }
 
     @FXML
     private void SupprimerRecette(MouseEvent event) throws IOException {
-         RecetteService t2 = new RecetteService();
-         if (!Table.getSelectionModel().isEmpty()) {
+        ////////////////////
+        
+	String audioFilePath = "C:/Users/Siala/Music/floop.wav";
+        AudioPlayerExample1 player = new AudioPlayerExample1();
+        player.play(audioFilePath);
+        //////////////////////
+        
+        RecetteService t2 = new RecetteService();
+        if (!Table.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Supprimer Recette");
             alert.setHeaderText("Etes vous sur de vouloir supprimer la recette numero : " + Table.getSelectionModel().getSelectedItem().getId() + " ?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-           Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
+               Recette selectedRecette = Table.getSelectionModel().getSelectedItem();
                 System.out.println(selectedRecette);
-              Session.iRecetteService.remove(selectedRecette.getId());
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClientProfile_MesRecett.fxml"));
-                
+                Session.iRecetteService.remove(selectedRecette.getId());
+                //refrecher l'interface avec reload
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceClientProfile_MesRecett.fxml"));
                 Parent root = loader.load();
-                
                 anco.getScene().setRoot(root);
+            }
         }
-         }
     }
 
   /*  @FXML
@@ -341,8 +360,8 @@ public class InterfaceClientProfile_MesRecettController implements Initializable
 
     @FXML
     private void onClickClose(MouseEvent event) {
-         Stage stage = (Stage) btnClose.getScene().getWindow();
-    // do what you have to do
-    stage.close();
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
 }

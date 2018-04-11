@@ -168,23 +168,20 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-       // buildPieChartData();
-      
         Admin_Name.setText(Session.LoggedUser.getUsername());
         recherche_recettes.setText("Recherche de recettes...");
+        // init tableau recettes
         Liste_Recettes = FXCollections.observableArrayList(Session.iRecetteService.DisplayAll());
         Table.setItems(Liste_Recettes);
-       // id.setCellValueFactory(new PropertyValueFactory<>("id"));
-       // id.cellFactoryProperty();
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         nom.cellFactoryProperty();
         username.setCellValueFactory((TableColumn.CellDataFeatures<Recette, String> param) -> new SimpleStringProperty(param.getValue().getIduser().getUsername()));
-        
+        // fin init table recettes
         nb_recettes.setText(String.valueOf(Session.iRecetteService.NbTotalR()));
         nb_comments.setText(String.valueOf(Session.iCommentaireService.NbTotalC()));
-         VoteService vs = new VoteService();
+        VoteService vs = new VoteService();
         nb_votes.setText(String.valueOf(vs.NbTotalV()));
-            
+        // les statitiques     
         MakeBarGraph() ;
         buildPieChartDataCout();
         buildPieChartDataDiff();
@@ -309,9 +306,10 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
 
     @FXML
     private void RechercheRecetteByName(MouseEvent event) {
-          String x= recherche_recettes.getText();
+        String x= recherche_recettes.getText();
+        // verifie si le nom est vide 
         if("".equals(x)){
-             Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("");
                 alert.setHeaderText("Tapez le nom que vous voulez chercher");
                 Optional<ButtonType> result = alert.showAndWait();
@@ -320,13 +318,14 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
                 }
         }
         else{
-        Liste_Recettes = FXCollections.observableArrayList(Session.iRecetteService.findByNom(x));
-        Table.setItems(Liste_Recettes);
+           //sinon il affiche
+           Liste_Recettes = FXCollections.observableArrayList(Session.iRecetteService.findByNom(x));
+           Table.setItems(Liste_Recettes);
         }
     }
   
 
-    
+    // pie chart cout: pas cher, adorable, assez cher
     private void buildPieChartDataCout() {
         ObservableList<PieChart.Data> details =
             FXCollections.observableArrayList(
@@ -334,34 +333,34 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
             new PieChart.Data("Adorable", Session.iRecetteService.CountCout("Adorable")),
             new PieChart.Data("assez cher", Session.iRecetteService.CountCout("assez cher"))
             );
-    PieChartCout.setData(details);
-    PieChartCout.setLabelLineLength(10);
-    
+        PieChartCout.setData(details);
+        PieChartCout.setLabelLineLength(10);
     }
-    
+   
+    //pie chart difficulté: facile, medium , dfficile
     private void buildPieChartDataDiff() {
-             ObservableList<PieChart.Data> details =
+        ObservableList<PieChart.Data> details =
             FXCollections.observableArrayList(
             new PieChart.Data("Facile", Session.iRecetteService.CountDiff("Facile")),
             new PieChart.Data("Medium", Session.iRecetteService.CountDiff("Medium")),
             new PieChart.Data("Difficile", Session.iRecetteService.CountDiff("Difficile"))
-           
-            );  
+        );  
          
-    PieChartDiff.setData(details);
-    PieChartDiff.setLabelLineLength(10);
+        PieChartDiff.setData(details);
+        PieChartDiff.setLabelLineLength(10);
     }
-    
+    //Fonction pour convertir un entier en Number (pour le bar graphe
     private Number Number(int COUT) {
         return COUT ; 
     }
+    // bar praphe sur les types de recettes
     private void MakeBarGraph() {
      
-    final CategoryAxis xAxis = new CategoryAxis();
+        final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         final BarChart<String,Number> bc;
         bc = new BarChart<>(xAxis,yAxis); 
-         ObservableList<XYChart.Series< String,Number>> chartData = FXCollections.observableArrayList();
+        ObservableList<XYChart.Series< String,Number>> chartData = FXCollections.observableArrayList();
 
         XYChart.Series<String,Number> series = new XYChart.Series<>();
        
@@ -418,20 +417,15 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
         
         
       // myBarChart.getData().addAll(series1, series2, series3,series4, series5, series6,series7, series8, series9,series10);
-           chartData.add(series);
-            myBarChart.getData().addAll(chartData);
-            
-            
-
-
-   
+        chartData.add(series);
+        myBarChart.getData().addAll(chartData);
     }    
 
     @FXML
     private void HideCoutPerc(MouseEvent event) {
         PaneCoutPercentage.setVisible(false);
     }
-
+    // on mouse over: afficher les pourcentages des 3 couts existant
     @FXML
     private void ShowCoutPerc(MouseEvent event) {
         PaneCoutPercentage.setVisible(true);
@@ -439,8 +433,8 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
         int C2=Session.iRecetteService.CountCout("Adorable");
         int C3=Session.iRecetteService.CountCout("assezCher");
         int CTotal= C1+C2+C3;
-                //Session.iRecetteService.NbTotalR();
-        ///////
+        //////// Formules pour obtenir les %  \\\\\\\\\\\\\\\\\      
+        // % PAs cher
         double CP1=0.0;
         if(C1==0 || CTotal==0){
             CP1=0;
@@ -448,7 +442,7 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
          CP1=((double)C1/(double)CTotal)*100; 
          CP1=(double) Math.round(CP1 * 100) / 100; 	
         }
-        //////
+        // % Adorable
         double CP2=0.0;
         if(C2==0 || CTotal==0){
             CP2=0;
@@ -456,7 +450,7 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
          CP2=((double)C2/(double)CTotal)*100; 
          CP2=(double) Math.round(CP2 * 100) / 100; 	
         }
-        ///////
+        // % Assez cher
         double CP3=0.0;
         if(C3==0 || CTotal==0){
             CP3=0;
@@ -464,8 +458,9 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
          CP3=((double)C3/(double)CTotal)*100; 
          CP3=(double) Math.round(CP3 * 100) / 100; 	
         }
-        ///////
+        ////////// fin de calcul % \\\\\\\\\\\\\\\\\\ 
         
+        // affection des % dans les zones txt adéquates
         PasCherPourcentage.setText(String.valueOf(CP1)+"%");
         AdorablePourcentage.setText(String.valueOf(CP2)+"%");
         AssezCherPourcentage.setText(String.valueOf(CP3)+"%");
@@ -475,7 +470,7 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
     private void HideDiffPerc(MouseEvent event) {
         PaneDiffPourcentage.setVisible(false);
     }
-
+    // on mouse over: afficher les pourcentages des 3 difficultés existant
     @FXML
     private void ShowDiffPerc(MouseEvent event) {
         PaneDiffPourcentage.setVisible(true);
@@ -483,8 +478,8 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
         int D2=Session.iRecetteService.CountDiff("Medium");
         int D3= Session.iRecetteService.CountDiff("Difficile");
         int DTotal= D1+D2+D3;
-                //Session.iRecetteService.NbTotalR();
-        ///////
+        //////////Formules pour calculer les %  \\\\\\\\\\\\\\\     
+        // % Facile
         double DP1=0.0;
         if(D1==0 || DTotal==0){
             DP1=0;
@@ -492,7 +487,7 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
          DP1=((double)D1/(double)DTotal)*100; 
          DP1=(double) Math.round(DP1 * 100) / 100; 	
         }
-        //////
+        // % Medium
         double DP2=0.0;
         if(D2==0 || DTotal==0){
             DP2=0;
@@ -500,7 +495,7 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
          DP2=((double)D2/(double)DTotal)*100; 
          DP2=(double) Math.round(DP2 * 100) / 100; 	
         }
-        ///////
+        // % Difficile
         double DP3=0.0;
         if(D3==0 || DTotal==0){
             DP3=0;
@@ -508,8 +503,9 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
          DP3=((double)D3/(double)DTotal)*100; 
          DP3=(double) Math.round(DP3 * 100) / 100; 	
         }
-        ///////
+        /////////// Fin formules % \\\\\\\\\\\\\\\\\\\\\\
         
+        // init des text avec les %
         FacilePourcentage.setText(String.valueOf(DP1)+"%");
         MoyenPourcentage.setText(String.valueOf(DP2)+"%");
         DifficilePourcentage.setText(String.valueOf(DP3)+"%");
@@ -517,34 +513,30 @@ public class InterfaceAdmin_Recettes1Controller implements Initializable {
 
     @FXML
     private void DetailsRecettes(MouseEvent event) {
-         if(Table.getSelectionModel().getSelectedItem()!=null){
-         PaneDetails.setVisible(true);
-         Recette selectedRecette =Table.getSelectionModel().getSelectedItem();
-         nomDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getNom());
-             typeDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getType());
-             coutDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getCout());
-             difficulteDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getDifficulte());
-             try{ 
-                 imageDetails.setImage(new Image(Session.iRecetteService.findById(selectedRecette.getId()).getNom_image()));}
-             catch(Exception e){
-                 Image image2 = new Image("file:/C:/wamp64/www/java_DOC/mscupcake6.jpg");
-                 imageDetails.setImage(image2);
+        if(Table.getSelectionModel().getSelectedItem()!=null){
+            PaneDetails.setVisible(true);
+            Recette selectedRecette =Table.getSelectionModel().getSelectedItem();
+            nomDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getNom());
+            typeDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getType());
+            coutDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getCout());
+            difficulteDetails.setText(Session.iRecetteService.findById(selectedRecette.getId()).getDifficulte());
+            try{ 
+                imageDetails.setImage(new Image(Session.iRecetteService.findById(selectedRecette.getId()).getNom_image()));
+               }
+            catch(Exception e){
+                Image image2 = new Image("file:/C:/wamp64/www/java_DOC/mscupcake6.jpg");
+                imageDetails.setImage(image2);
                 }
          
-             Vote vot= new Vote();
-             VoteService VS = new VoteService();
-             double LastVote= VS.noteRecette(Session.iRecetteService.findById(selectedRecette.getId()).getId());
-             String lastvote= String.valueOf(LastVote) +"/5";
-             noteDetails.setText(lastvote); 
-             
-             commentDetails.setText(String.valueOf(Session.iRecetteService.countCommentOf1Recette(selectedRecette.getId())));
-         
-         
-         
-         }
-         else{
+            Vote vot= new Vote();
+            VoteService VS = new VoteService();
+            double LastVote= VS.noteRecette(Session.iRecetteService.findById(selectedRecette.getId()).getId());
+            String lastvote= String.valueOf(LastVote) +"/5";
+            noteDetails.setText(lastvote); 
+            commentDetails.setText(String.valueOf(Session.iRecetteService.countCommentOf1Recette(selectedRecette.getId())));
+        }else{
             PaneDetails.setVisible(false); 
-         }
+        }
     }
 
     @FXML

@@ -5,6 +5,7 @@
  */
 package gui;
 
+import entities.AudioPlayerExample1;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -90,6 +91,7 @@ public class InterfaceClientController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         System.out.println(Session.LoggedUser);
+
           
     }    
 
@@ -186,7 +188,7 @@ public class InterfaceClientController implements Initializable {
 
     @FXML
     private void Close(MouseEvent event) {
-          Stage stage = (Stage) close.getScene().getWindow();
+    Stage stage = (Stage) close.getScene().getWindow();
     // do what you have to do
     stage.close();
     }

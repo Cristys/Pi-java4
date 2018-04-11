@@ -162,16 +162,16 @@ ObservableList<User> Liste_Users = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-      Admin_Name.setText(Session.LoggedUser.getUsername());
+        Admin_Name.setText(Session.LoggedUser.getUsername());
         recherche_clients.setText("Recherche de clients...");
+        //int tableau des clients
         Liste_Users = FXCollections.observableArrayList(Session.iuserService.DisplayAllClients());
         Table.setItems(Liste_Users);
-//        id.setCellValueFactory(new PropertyValueFactory<>("id"));
-     //   id.cellFactoryProperty();
         username.setCellValueFactory(new PropertyValueFactory<>("username"));
         username.cellFactoryProperty();
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         email.cellFactoryProperty();
+        // fin init tableau des clients
         nb_clients.setText(String.valueOf(Session.iuserService.getnombreClients()));
         String pr= String.valueOf(Session.iuserService.getPourcentageClients());
         pourcentagee_clients.setText(pr+"%");
@@ -273,20 +273,20 @@ ObservableList<User> Liste_Users = FXCollections.observableArrayList();
     @FXML
     private void Close(MouseEvent event) {
     Stage stage = (Stage) btnClose.getScene().getWindow();
-    // do what you have to do
     stage.close();
     }
 
     @FXML
     private void DisplayAllClients(MouseEvent event) {
-         Liste_Users = FXCollections.observableArrayList(Session.iuserService.DisplayAllClients());
+        Liste_Users = FXCollections.observableArrayList(Session.iuserService.DisplayAllClients());
         Table.setItems(Liste_Users);
     }
-UserService us2 = new UserService();
+    
+    UserService us2 = new UserService();
     @FXML
     private void DisplayTop5Clients(MouseEvent event) {
         
-            PnaeTop5.setVisible(true);
+        PnaeTop5.setVisible(true);
              
              clientusername1.setText(Session.iuserService.findById(us2.ClientTOP1()).getUsername());
              clientRecettes1.setText(String.valueOf(Session.iuserService.Client_NbRecettes(us2.ClientTOP1())));
@@ -316,44 +316,34 @@ UserService us2 = new UserService();
     @FXML
     private void DisplayActivitesClients(MouseEvent event) {
         if(Table.getSelectionModel().getSelectedItem()!=null){
-         PaneDetailsUser.setVisible(true);
+            PaneDetailsUser.setVisible(true);
          
-        User selecteduser = Table.getSelectionModel().getSelectedItem();
-        int x= selecteduser.getId();
-        Detailusername.setText(Session.iuserService.findById(x).getUsername());
-        Details_NbRecettes.setText(String.valueOf(Session.iuserService.Client_NbRecettes(x)));
-        Details_NbComment.setText(String.valueOf(Session.iuserService.Client_NbComment(x)));
-    
-        if(Session.iuserService.Client_NbRecettes(x)!=0){
-            Details_TableRecette.setVisible(true);
-        Liste_MesRecettes = FXCollections.observableArrayList(Session.iRecetteService.getByUser(x));
-        Details_TableRecette.setItems(Liste_MesRecettes);
-       
-      
-        Details_TableRecette_Column.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        Details_TableRecette_Column.cellFactoryProperty();
-        }else{
-            Details_TableRecette.setVisible(false);
-        }
-        /////////////////////////////////////////////////
-        if(Session.iuserService.Client_NbComment(x)!=0){
-            Details_TableComment.setVisible(true); 
-            Liste_Comment= FXCollections.observableArrayList(Session.iCommentaireService.getByUser(x));
-            Details_TableComment.setItems(Liste_Comment);
-       
-      
-            Details_TableComment_Column.setCellValueFactory((TableColumn.CellDataFeatures<Commentaire, String> param) -> 
+            User selecteduser = Table.getSelectionModel().getSelectedItem();
+            int x= selecteduser.getId();
+            Detailusername.setText(Session.iuserService.findById(x).getUsername());
+            Details_NbRecettes.setText(String.valueOf(Session.iuserService.Client_NbRecettes(x)));
+            Details_NbComment.setText(String.valueOf(Session.iuserService.Client_NbComment(x)));
+            // si il a des recettes on affiche le tableau de ces recettes
+            if(Session.iuserService.Client_NbRecettes(x)!=0){
+               Details_TableRecette.setVisible(true);
+               Liste_MesRecettes = FXCollections.observableArrayList(Session.iRecetteService.getByUser(x));
+               Details_TableRecette.setItems(Liste_MesRecettes);
+               Details_TableRecette_Column.setCellValueFactory(new PropertyValueFactory<>("nom"));
+               Details_TableRecette_Column.cellFactoryProperty();
+            }else{
+               Details_TableRecette.setVisible(false);
+            }
+             // si il a des commentaires : on affiche la table de ces commentaires
+            if(Session.iuserService.Client_NbComment(x)!=0){
+               Details_TableComment.setVisible(true); 
+               Liste_Comment= FXCollections.observableArrayList(Session.iCommentaireService.getByUser(x));
+               Details_TableComment.setItems(Liste_Comment);
+               Details_TableComment_Column.setCellValueFactory((TableColumn.CellDataFeatures<Commentaire, String> param) -> 
                                                          new SimpleStringProperty(param.getValue().getIdrecette().getNom()));    
-        }else{
-           Details_TableComment.setVisible(false);  
-        }
-        }
-        
-        
-      
-        
-       
-        
+            }else{
+               Details_TableComment.setVisible(false);  
+            }
+        } 
     }
 
   /*  @FXML
@@ -362,7 +352,7 @@ UserService us2 = new UserService();
 
     @FXML
     private void RechercheClientByUserName(MouseEvent event) {
-         Liste_Users = FXCollections.observableArrayList(Session.iuserService.findClientsByUserNom(recherche_clients.getText()));
+        Liste_Users = FXCollections.observableArrayList(Session.iuserService.findClientsByUserNom(recherche_clients.getText()));
         Table.setItems(Liste_Users);
     }
 

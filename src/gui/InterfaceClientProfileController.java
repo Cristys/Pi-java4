@@ -5,6 +5,7 @@
  */
 package gui;
 
+import entities.AudioPlayerExample1;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -108,6 +109,12 @@ public class InterfaceClientProfileController implements Initializable {
         // TODO
         username.setText(Session.LoggedUser.getUsername());
         email.setText(Session.LoggedUser.getEmail());
+        ////////////////////
+        
+	String audioFilePath = "C:/Users/Siala/Music/Beep17.wav";
+        AudioPlayerExample1 player = new AudioPlayerExample1();
+        player.play(audioFilePath);
+        //////////////////////
     }    
 
     @FXML
@@ -222,7 +229,7 @@ public class InterfaceClientProfileController implements Initializable {
 
     @FXML
     private void MouseClickClose(MouseEvent event) {
-          Stage stage = (Stage) btnClose.getScene().getWindow();
+    Stage stage = (Stage) btnClose.getScene().getWindow();
     // do what you have to do
     stage.close();
     }

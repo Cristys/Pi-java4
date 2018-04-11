@@ -36,10 +36,13 @@ import static jdk.nashorn.internal.runtime.JSType.TO_NUMBER;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import entities.AudioPlayerExample1;
+import java.io.File;
 import java.util.Optional;
 import java.util.Random;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+
 
 /**
  * FXML Controller class
@@ -117,27 +120,33 @@ public class InterfaceRecettesController implements Initializable {
     /**
      * Initializes the controller class.
      */
-     public static final String API_KEY =  "1ecc5615" ;
+    public static final String API_KEY =  "1ecc5615" ;
     public static final String API_SECRET = "P6davZ1wljxoE1U0";
     @FXML
     private Button btnForSMS;
 
     
   /*  curl -X POST  https://rest.nexmo.com/sms/json \ 
--d api_key=1ecc5615 \
--d api_secret=P6davZ1wljxoE1U0 \
--d to=21654821045 \
--d from="NEXMO" \
--d text="Hello from Nexmo" */
-    
+     -d api_key=1ecc5615 \
+     -d api_secret=P6davZ1wljxoE1U0 \
+     -d to=21654821045 \
+     -d from="NEXMO" \
+     -d text="Hello from Nexmo" 
+  */
    // AuthMethod auth = new TokenAuthMethod(API_KEY, API_SECRET);
-//   NexmoClient client = new NexmoClient(auth);
+   //   NexmoClient client = new NexmoClient(auth);
    // System.out.println(FROM_NUMBER);
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         PaneSMS.setVisible(false);
+        ////////////////////
+        
+	String audioFilePath = "C:/Users/Siala/Music/Beep17.wav";
+        AudioPlayerExample1 player = new AudioPlayerExample1();
+        player.play(audioFilePath);
+        //////////////////////
     }    
  @FXML
     private void GoToHome(MouseEvent event) throws SQLException, IOException{
@@ -254,7 +263,7 @@ public class InterfaceRecettesController implements Initializable {
                 
                 anco.getScene().setRoot(root);
     }
-
+     //sms not newsletter maintenant
     @FXML
     private void MouseClickGoToNewsLetter(MouseEvent event) {
         PaneSMS.setVisible(true);
@@ -271,24 +280,25 @@ public class InterfaceRecettesController implements Initializable {
     }
   
    // System.out.println("+21654821045");
+    // pour tester que le nombre tél entrée est correcte
    private boolean valide(String num){
        boolean b=true;
        if("".equals(num)){
            b=false;
-       } else{
+        } else{
            int x = Integer.valueOf(num);
            if(x>20000000 && x<99999999){
                b=true;
            }else{
                b=false;
            }
-       }
-       
-    return b;   
+        }
+        return b;   
    }
   
     @FXML
     private void sendSMS1(MouseEvent event) throws SQLException, IOException, NexmoClientException{
+        // 1 mettre un tableau string avec les astuces et choisir avec random
         String numberSMS="+216" +  NumberSMS.getText();
         String[] Astuce = {"Oeufs cuits durs dans le four? Placez-les dans une plaque a muffins puis mettre au four 25 a 30 minutes a 325˚F",
                            "Petit truc tout simple : équeuter vos fraises en les perçant de part en part à l'aide d'une paille.",
@@ -297,10 +307,12 @@ public class InterfaceRecettesController implements Initializable {
                            "vous n'avez que du beurre congele? Solution: raper le beurre, le mesurer au besoin,et l'ajouter tel quel dans la recette.",
                            "versez la creme pour le chantilly dans un cul de poule et placez-la avec le fouet du batteur au congelateur pendant 20 min"};
         String random = (Astuce[new Random().nextInt(Astuce.length)]);
+        //2 verifier si le num est valide
         if(valide(NumberSMS.getText())==true){
+            //3 mettre le key pour s'authentifier au service
         AuthMethod auth = new TokenAuthMethod("1ecc5615", "P6davZ1wljxoE1U0");
         NexmoClient client = new NexmoClient(auth);
-        
+        //4 mettre les données de l'sms
         SmsSubmissionResult[] responses = client.getSmsClient().submitMessage(new TextMessage(
         "Cupcakes ",
         numberSMS,
@@ -317,16 +329,6 @@ public class InterfaceRecettesController implements Initializable {
                 System.out.println("ok");
             }
         }
-
     }
-
-
-
-
-  
-
-
-
-    
 }
 

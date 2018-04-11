@@ -23,14 +23,12 @@ public class Cupcakes extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-        Parent root = FXMLLoader.load(getClass().getResource("InterfaceLogin.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("InterfaceLogin.fxml"));
        stage.initStyle(StageStyle.TRANSPARENT);
-        Scene scene = new Scene(root);
+       Scene scene = new Scene(root);
        scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-       
-        stage.setScene(scene);
-        
-        stage.show();
+       stage.setScene(scene);
+       stage.show();
         
     }
 

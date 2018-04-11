@@ -5,6 +5,7 @@
  */
 package gui;
 
+import entities.AudioPlayerExample1;
 import entities.Recette;
 import entities.Vote;
 import java.io.IOException;
@@ -171,7 +172,7 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
            image1.setImage(imageA);
          }
         catch(Exception e){
-            Image imageB = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/mscupcake2.jpg");
+            Image imageB = new Image("file:/C:/wamp64/www/java_DOC/mscupcake2.jpg");
             image1.setImage(imageB);
         }
         //TOP2
@@ -186,7 +187,7 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
            image2.setImage(imageA);
          }
         catch(Exception e){
-            Image imageB = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/mscupcake2.jpg");
+            Image imageB = new Image("file:/C:/wamp64/www/java_DOC/mscupcake2.jpg");
             image2.setImage(imageB);
         }
          //TOP3
@@ -201,7 +202,7 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
            image3.setImage(imageA);
          }
         catch(Exception e){
-            Image imageB = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/mscupcake2.jpg");
+            Image imageB = new Image("file:/C:/wamp64/www/java_DOC/mscupcake2.jpg");
             image3.setImage(imageB);
         }
          //TOP4
@@ -216,7 +217,7 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
            image4.setImage(imageA);
          }
         catch(Exception e){
-            Image imageB = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/mscupcake2.jpg");
+            Image imageB = new Image("file:/C:/wamp64/www/java_DOC/mscupcake2.jpg");
             image4.setImage(imageB);
         }
          //TOP5
@@ -231,9 +232,15 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
            image5.setImage(imageA);
          }
         catch(Exception e){
-            Image imageB = new Image("file:/C:/Users/Siala/Documents/NetBeansProjects/Pi-java4/src/icons/mscupcake2.jpg");
+            Image imageB = new Image("file:/C:/wamp64/www/java_DOC/mscupcake2.jpg");
             image5.setImage(imageB);
-        }         
+        }   
+        ////////////////////
+        
+	String audioFilePath = "C:/Users/Siala/Music/Beep17.wav";
+        AudioPlayerExample1 player = new AudioPlayerExample1();
+        player.play(audioFilePath);
+        //////////////////////
     }    
  @FXML
     private void GoToHome(MouseEvent event) throws SQLException, IOException{
@@ -319,6 +326,7 @@ public class InterfaceRecettes_TOP5Controller implements Initializable {
 
     @FXML
     private void LogOut(MouseEvent event) throws SQLException, IOException {
+      
           FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceLogin.fxml"));
                 
                 Parent root = loader.load();

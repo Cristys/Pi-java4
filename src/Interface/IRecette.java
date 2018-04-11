@@ -15,15 +15,15 @@ import javafx.collections.ObservableList;
  * @author Siala
  */
 public interface IRecette extends IService <Recette, Integer>{
-     ObservableList<Recette> getByUser(int Iduser );
-      ObservableList<Recette> DisplayAll(); 
-      ObservableList<Recette> RechercheFiltrer(String ValueType1,String ValueCout1,String ValueDiff1);
-      ObservableList<Recette> findByNom(String nom );
-      public int CountType(String type);
-      public int CountCout(String cout);
-      public int CountDiff(String diff);
-      public int NbTotalR();
-       public int countCommentOf1Recette(int idrecette);
+    ObservableList<Recette> getByUser(int Iduser );
+    ObservableList<Recette> DisplayAll(); 
+    ObservableList<Recette> RechercheFiltrer(String ValueType1,String ValueCout1,String ValueDiff1);
+    ObservableList<Recette> findByNom(String nom );
+    public int CountType(String type);
+    public int CountCout(String cout);
+    public int CountDiff(String diff);
+    public int NbTotalR();
+    public int countCommentOf1Recette(int idrecette);
    /*  
      
       

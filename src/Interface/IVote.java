@@ -12,5 +12,6 @@ import entities.Vote;
  * @author Siala
  */
 public class IVote {
+    // Vide //
     
 }

@@ -336,9 +336,9 @@
                                     <Text layoutX="6.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #e35972;" text=" En manque d'idées ? " textAlignment="CENTER" wrappingWidth="230.7421875" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="96.0" prefWidth="242.0" style="-fx-background-color: #e35972; -fx-background-radius: 5px;">
+                              <Pane prefHeight="115.0" prefWidth="242.0" style="-fx-background-color: #e35972; -fx-background-radius: 5px;">
                                  <children>
-                                    <Text fill="WHITE" layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.5em;" text="Recevez un astuce recette au hazard" textAlignment="CENTER" wrappingWidth="200.662109375" />
+                                    <Text fill="WHITE" layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 1.5em;" text="Recevez une astuce recette au hazard" textAlignment="CENTER" wrappingWidth="200.662109375" />
                                  </children>
                               </Pane>
                            </children>
